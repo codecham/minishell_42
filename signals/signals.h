@@ -14,6 +14,5 @@
 # define SIGNALS_H
 
 # include <signal.h>
-# include <stdio.h>
 
 #endif
