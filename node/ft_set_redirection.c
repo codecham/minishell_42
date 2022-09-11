@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 01:28:23 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/09/10 17:47:15 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/09/10 21:59:09 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 	VALEUR DE RETOUR: Renvoie 0 si elle reussis ou -1 si elle echoue
 */
 
-int	set_redirection(t_node *node, int redirect_type, int fd)
+int	ft_set_redirection(t_node *node, int redirect_type, int fd)
 {
 	t_redir_list	*new_element;
 	t_redir_list	*tmp;

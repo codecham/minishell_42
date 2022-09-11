@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 19:55:43 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/09/08 20:01:52 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/09/11 18:07:25 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ t_node	*ft_create_node(void)
 		return (NULL);
 	new_node->command_name = NULL;
 	new_node->arg = NULL;
-	new_node->env = NULL;
 	new_node->next = NULL;
 	new_node->previous = NULL;
 	new_node->redirection = NULL;
