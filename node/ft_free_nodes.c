@@ -6,14 +6,15 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 02:06:40 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/09/11 18:07:15 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/09/12 20:22:04 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "node.h"
 
 /*
-	La fonction ft_free_nodes va liberer tout l'espace memoire alloue dynamiquement de toute les nodes en les libereant dans l'ordre une par une.
+	La fonction ft_free_nodes va liberer tout l'espace memoire alloue dynamiquement 
+	de toute les nodes en les libereant dans l'ordre une par une.
 
 	PARAMETRES:	- node: la premiere node de la liste.
 */

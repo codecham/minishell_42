@@ -6,16 +6,16 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 06:13:18 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/09/11 20:39:59 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/09/12 20:24:55 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef NODE_H
 # define NODE_H
 
-#include <stdlib.h>
-#include "../libft/libft.h"
-#include <stdio.h> // A DELETE
+# include <stdlib.h>
+# include "../libft/libft.h"
+# include <stdio.h> // A DELETE
 
 # define INFILE 0 		// >
 # define INFILE_HAP 1	// >>
@@ -34,29 +34,20 @@ typedef struct s_redir_list
 
 typedef struct s_node
 {
-	char 				*command_name;	// Le nom de la commande
+	char				*command_name;	// Le nom de la commande
 	char				**arg;			// Double tableau contenant les arguments
 	struct s_node		*next;			// Commande suivante aprés un pipe
 	struct s_node		*previous;		// Commande précédente avant un pipe
 	struct s_redir_list	*redirection;	// Liste de redirections
 }	t_node;
 
-
 t_node			*ft_create_node(void);
 t_node			*ft_new_node(t_node *previous_node);
 t_redir_list	*ft_get_next_redirection(t_redir_list *li);
-t_redir_list 	*ft_get_last_redirection(t_redir_list *li);
+t_redir_list	*ft_get_last_redirection(t_redir_list *li);
 int				ft_set_redirection(t_node *node, int redirect_type, int fd);
 int				ft_add_arg_node(t_node *node, char *arg);
 int				ft_add_command_name(t_node *node, char *command);
 void			ft_free_nodes(t_node *node);
-
-
-typedef struct s_data
-{
-	struct s_node 	*first_node;
-	char			**env;
-}	t_data;
-
 
 #endif

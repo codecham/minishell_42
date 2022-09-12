@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_last_redirection.c                          :+:      :+:    :+:   */
+/*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/10 17:50:24 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/09/12 20:20:59 by dcorenti         ###   ########.fr       */
+/*   Created: 2022/09/12 20:10:46 by dcorenti          #+#    #+#             */
+/*   Updated: 2022/09/12 20:18:27 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "node.h"
+#ifndef MINISHELL_H
+# define MINISHELL_H
 
-/*
-	Cette fonction renvoie le dernier element de la liste de redirection.
+# include "../node/node.h"
+# include "../signals/signals.h" 
 
-	PARAMETRES:	- li: Un element de la liste.
+struct	s_node;
 
-	VALEUR DE RETOUR: Renvoie le dernier element ou NULL si le parametre est vide.
-*/
-
-t_redir_list	*ft_get_last_redirection(t_redir_list *li)
+typedef struct s_data
 {
-	t_redir_list	*tmp;
+	struct s_node	*first_node;
+	char			**envp;
 
-	tmp = li;
-	if (li == NULL)
-		return (NULL);
-	while (tmp->next != NULL)
-		tmp = tmp->next;
-	return (tmp);
-}
+}	t_data;
+
+#endif
