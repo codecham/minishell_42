@@ -177,7 +177,10 @@ void	read_file(int fd)
 	ft_free_nodes(first_node);
 }
 
-int main(int argc, char **argv)
+
+/// Deplacé dams main_ft
+
+/*int main(int argc, char **argv)
 {
 	int fd;
 
@@ -194,4 +197,4 @@ int main(int argc, char **argv)
 		exit(0);
 	}
 	read_file(fd);
-}
+}*/

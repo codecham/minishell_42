@@ -15,14 +15,9 @@
 
 # include "../node/node.h"
 # include "../signals/signals.h" 
-
-struct	s_node;
-
-typedef struct s_data
-{
-	struct s_node	*first_node;
-	char			**envp;
-
-}	t_data;
-
+# include "../libft/libft.h"
+# include "../parser/parser.h"
+# include <readline/readline.h>
+# include <readline/history.h>
+ 
 #endif
