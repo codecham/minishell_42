@@ -24,12 +24,13 @@ typedef struct s_data
 
 }	t_data;
 
-int         ft_check_input(char *input);
+int			ft_check_input(t_node *input, char **envp);
 t_data      *ft_parser(char *str);
 t_node      *ft_nodes_factory(char **input_splited);
 void        *ft_print_error(int error);
 int         ft_isit_redirection(char *str);
 int         ft_strcmp(char *s1, char *s2);
+char		*ft_try_cmd(char *cmd);
 
 
 
