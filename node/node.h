@@ -14,7 +14,7 @@
 # define NODE_H
 
 # include <stdlib.h>
-# include "../libft/libft.h"
+# include "../ft_libft/libft.h"
 # include <stdio.h> // A DELETE
 
 # define INFILE 0 		// >

@@ -15,7 +15,7 @@
 
 # include "../node/node.h"
 # include "../signals/signals.h" 
-# include "../libft/libft.h"
+# include "../ft_libft/libft.h"
 # include "../parser/parser.h"
 # include <readline/readline.h>
 # include <readline/history.h>
