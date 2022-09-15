@@ -1,33 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_last_redirection.c                          :+:      :+:    :+:   */
+/*   ft_executor.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/10 17:50:24 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/09/10 17:57:21 by dcorenti         ###   ########.fr       */
+/*   Created: 2022/09/15 20:11:00 by dcorenti          #+#    #+#             */
+/*   Updated: 2022/09/15 20:11:52 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "node.h"
+#include "executor.h"
 
-/*
-	Cette fonction renvoie le dernier element de la liste de redirection.
-
-	PARAMETRES:	- li: Un element de la liste.
-
-	VALEUR DE RETOUR: Renvoie le dernier element ou NULL si le parametre est vide.
-*/
-
-t_redir_list *ft_get_last_redirection(t_redir_list *li)
+void	ft_executor(t_data *data)
 {
-	t_redir_list	*tmp;
-
-	tmp = li;
-	if (li == NULL)
-		return (NULL);
-	while (tmp->next != NULL)
-		tmp = tmp->next;
-	return (tmp);
+	
 }

@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 19:55:43 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/09/12 20:20:23 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/09/15 20:31:24 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,17 @@
 
 t_node	*ft_create_node(void)
 {
-	t_node	*new_node;
+	t_node *new_node;
 
 	new_node = (t_node *)malloc(sizeof(t_node));
 	if (!new_node)
 		return (NULL);
 	new_node->command_name = NULL;
+	new_node->path_cmd = NULL;
 	new_node->arg = NULL;
 	new_node->next = NULL;
 	new_node->previous = NULL;
 	new_node->redirection = NULL;
+	new_node->is_built_in = 0;
 	return (new_node);
 }

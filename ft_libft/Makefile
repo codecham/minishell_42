@@ -56,6 +56,7 @@ SRC = ft_atoi.c	\
 	  get_next_line_utils_bonus.c \
 	  ft_putzero.c \
 	  ft_putnull.c \
+	  ft_free_matrice.c
 
 OBJ = $(SRC:.c=.o)
 

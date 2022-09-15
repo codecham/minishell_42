@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_last_redirection.c                          :+:      :+:    :+:   */
+/*   ft_free_matrice.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/10 17:50:24 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/09/10 17:57:21 by dcorenti         ###   ########.fr       */
+/*   Created: 2022/09/15 20:24:12 by dcorenti          #+#    #+#             */
+/*   Updated: 2022/09/15 20:28:35 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "node.h"
-
-/*
-	Cette fonction renvoie le dernier element de la liste de redirection.
-
-	PARAMETRES:	- li: Un element de la liste.
-
-	VALEUR DE RETOUR: Renvoie le dernier element ou NULL si le parametre est vide.
-*/
-
-t_redir_list *ft_get_last_redirection(t_redir_list *li)
+void 	ft_free_matrice(char **matrice)
 {
-	t_redir_list	*tmp;
+	int i;
 
-	tmp = li;
-	if (li == NULL)
-		return (NULL);
-	while (tmp->next != NULL)
-		tmp = tmp->next;
-	return (tmp);
+	i = 0;
+	if (!matrice)
+		return ;
+	while (matrice[i])
+	{
+		if (matrice[i])
+			free(matrice[i]);
+			i++;
+	}
+	if (matrice)
+		free(matrice);
 }

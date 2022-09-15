@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 21:15:28 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/09/12 20:20:02 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/09/13 18:40:48 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	ft_add_arg_node(t_node *node, char *arg)
 			return (-1);
 		node->arg[i] = ft_strdup(arg);
 		if (!node->arg[i])
-			return (-1);
+			return(-1);
 	}
 	return (0);
 }
