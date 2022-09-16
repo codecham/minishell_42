@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpaterno <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:50:56 by jpaterno          #+#    #+#             */
-/*   Updated: 2022/09/13 20:50:57 by jpaterno         ###   ########.fr       */
+/*   Updated: 2022/09/16 19:00:48 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_data
 {
 	struct s_node	*first_node;
 	char			**envp;
+	char			**path_env;
 
 }	t_data;
 

@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 06:13:18 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/09/15 20:30:47 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/09/16 18:56:57 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,5 @@ int				ft_set_redirection(t_node *node, int redirect_type, int fd);
 int				ft_add_arg_node(t_node *node, char *arg);
 int				ft_add_command_name(t_node *node, char *command);
 void			ft_free_nodes(t_node *node);
-
-
-typedef struct s_data
-{
-	struct s_node 	*first_node;
-	char			**env;
-}	t_data;
-
 
 #endif

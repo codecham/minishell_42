@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpaterno <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 15:42:53 by jpaterno          #+#    #+#             */
-/*   Updated: 2022/08/03 16:42:40 by jpaterno         ###   ########.fr       */
+/*   Updated: 2022/09/16 19:43:22 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,4 +103,5 @@ char				*ft_strjoinfree(char *s1, char *s2);
 void				ft_putstr(char *str);
 int					ft_putzero(int *a, int *b, int *c, int *d);
 void				ft_putnull(void *a, void *b, void *c, void *d);
+void 				ft_free_matrice(char **matrice);
 #endif

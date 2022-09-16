@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:16:12 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/09/15 19:47:46 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/09/16 20:13:59 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	ft_find_path_cmd(t_node *node, char **path_env)
 	int	i;
 
 	i = 0;
-	if (!node || !node->command_name)
+	if (!node || !node->command_name || !path_env)
 		return (-1);
 	while (path_env[i])
 	{

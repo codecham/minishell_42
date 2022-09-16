@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_matrice.c                                  :+:      :+:    :+:   */
+/*   TEST2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 20:24:12 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/09/16 18:58:00 by dcorenti         ###   ########.fr       */
+/*   Created: 2022/09/16 18:39:40 by dcorenti          #+#    #+#             */
+/*   Updated: 2022/09/16 20:02:05 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "executor.h"
 
-void 	ft_free_matrice(char **matrice)
+int main(int argc, char **argv, char **envp)
 {
-	int i;
-
-	i = 0;
-	if (!matrice)
-		return ;
-	while (matrice[i])
+	t_data data;
+	t_node *node;
+	
+	if (argc < 2)
+		return (0);
+	data.first_node = ft_new_node(NULL);
+	data.envp = envp;
+	node = data.first_node;
+	ft_add_command_name(node, argv[1]);
+	if (argc == 3)
 	{
-		if (matrice[i])
-			free(matrice[i]);
-			i++;
+		node = ft_new_node(node);
+		ft_add_command_name(node, argv[2]);
 	}
-	if (matrice)
-		free(matrice);
+	ft_executor(&data);
+	ft_free_nodes(data.first_node);
 }
