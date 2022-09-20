@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 18:14:44 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/09/16 19:07:22 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/09/20 18:50:59 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ void	ft_is_builtin(t_node *node)
 	tmp = node;
 	while (1)
 	{
-		ft_set_builtin(tmp);
+		if (tmp->command_name != NULL)
+			ft_set_builtin(tmp);
 		if (tmp->next == NULL)
 			break ;
 		tmp = tmp->next;

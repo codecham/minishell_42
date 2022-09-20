@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 18:45:33 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/09/19 20:49:30 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/09/20 17:40:31 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ int		ft_find_path_cmd(t_node *node, char **path_env);
 void	ft_is_builtin(t_node *node);
 int		ft_set_path_cmd(t_data *data);
 void	ft_wait_children(void);
+int		ft_exec_regular_cmd(t_data *data);
 
 #endif

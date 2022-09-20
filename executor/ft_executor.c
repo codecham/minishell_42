@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 20:11:00 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/09/19 20:50:19 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/09/20 18:52:19 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,20 @@ void	ft_executor(t_data *data)
 		return ;
 	if (data->first_node->redirection == NULL && data->first_node->next == NULL)
 	{
-		/*
-			code pour commande sans pipe ni redirection
-		*/
+		ft_exec_regular_cmd(data);
 	}
 	else if (data->first_node->redirection != NULL && data->first_node->next == NULL)
 	{
 		/*
 			code pour commande sans pipe mais avec des redirections
 		*/
+		printf("Cette commande contient des redirections\n");
 	}
 	else
 	{
 		/*
 			code pour commande avec pipe
 		*/
+		printf("Cette commande contient des pipes\n");
 	}
 }
