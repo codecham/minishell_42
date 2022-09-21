@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 06:13:18 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/09/16 18:56:57 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/09/21 18:30:19 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,14 @@
 # include "../ft_libft/libft.h"
 # include <stdio.h> // A DELETE
 
-# define INFILE 0 		// >
-# define INFILE_HAP 1	// >>
-# define OUTFILE 2		// <
+# define OUTFILE 0 		// >
+# define OUTFILE_HAP 1	// >>
+# define INFILE 2		// <
 # define HEREDOC 3		// <<
 
 struct	s_node;
 struct	s_redir_list;
+
 
 typedef struct s_redir_list
 {

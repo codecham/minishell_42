@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 17:23:18 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/09/20 17:50:48 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/09/21 17:32:11 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 void	ft_exec_regular(t_data *data, t_node *node)
 {
-	if (execve(node->path_cmd, node->arg, data->envp) == -1)
-		printf("execve failed\n");
+	execve(node->path_cmd, node->arg, data->envp);
+	perror("Execve ");
 }
 
-int	ft_exec_regular_cmd(t_data *data)
+int	ft_exec_regular_cmd(t_data *data, t_node *this_node)
 {
 	pid_t	child_pid;
 	t_node	*node;
 
-	node = data->first_node;
+	node = this_node;
 	if (node->is_built_in != 0)
 	{
 		/*
