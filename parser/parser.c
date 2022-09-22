@@ -5,108 +5,120 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpaterno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/13 20:48:05 by jpaterno          #+#    #+#             */
-/*   Updated: 2022/09/13 20:48:08 by jpaterno         ###   ########.fr       */
+/*   Created: 2022/09/20 19:50:56 by jpaterno          #+#    #+#             */
+/*   Updated: 2022/09/20 19:50:58 by jpaterno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
+
 t_data    *ft_parser(char *str) /*FT principal pour le PARS.*/
 {
     int i;
-    char **input;
-    char *env;
-
-    t_node *nodes_list;
+    char **blocs;
+    t_node *node;
     t_data *command_line;
-    add_history(str);
+
     i = 0;
-    input = ft_split(str, ' ');
-    if (!input[0] || input[0][0] == '\n')
+    if (!str[0])
         return (NULL);
-    while (input[i])
-        i++;
-    nodes_list = ft_nodes_factory(input);
-    if (nodes_list == NULL)
+    i = 0;
+    command_line = malloc(sizeof(t_data) * 1);
+
+    add_history(str);
+    blocs = ft_split(str, '|');
+    node = ft_new_node(NULL);
+    command_line->first_node = node;
+
+    while (blocs[i])
     {
-        ft_printf("PARS PART >>>PARSING has failed\n");
-        return (NULL);
+        if (ft_nodes_factory(ft_split(blocs[i], ' '), node) != 0)
+            return (NULL);
+        node = ft_new_node(node);
+        i++;
     }
-    command_line = malloc(sizeof(t_data));
-    command_line->envp = malloc(sizeof(char *) * i);
-    if (ft_check_input(nodes_list, command_line->envp) == -1)
-        return (NULL);
-    command_line->first_node = nodes_list;
+
+
+
+
     return (command_line); /*renvoi un t_data avec ses nodes et path de commande. NULL si erreur*/
 }
 
-t_node  *ft_nodes_factory(char **linput) /*FT de creation des nodes (N'est pas déstiné a check le contenu)*/
-{
-    t_node  *new_node;
-    t_node *first_node;
-    int     i;
-    int     ix;
-    int     nb_input;
-    int     type;
-    
+int    ft_nodes_factory(char **linput, t_node *node) /*rempli le node recu en param, retourne -1 si erreur*/
+{   
+    int i;
 
-    type = -10;
-    ix = 0;
     i = 0;
-    new_node = ft_create_node();
-    first_node = new_node;
-    nb_input = 0;
+    ///ft_fusion_quote();
+    ft_handle_direction(linput, node);
+    
+    i = 0;
+    if (ft_add_command_name(node, linput[0]) != 0)
+        return (-1);
+    node->path_cmd = ft_try_cmd(linput[0]);
+    if (node->path_cmd == NULL)
+        return (-1);
+    while (linput[++i])
+    {
+        if(linput[i][0] == '$')
+            linput[i] = ft_get_variable(linput[i]);
+        if(ft_isprint(linput[i][0]) == 1 &&  ft_add_arg_node(node, linput[i]) != 0)
+            return (-1);
+    }
+    i = 0;
+    return (0);
+}
+
+int ft_handle_direction(char **linput, t_node *node) /*Gestion des directions et creations des files*/
+{
+    int i;
+    int type;
+
+    i = 0;
     while (linput[i])
     {
-        while (linput[nb_input++]);
-        new_node->arg = malloc(sizeof(char *) * nb_input);
-        while (--nb_input)
-            new_node->arg[nb_input] = NULL;
-        new_node->command_name = linput[i];
-        i++;
-        while (linput[i] && ft_isit_redirection(linput[i]) == -1)
-        {
-            new_node->arg[ix++] = linput[i];
-            i++;
-        }
-        ix = 0;
-        if (!linput[i])
-            break ;
         type = ft_isit_redirection(linput[i]);
-        if ((type == 0 || type == 1))
+        if (type != -1 && linput[i + 1])
         {
-            new_node->redirection = malloc(sizeof(t_redir_list));
-            new_node->redirection->type = type;
-            if (linput[i + 1])
-                new_node->redirection->fd = open(linput[i + 1], O_RDONLY);
-            if (new_node->redirection->fd == -1)
-            {
-                ft_printf("Error, %s doesn't exit\n", linput[i + 1]);
-                return (NULL);
-            }
-            i += 2;
-            if (linput[i])
-                type = ft_isit_redirection(linput[i]);
-
-        }
-        if (type == 2 || type == 3)
-            i++;
-        if (type == -2)
-        {
-            new_node->next = ft_create_node();
-            new_node->next->previous = new_node;
-            new_node = new_node->next;
+            if ((type == 0 || type == 1 || type == 2))
+                ft_set_redirection(node, type, open(linput[i + 1], O_CREAT, S_IRUSR, S_IWUSR ,O_RDWR));
+            if(type == 3)
+                ft_set_redirection(node, type, ft_handle_heredoc(linput[i + 1], i));
+            ft_memset(linput[i], 17, ft_strlen(linput[i]));
+            ft_memset(linput[i + 1], 17, ft_strlen(linput[i + 1]));
             i++;
         }
+        i++;
     }
-    return (first_node);/*renvoi le 1er node. NULL si erreur*/
+    return (0);
 }
 
-void    *ft_print_error(int error) /*affichages des differents types d'ereur dédié au parser*/
+int  ft_handle_heredoc(char *OEF, int id) /*cree la fichier temp et le rempli avec le input du user*/
+{
+    char *str;
+    char *file_name;
+    int fd;
+
+    str = NULL;
+    file_name = ft_strjoin(ft_itoa(id), "id.tmp_MINISHELL");
+    fd = open(file_name, O_CREAT | O_RDWR, 0644);
+    if (fd <= 0)
+        return (ft_printf("ERROR FD"));
+    while (ft_strcmp(str, OEF) != 1)
+    {
+		ft_putstr_fd(str, fd);
+        if (str)
+            ft_putchar_fd('\n', fd);
+        str = readline(0);
+    }
+    free(str);
+    return (fd);
+}
+
+
+
+void    *ft_abort_parsing(int error) /*affichages des differents types d'ereur dédié au parser*/
 {
     return (NULL);
-
 }
-
-

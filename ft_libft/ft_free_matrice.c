@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void 	ft_free_matrice(char **matrice)
+/*void 	ft_free_matrice(char **matrice)
 {
 	int i;
 
@@ -27,4 +27,4 @@ void 	ft_free_matrice(char **matrice)
 	}
 	if (matrice)
 		free(matrice);
-}
+}*/

@@ -17,21 +17,24 @@
 
 struct	s_node;
 
-typedef struct s_data
+typedef struct	s_data
 {
 	struct s_node	*first_node;
 	char			**envp;
 	char			**path_env;
 
-}	t_data;
+}				t_data;
 
 int			ft_check_input(t_node *input, char **envp);
 t_data      *ft_parser(char *str);
-t_node      *ft_nodes_factory(char **input_splited);
-void        *ft_print_error(int error);
+int    ft_nodes_factory(char **linput, t_node *node);
+void    *ft_abort_parsing(int error);
 int         ft_isit_redirection(char *str);
 int         ft_strcmp(char *s1, char *s2);
 char		*ft_try_cmd(char *cmd);
+int ft_handle_direction(char **linput, t_node *node);
+int  ft_handle_heredoc(char *OEF, int id);
+char    *ft_get_variable(char *str);
 
 
 

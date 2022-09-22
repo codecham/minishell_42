@@ -42,7 +42,7 @@ int ft_check_input(t_node *input, char **envp) /*Check si les commandes sont val
     return (0);
 }
 
-char *ft_try_cmd(char *cmd) /*Try la commande sur toutes les listes de PATH*/
+char *ft_try_cmd(char *cmd) /*Try la commande sur toutes les listes de PATH et renvoi le chemin si la cmd est correcte*/
 {
     char **path;
     char *tmp;
