@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 18:45:33 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/09/21 18:43:50 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/09/22 06:18:31 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ typedef struct s_saved_fd
 {
 	int	fd_infile;
 	int	fd_outfile;
+	int fd_old_infile;
+	int	fd_old_outfile;
 }	t_saved_fd;
 
 

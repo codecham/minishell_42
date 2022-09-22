@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:45:46 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/09/21 18:53:34 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/09/22 06:13:52 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ int main(int argc, char **argv, char **envp)
 	data->first_node = node;
 	data->envp = envp;
 	ft_executor(data);
+	printf("MMMMH");
 	ft_free_nodes(node);
 	if (data)
 		free(data);
