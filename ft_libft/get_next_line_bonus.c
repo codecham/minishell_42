@@ -13,8 +13,8 @@
 #include "libft.h"
 #ifndef BUFFER_SIZE
 # define BUFFER_SIZE 50
+# define OPEN_MAX 1024
 #endif
-
 void	*iis_ns(char c, char *str, int choice, char *s)
 {
 	int		i;

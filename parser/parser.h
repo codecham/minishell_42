@@ -35,6 +35,10 @@ char		*ft_try_cmd(char *cmd);
 int ft_handle_direction(char **linput, t_node *node);
 int  ft_handle_heredoc(char *OEF, int id);
 char    *ft_get_variable(char *str);
+int ft_thereis_c(char *str, char c);
+int ft_fusion_quote(char *str);
+void    ft_get_real_value(char **linput);
+char   *ft_replace_c(char *str, char c);
 
 
 

@@ -27,6 +27,7 @@ t_data    *ft_parser(char *str) /*FT principal pour le PARS.*/
     command_line = malloc(sizeof(t_data) * 1);
 
     add_history(str);
+    ft_fusion_quote(str);
     blocs = ft_split(str, '|');
     node = ft_new_node(NULL);
     command_line->first_node = node;
@@ -35,7 +36,8 @@ t_data    *ft_parser(char *str) /*FT principal pour le PARS.*/
     {
         if (ft_nodes_factory(ft_split(blocs[i], ' '), node) != 0)
             return (NULL);
-        node = ft_new_node(node);
+        if (blocs[i + 1])
+            node = ft_new_node(node);
         i++;
     }
 
@@ -50,7 +52,7 @@ int    ft_nodes_factory(char **linput, t_node *node) /*rempli le node recu en pa
     int i;
 
     i = 0;
-    ///ft_fusion_quote();
+    ft_get_real_value(linput);
     ft_handle_direction(linput, node);
     
     i = 0;
@@ -61,6 +63,7 @@ int    ft_nodes_factory(char **linput, t_node *node) /*rempli le node recu en pa
         return (-1);
     while (linput[++i])
     {
+        ft_printf("line in treat == %s\n", linput[i]);
         if(linput[i][0] == '$')
             linput[i] = ft_get_variable(linput[i]);
         if(ft_isprint(linput[i][0]) == 1 &&  ft_add_arg_node(node, linput[i]) != 0)

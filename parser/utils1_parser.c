@@ -12,6 +12,10 @@
 
 #include "../includes/minishell.h"
 
+/*
+    Je stocke ici les petites fonctions
+*/
+
 int ft_isit_redirection(char *str)
 {
     int i;
@@ -52,4 +56,36 @@ char    *ft_get_variable(char *str)
     free (str);
 
     return (var);
+}
+
+int ft_fusion_quote(char *str)
+{   
+    while(*str != '\0')
+    {
+        if (*str ==  34 && ft_thereis_c(str, 34) == 1)
+            str = ft_replace_c(str, 34);
+        if (*str ==  39 && ft_thereis_c(str, 39) == 1)
+            str = ft_replace_c(str, 39);
+        str++;
+    }
+}
+
+char   *ft_replace_c(char *str, char c)
+{
+    int i;
+    char *tmp;
+
+    tmp = str;
+
+    i = -1;
+    str++;
+    while (str[++i] != c)
+    {
+        if (str[i] == ' ')
+            str[i] = 18;
+        if (str[i] == '|')
+            str[i] = 19;
+    }
+    return (&str[i]);
+
 }
