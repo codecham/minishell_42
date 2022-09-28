@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 06:13:18 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/09/21 18:30:19 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/09/28 21:10:13 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct s_redir_list
 typedef struct s_node
 {
 	int					is_built_in;
+	int					fd_in;
+	int					fd_out;
 	char 				*command_name;	// Le nom de la commande
 	char				*path_cmd;		// Chemin de la commande
 	char				**arg;			// Double tableau contenant les arguments

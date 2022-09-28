@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 17:23:18 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/09/21 17:32:11 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/09/27 20:44:18 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	ft_exec_regular(t_data *data, t_node *node)
 {
 	execve(node->path_cmd, node->arg, data->envp);
-	perror("Execve ");
 }
 
 int	ft_exec_regular_cmd(t_data *data, t_node *this_node)
@@ -44,6 +43,8 @@ int	ft_exec_regular_cmd(t_data *data, t_node *this_node)
 		else if (child_pid == 0)
 			ft_exec_regular(data, node);
 		ft_wait_children();
+		perror("Execve ");
+		printf("errno = %d\n", errno);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 19:55:43 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/09/15 20:31:24 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/09/28 21:11:14 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,7 @@ t_node	*ft_create_node(void)
 	new_node->previous = NULL;
 	new_node->redirection = NULL;
 	new_node->is_built_in = 0;
+	new_node->fd_in = 0;
+	new_node->fd_out = 1;
 	return (new_node);
 }

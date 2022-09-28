@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 18:45:33 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/09/22 06:18:31 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/09/27 20:39:46 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <unistd.h>
 # include <dirent.h>
 # include <fcntl.h>
+# include <errno.h>
 
 # define ECHO 1
 # define CD 2
@@ -50,6 +51,7 @@ int			ft_exec_regular_cmd(t_data *data, t_node *this_node);
 int			ft_search_outfile_redir(t_redir_list *elem);
 int			ft_search_infile_redir(t_redir_list *elem);
 int			ft_exec_redirection(t_data *data, t_node *node, t_saved_fd *saved_fd);
+char		*ft_get_env_by_key(char *key, char **envp);
 t_saved_fd	*ft_set_redirection_fd(t_node *node);
 
 #endif

@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpaterno <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 19:24:24 by jpaterno          #+#    #+#             */
-/*   Updated: 2021/10/01 19:24:28 by jpaterno         ###   ########.fr       */
+/*   Updated: 2022/09/26 21:51:53 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #ifndef BUFFER_SIZE
 # define BUFFER_SIZE 50
-# define OPEN_MAX 1024
 #endif
 void	*iis_ns(char c, char *str, int choice, char *s)
 {
