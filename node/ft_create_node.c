@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 19:55:43 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/09/28 21:11:14 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/10/06 12:32:06 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,11 @@ t_node	*ft_create_node(void)
 	new_node->is_built_in = 0;
 	new_node->fd_in = 0;
 	new_node->fd_out = 1;
+	new_node->pipe_in = 0;
+	new_node->pipe_out = 0;
+	new_node->pid = 0;
+	new_node->saved_fd = malloc(sizeof(t_saved_fd));
+	if (!new_node->saved_fd)
+		return (NULL);
 	return (new_node);
 }
