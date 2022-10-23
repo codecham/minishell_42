@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 11:40:44 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/21 14:24:48 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/10/23 20:23:34 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	ft_replace_env(t_data_parsing *p)
 	while (1)
 	{
 		if (ft_search_env(token, p->envp) == -1)
-			return (ft_err_pars(p));
+			return (-1);
 		if (token->next == NULL)
 			break ;
 		token = token->next;

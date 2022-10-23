@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 21:29:52 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/06 12:26:05 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/10/22 18:44:17 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int		ft_create_pipe(t_data *data)
 	t_node	*next;
 	int		pipe_fd[2];
 
-	node = data->first_node;
 	node = data->first_node;
 	next = node->next;
 	while(1)

@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 22:05:18 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/21 13:35:36 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/10/23 15:34:59 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@
 
     PARAMERTES: La structure t_data_parsing et l'input de l'utilisateur.
 
-    VALEUR DE RETOUR: renvoie 0 si tout se passe bien et -1 en cas d'erreur de malloc.
+    VALEUR DE RETOUR: 
+    - Renvoie 0 si tout se passe bien
+    - Renvoie -1 en cas d'erreur de malloc.
+    - Renvoie -2 si un mauvais caractere est trouvé
+    - Renvoie -3 si une quote n'est as fermée
 */
 
 int ft_set_separator(t_token *token, char sep)
@@ -32,7 +36,7 @@ int ft_set_separator(t_token *token, char sep)
     return (0);
 }
 
-int ft_loop_str_token(t_data_parsing *d, t_token *new , char *input, int i)
+int ft_loop_str_token(t_data_parsing *p, t_token *new , char *input, int i)
 {
     while (input[i])
     {
@@ -41,7 +45,7 @@ int ft_loop_str_token(t_data_parsing *d, t_token *new , char *input, int i)
         else
         {
             if (ft_autorized_char(input[i]) == -1)
-                return (ft_err_pars_bad_char(d, input[i]));
+                return (ft_err_pars_bad_char(p, input[i], -2));
             if (input[i] == '<' || input[i] == '>' || input[i] == '|')
             {
                 if (ft_set_separator(new, input[i]) == -1)
@@ -50,28 +54,28 @@ int ft_loop_str_token(t_data_parsing *d, t_token *new , char *input, int i)
             }
             else
             {
-                i = ft_set_word_token(d, new, input, i);
-                if (i == -1)
-                    return (-1);
+                i = ft_set_word_token(p, new, input, i);
+                if (i < 0)
+                    return (i);
             }
         }
         if (input[i] && input[i] != ' ' && input[i] != '\t')
         {
-            new = ft_create_token(new);
+            new = ft_create_token(new, p);
             if (!new)
-                return(ft_err_pars(d));
+                return(-1);
         }
     }
     return (0);
 }
 
-int ft_set_token_list(t_data_parsing *d, char *input)
+int ft_set_token_list(t_data_parsing *p, char *input)
 {
     t_token *new;
     
-    new = ft_create_token(NULL);
+    new = ft_create_token(NULL, p);
     if (!new)
         return (-1);
-    d->first_token = new;
-    return(ft_loop_str_token(d, new, input, ft_skip_space(input, 0)));
+    p->first_token = new;
+    return(ft_loop_str_token(p, new, input, ft_skip_space(input, 0)));
 }

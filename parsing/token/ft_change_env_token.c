@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 11:50:04 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/21 14:07:18 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/10/23 22:34:07 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,7 @@ int	ft_good_c_for_env(char c)
 
 int	ft_change_env_ext(t_token *token, char *value, int saved_i, int i)
 {
-	if (token->value)
-		free(token->value);
-	token->value = ft_swap_env_token(token->value, value, saved_i, i);
+	token->value = ft_swap_env_token(token, value, saved_i, i);
 	if (value)
 		free (value);
 	if (token->value == NULL)
@@ -62,7 +60,8 @@ int	ft_change_env_token(t_token *token, int i, char **envp)
 	saved_i = i;
 	i++;
 	if (token->value[i] == '\0' || ft_good_c_for_env(token->value[i]) == -1)
-		token->value = ft_swap_env_token(token->value, "$", saved_i, i);
+		return (0);
+		// token->value = ft_swap_env_token(token, "$", saved_i, i);
 	else
 	{
 		while (token->value[i] && ft_good_c_for_env(token->value[i]) == 1)

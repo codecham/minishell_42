@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 22:07:17 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/21 13:38:32 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/10/23 15:33:38 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 	VALEUR DE RETOUR: Retourne le nouveau token ou NULL si malloc échoue
 */
 
-t_token	*ft_create_token(t_token *previous)
+t_token	*ft_create_token(t_token *previous, t_data_parsing *p)
 {
 	t_token *new;
 
@@ -34,5 +34,6 @@ t_token	*ft_create_token(t_token *previous)
 	new->previous = previous;
 	if (previous != NULL)
 		previous->next = new;
+	p->list_token_size++;
 	return (new);
 }

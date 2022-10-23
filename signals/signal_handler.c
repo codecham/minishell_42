@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_data.c                                         :+:      :+:    :+:   */
+/*   signal_handler.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/18 18:31:41 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/23 15:26:39 by dcorenti         ###   ########.fr       */
+/*   Created: 2022/09/08 19:41:08 by dcorenti          #+#    #+#             */
+/*   Updated: 2022/09/08 19:46:44 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../parsing.h"
+#include "signal.h"
 
-/*
+/* 
 
-	Cette fonction serivra à remplir les noeuds à partir de la liste des tokens.
+Ce fichier contient les différente fonctions à completer pour les différents signaux
 
-	En travaux.
 */
 
-int	ft_set_data(t_data_parsing *p)
+void	ft_signal_int(int sig) // fonction poour le signal ctrl+c
 {
-	t_data *data;
 
-	data = (t_data *)malloc(sizeof(t_data));
-	if (!data)
-		return(ft_err_pars_message(p, "malloc error\n", -1));
-	return(0);
+}
+
+void	ft_signal_quit(int sig) // fonction pour le signal ctrl+\ //
+{
+
+}
+
+void	ft_signal_handler(void)
+{
+	signal(SIGINT, ft_signal_int);
+	signal(SIGQUIT, ft_signal_quit);
 }

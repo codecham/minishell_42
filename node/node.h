@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 06:13:18 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/21 15:05:13 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/10/22 18:18:50 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_node
 	int					pipe_out;		// fd du pipe out (init à 1)
 	int					fd_in;			// fd_in
 	int					fd_out;			// fd_out
+	pid_t				pid;
 }	t_node;
 
 

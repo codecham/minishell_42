@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_data.c                                         :+:      :+:    :+:   */
+/*   ft_check_token.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/18 18:31:41 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/23 15:26:39 by dcorenti         ###   ########.fr       */
+/*   Created: 2022/10/18 18:45:33 by dcorenti          #+#    #+#             */
+/*   Updated: 2022/10/21 14:10:58 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,19 @@
 
 /*
 
-	Cette fonction serivra à remplir les noeuds à partir de la liste des tokens.
+	Cette fonction servera à check si l'input entré correspond bien à un input correct 
+	ou si il y a des erreur de syntax.
 
 	En travaux.
 */
 
-int	ft_set_data(t_data_parsing *p)
+int ft_check_token(t_data_parsing *p)
 {
-	t_data *data;
-
-	data = (t_data *)malloc(sizeof(t_data));
-	if (!data)
-		return(ft_err_pars_message(p, "malloc error\n", -1));
-	return(0);
+	t_token *token;
+	
+	token = p->first_token;
+	while (1)
+	{
+		
+	}
 }

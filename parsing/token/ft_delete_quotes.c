@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 09:54:40 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/21 14:17:20 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/10/23 16:56:41 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,29 @@ int	ft_remplace_quotes(t_token *token)
 {
 	char	*new;
 	int		i;
+	char	quote;
 
 	i = 0;
 	new = NULL;
 	while (token->value[i])
 	{
-		if (token->value[i] != '\'' && token->value[i] != '\"')
+		if (token->value[i] == '\'' || token->value[i] == '\"')
+		{
+			quote = token->value[i];
+			i++;
+			while (token->value[i] != quote)
+			{
+				new = ft_realloc_add(new, token->value[i]);
+				if (!new)
+					return (-1);
+				i++;
+			}
+		}
+		else
 		{
 			new = ft_realloc_add(new, token->value[i]);
 			if (!new)
-				return (-1);
+				return(-1);
 		}
 		i++;
 	}
