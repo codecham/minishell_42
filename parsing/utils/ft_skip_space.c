@@ -6,11 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 07:38:11 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/21 14:41:58 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/07 03:19:00 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../parsing.h"
+#include "../../includes/minishell.h"
 
 /*
 	Cette fonction va simplement skip les espaces et les tab.

@@ -6,11 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 23:41:24 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/23 15:09:29 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/07 03:18:12 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../parsing.h"
+#include "../../includes/minishell.h"
 
 /*
 
@@ -19,6 +19,24 @@
 	Ces fonctions seront surement à modifier.
 
 */
+
+int	ft_err_pars_ambiguous(t_data_parsing *data_p, t_token *token, int err_code)
+{
+	ft_putstr_fd("Minshell: ", 2);
+	ft_putstr_fd(token->value, 2);
+	ft_putstr_fd(": ambigous redirect", 2);
+	ft_free_dp(data_p);
+	return (err_code);
+}
+
+int	ft_err_pars_near(t_data_parsing *data_p, char *str, int err_code)
+{
+	ft_putstr_fd("Minshell: parse error near `", 2);
+	ft_putstr_fd(str, 2);
+	ft_putchar_fd('\'', 2);
+	ft_free_dp(data_p);
+	return (err_code);
+}
 
 int ft_err_pars_bad_char(t_data_parsing *data_p, char c, int err_code)
 {
@@ -36,10 +54,16 @@ int	ft_err_pars_message(t_data_parsing *data_p, char *message, int err_code)
 	return (err_code);
 }
 
-int	ft_err_pars(t_data_parsing *data_p)
+int	ft_err_pars_new_line(t_data_parsing *data_p, char *str, int err_code)
 {
-	ft_putstr_fd("ERROR!\n", 2);
-	perror("Minishell");
+	if (str == NULL)
+		ft_putstr_fd("Minishell: syntax error near unexpected token `newline\' ", 2);
+	else
+	{
+		ft_putstr_fd("Minishell: syntax error near unexpected token `", 2);
+		ft_putstr_fd(str, 2);
+		ft_putchar_fd('\'', 2);
+	}
 	ft_free_dp(data_p);
-	return (-1);
+	return (err_code);
 }

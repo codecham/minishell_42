@@ -6,11 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 06:10:06 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/21 14:39:15 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/07 03:18:55 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../parsing.h"
+#include "../../includes/minishell.h"
 
 /*
 	La fonction realloc_add réallouer une string en ajoutant 1 char pour ajouter 'c' a old.

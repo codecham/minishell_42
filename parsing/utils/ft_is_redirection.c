@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_token.c                                   :+:      :+:    :+:   */
+/*   ft_is_redirection.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/18 18:45:33 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/21 14:10:58 by dcorenti         ###   ########.fr       */
+/*   Created: 2022/11/04 19:14:50 by dcorenti          #+#    #+#             */
+/*   Updated: 2022/11/07 03:18:45 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../parsing.h"
+#include "../../includes/minishell.h"
 
-/*
-
-	Cette fonction servera à check si l'input entré correspond bien à un input correct 
-	ou si il y a des erreur de syntax.
-
-	En travaux.
-*/
-
-int ft_check_token(t_data_parsing *p)
+int	ft_is_redirection(t_token *token)
 {
-	t_token *token;
-	
-	token = p->first_token;
-	while (1)
+	if (token->type == OUTFILE || token->type == OUTFILE_HAP
+		|| token->type == HEREDOC || token->type == INFILE)
 	{
-		
+		return (1);
 	}
+	return (0);
 }

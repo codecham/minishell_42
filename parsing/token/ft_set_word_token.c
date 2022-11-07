@@ -6,11 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 03:54:57 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/23 18:07:57 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/07 03:17:42 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../parsing.h"
+#include "../../includes/minishell.h"
 
 /*
 	La fonction ft_set_word_token copie tout le mot ou la string jusqu'à rencontrer un séparateur

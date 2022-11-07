@@ -6,11 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 11:50:04 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/23 22:34:07 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/07 03:16:35 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../parsing.h"
+#include "../../includes/minishell.h"
 
 
 /*
@@ -27,18 +27,6 @@
 
 	VALEUR DE RETOUR: renvoie 0 si tout se passe bien et -1 en cas d'erreur de malloc.
 */
-
-int	ft_good_c_for_env(char c)
-{
-	if (ft_isdigit(c) == 1)
-		return (1);
-	else if (ft_isalpha(c) == 1)
-		return (1);
-	else if (c == '_')
-		return (1);
-	else
-		return (-1);
-}
 
 int	ft_change_env_ext(t_token *token, char *value, int saved_i, int i)
 {
@@ -61,7 +49,6 @@ int	ft_change_env_token(t_token *token, int i, char **envp)
 	i++;
 	if (token->value[i] == '\0' || ft_good_c_for_env(token->value[i]) == -1)
 		return (0);
-		// token->value = ft_swap_env_token(token, "$", saved_i, i);
 	else
 	{
 		while (token->value[i] && ft_good_c_for_env(token->value[i]) == 1)

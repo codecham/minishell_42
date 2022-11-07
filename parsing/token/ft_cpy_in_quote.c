@@ -6,11 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 04:03:16 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/21 14:13:50 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/07 03:17:06 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../parsing.h"
+#include "../../includes/minishell.h"
 
 /*
 	La fonction ft_cpy_in_quote copie les caracteres jusqu'à rencontrer la quote fermante.

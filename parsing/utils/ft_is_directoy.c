@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_autorized_char.c                                :+:      :+:    :+:   */
+/*   ft_is_directoy.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 21:33:33 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/07 03:18:08 by dcorenti         ###   ########.fr       */
+/*   Created: 2022/11/04 19:28:12 by dcorenti          #+#    #+#             */
+/*   Updated: 2022/11/07 03:18:38 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-/*
-
-	Cette fonction renvoie 0 si le c est un caractere autorisé et -1 si non.
-
-*/
-
-int ft_autorized_char(char c)
+int ft_is_directory(char *directory)
 {
-	char	unautorized_c[8] = "!#*&();`";
-	int		i;
+	DIR				*d;
 
-	i = 0;
-	if (ft_isprint(c) == 0)
-		return (-1);
-	while(unautorized_c[i])
-	{
-		if(c == unautorized_c[i])
-			return (-1);
-		i++;
-	}
-	return(0);
+	d = opendir(directory);
+	if (!d)
+		return (0);
+	closedir(d);
+	return (1);
 }

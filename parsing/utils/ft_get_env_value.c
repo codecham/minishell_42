@@ -6,11 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:26:45 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/18 12:36:35 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/07 03:18:18 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../parsing.h"
+#include "../../includes/minishell.h"
 
 /*
 	La fonction ft_get_env_value va rechercher la valeur associer à la variable *key dans **envp et la stocke dans **value.

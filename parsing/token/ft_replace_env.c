@@ -6,12 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 11:40:44 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/23 20:23:34 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/07 03:17:32 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../parsing.h"
-
+#include "../../includes/minishell.h"
 
 /*
 
@@ -28,6 +27,27 @@
 		- Renvoie -1 si il y a une erreur de malloc.
 */
 
+int	ft_env_in_double_quotes(t_token *token, int i, char **envp)
+{
+	while (token->value[i] != '\"')
+	{
+		if (token->value[i] == '$')
+		{
+			if (ft_change_env_token(token, i, envp) == -1)
+				return (-1);
+		}
+		i++;
+	}
+	return (i);
+}
+
+int	ft_env_in_quotes(t_token *token, int i)
+{
+	while (token->value[i] != '\'')
+		i++;
+	return (i);
+}
+
 int	ft_search_env(t_token *token, char **envp)
 {
 	int	i;
@@ -36,10 +56,12 @@ int	ft_search_env(t_token *token, char **envp)
 	while (token->value[i])
 	{
 		if (token->value[i] == '\'')
+			i = ft_env_in_quotes(token, i + 1);
+		else if (token->value[i] == '\"')
 		{
-			i++;
-			while (token->value[i] != '\'')
-				i++;
+			i = ft_env_in_double_quotes(token, i + 1, envp);
+			if (i == -1)
+				return (-1);
 		}
 		else
 		{
@@ -51,7 +73,7 @@ int	ft_search_env(t_token *token, char **envp)
 		}
 		i++;
 	}
-	return(0);
+	return (0);
 }
 
 int	ft_replace_env(t_data_parsing *p)

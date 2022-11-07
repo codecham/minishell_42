@@ -6,11 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 07:01:23 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/21 14:35:32 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/07 03:18:48 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../parsing.h"
+#include "../../includes/minishell.h"
 
 /*
 	Cette fonction renvoie 1 si 'c' est un séparateur et 0 si non.

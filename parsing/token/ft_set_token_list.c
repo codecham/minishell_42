@@ -6,11 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 22:05:18 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/23 15:34:59 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/07 03:17:39 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../parsing.h"
+#include "../../includes/minishell.h"
 
 /*
     La fonction ft_set_token_list va créer la liste brut des différent token.

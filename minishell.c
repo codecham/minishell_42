@@ -6,11 +6,12 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 22:52:04 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/14 11:24:54 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/07 05:31:02 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
+#include "parsing/parsing.h"
 #include <stdio.h>
 #include <readline/readline.h>
 #include <readline/history.h>
@@ -29,7 +30,6 @@ void	routine(t_data *data)
 			free(line);
 		printf("\n");
 	}
-	
 }
 
 int main(int argc, char **argv, char **envp)

@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_data.c                                         :+:      :+:    :+:   */
+/*   ft_is_empty_token.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/18 18:31:41 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/23 15:26:39 by dcorenti         ###   ########.fr       */
+/*   Created: 2022/10/26 18:11:12 by dcorenti          #+#    #+#             */
+/*   Updated: 2022/11/07 03:18:41 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../parsing.h"
+#include "../../includes/minishell.h"
 
-/*
-
-	Cette fonction serivra à remplir les noeuds à partir de la liste des tokens.
-
-	En travaux.
-*/
-
-int	ft_set_data(t_data_parsing *p)
+int ft_is_empty_token(t_token *token)
 {
-	t_data *data;
-
-	data = (t_data *)malloc(sizeof(t_data));
-	if (!data)
-		return(ft_err_pars_message(p, "malloc error\n", -1));
-	return(0);
+	if (!token)
+		return (1);
+	if (token->type == WORDS)
+	{
+		if (ft_strlen(token->value) == 0)
+			return (1);
+		if (ft_strlen(token->value) == 2)
+		{
+			if (token->value[0] == '\'' && token->value[1] == '\'')
+				return (1);		
+			if (token->value[0] == '\"' && token->value[1] == '\"')
+				return (1);
+		}
+	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 02:06:40 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/09/14 20:15:43 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/07 05:30:38 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	ft_free_redirection(t_redir_list *element)
 	if (element == NULL)
 		return ;
 	tmp = element->next;
+	if (element->file_name)
+		free(element->file_name);
 	if (element)
 		free(element);
 	if (tmp != NULL)
@@ -58,6 +60,8 @@ void	ft_free_one_node(t_node *node)
 		free(node->path_cmd);
 	if (node->arg)
 		ft_free_matrice(node->arg);
+	if (node->saved_fd)
+		free(node->saved_fd);
 	free(node);
 }
 
