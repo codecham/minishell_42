@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:31:41 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/07 05:19:29 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/07 17:32:22 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,23 @@
 
 /*
 
-	Cette fonction serivra à remplir les noeuds à partir de la liste des tokens.
+	La fonction ft_set_data remplis nos nodes pour l'envoyer à l'éxécution.
 
-	En travaux.
-	
+	PARAMETRES:
+		- La structure t_data
+		- La structure t_data_parsing_p
+
+	VALEUR DE RETOUR
+		- Renvoie 0 si tout se passe bien
+		- Renvoie -1 si erreur de malloc
+		- Renvoie -2 et imprime un message en cas d'autre erreur
 */
 
-t_token	*ft_set_one_node(t_node *node, t_token *token)
+
+int	ft_loop_node_data(t_node *node, t_data_parsing *p, t_token *token)
 {
 	int	exit_code;
-	
+
 	while (1)
 	{
 		if (ft_is_redirection(token) == 1)
@@ -32,23 +39,24 @@ t_token	*ft_set_one_node(t_node *node, t_token *token)
 			exit_code = ft_add_command_name(node, token->value);
 		else if (token->type == WORDS)
 			exit_code = ft_add_arg_node(node, token->value);
+		else if (token->type == PIPE)
+			node = ft_new_node(node);
 		if (exit_code < 0)
-		{
-			if (exit_code == -1)
-				ft_putstr_fd("Minishell: malloc error", 2);
-			return (NULL);
-		}
-		if (token->next == NULL || token->next->type == PIPE)
+			return (exit_code);
+		if (!node)
+			return (-1);
+		if (token->next == NULL)
 			break ;
 		token = token->next;
 	}
-	return (token);
+	return (0);
 }
 
 int	ft_set_data(t_data *data, t_data_parsing *p)
 {
 	t_token	*token;
 	t_node 	*node;
+	int		exit_code;
 
 	data->envp = p->envp;
 	data->first_node = ft_new_node(NULL);
@@ -56,21 +64,12 @@ int	ft_set_data(t_data *data, t_data_parsing *p)
 	if (!data->first_token)
 		return (ft_err_pars_message(p, "malloc error\n", -1));
 	node = data->first_node;
-	token = ft_set_one_node(node, token);
-	while (1)
+	exit_code = ft_loop_node_data(node, p, token);
+	if (exit_code < 0)
 	{
-		if (token->type == PIPE)
-		{
-			node = ft_new_node(node);
-			if (node == NULL)
-				return (ft_err_pars_message(p, "malloc error\n", -1));
-			token = ft_set_one_node(node, token->next);
-			if (token == NULL)
-				return (-2);
-		}
-		if (token->next == NULL)
-			break ;
-		token = token->next;
+		if (exit_code == -1)
+			return (ft_err_pars_message(p, "malloc error\n", -1));
+		return (exit_code);
 	}
 	return (0);
 }

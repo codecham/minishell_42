@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 02:06:40 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/07 05:30:38 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/07 18:34:28 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ void	ft_free_redirection(t_redir_list *element)
 	if (element == NULL)
 		return ;
 	tmp = element->next;
+	if (element->fd > 0)
+	{
+		close(element->fd);
+		element->fd = -1;
+	}
 	if (element->file_name)
 		free(element->file_name);
 	if (element)
