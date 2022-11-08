@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 11:40:44 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/08 15:43:54 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/08 16:52:26 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 
 int	ft_env_in_double_quotes(t_token *token, int i, char **envp)
 {
-	while (token->value[i] != '\"')
+	while (token->value[i] && token->value[i] != '\"')
 	{
 		if (token->value[i] == '$')
 		{
