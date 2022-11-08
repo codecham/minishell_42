@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 09:54:40 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/07 03:17:18 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/08 15:32:08 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 /*
 
-	Cette fonction va simplement supprimer les quotes contenue dans les tokens
+	Cette fonction va simplement supprimer les quotes contenue 
+	dans les tokens
 
 	PARAMETRE D'ENTREE:
-		- La structure t_data_parsing qui contient le pointeur du premier element token
+		- La structure t_data_parsing qui contient le pointeur 
+		du premier element token
 	
 	VALEUR DE RETOUR:
 		- Renvoie 0 si tout se passe bien.
@@ -51,7 +53,7 @@ int	ft_remplace_quotes(t_token *token)
 		{
 			new = ft_realloc_add(new, token->value[i]);
 			if (!new)
-				return(-1);
+				return (-1);
 		}
 		i++;
 	}

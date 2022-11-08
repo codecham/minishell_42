@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 20:10:46 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/07 04:51:44 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/08 15:08:45 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,8 @@ int				ft_err_pars_near(t_data_parsing *data_p, char *str, int err_code);
 int				ft_err_pars_ambiguous(t_data_parsing *data_p, t_token *token, int err_code);
 int				ft_err_pars_new_line(t_data_parsing *data_p, char *str, int err_code);
 int				ft_is_separator(char c);
-int 			ft_autorized_char(char c);
+int 			ft_is_autorized_char(t_data_parsing *p, char *input);
+int				ft_autorized_char(char c);
 void			ft_free_dp(t_data_parsing *data_p);
 int				ft_good_c_for_env(char c);
 int				ft_is_empty_token(t_token *token);
@@ -168,7 +169,5 @@ void			ft_free_nodes(t_node *node);
 int				ft_has_redirection_type(t_node *node, int type);
 int				ft_set_fd_pipe(t_node *node);
 int				ft_has_redirection(t_node *node, int type);
-
-
 
 #endif

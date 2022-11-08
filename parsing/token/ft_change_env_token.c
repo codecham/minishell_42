@@ -6,26 +6,30 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 11:50:04 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/07 03:16:35 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/08 15:23:16 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-
 /*
-	Cette la fonction ft_change_env_token sert à remplacer les variables d'environement
-	par leurs valeurs.
-		- Elle va d'abord construire la key qui est le nom de la variable par exemple [$PATH]
+	Cette la fonction ft_change_env_token sert à remplacer les variables
+	d'environement par leurs valeurs.
+		- Elle va d'abord construire la key qui est le nom de
+		la variable par exemple [$PATH]
+
 		- Ensuite elle va chercher dans envp la valeur correspondant.
-		- Ensuite elle l'envoie à ft_swap_env qui va swap la variable avec sa valeur.
+
+		- Ensuite elle l'envoie à ft_swap_env qui va swap la variable
+		avec sa valeur.
 
 	PARAMETRES: 
 		- Le token contenant la variable
 		- l'indice ou se trouve la variable dans la value du token.
 		- Les varialbes d'environement
 
-	VALEUR DE RETOUR: renvoie 0 si tout se passe bien et -1 en cas d'erreur de malloc.
+	VALEUR DE RETOUR: renvoie 0 si tout se passe bien et -1 en
+	cas d'erreur de malloc.
 */
 
 int	ft_change_env_ext(t_token *token, char *value, int saved_i, int i)

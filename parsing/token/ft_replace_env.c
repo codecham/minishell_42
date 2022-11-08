@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 11:40:44 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/07 03:17:32 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/08 15:43:54 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 /*
 
-	La fonction ft_replace_env va chercher si il y a des variables d'environement
-	à remplacer par leur valeur et l'envoie à ft_change_env_token.
+	La fonction ft_replace_env va chercher si il y a des variables
+	d'environement à remplacer par leur valeur et l'envoie à
+	ft_change_env_token.
 
 	Ne le fait pas si la variable est entre simple quote (')
 
 	PARAMETRES:
-		- La structure t_data_parsing contenant le pointeur du premier element token.
+		- La structure t_data_parsing contenant le pointeur du 
+		premier element token.
 
 	VALEUR DE RETOUR:
 		- Renvoie 0 si tout se passe bien

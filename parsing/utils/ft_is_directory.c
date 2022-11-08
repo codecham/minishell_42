@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_directoy.c                                   :+:      :+:    :+:   */
+/*   ft_is_directory.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 19:28:12 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/07 03:18:38 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/08 15:59:26 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int ft_is_directory(char *directory)
+int	ft_is_directory(char *directory)
 {
-	DIR				*d;
+	DIR	*d;
 
 	d = opendir(directory);
 	if (!d)

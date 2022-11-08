@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 19:10:47 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/07 03:16:42 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/08 15:25:33 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_add_input(t_data_parsing *p, t_data_parsing *new)
 {
 	char	*line;
 	int		exit_code;
-	
+
 	line = readline("> ");
 	while (ft_only_space(line) == 1)
 	{
@@ -65,7 +65,7 @@ int	ft_pipe_end(t_data_parsing *p, t_token *token)
 int	ft_check_syntax_pipe(t_data_parsing *p, t_token *token)
 {
 	t_token	*next;
-	
+
 	if (token->next == NULL)
 		return (ft_pipe_end(p, token));
 	next = token->next;
@@ -79,7 +79,7 @@ int	ft_check_syntax_pipe(t_data_parsing *p, t_token *token)
 	return (0);
 }
 
-char 	*ft_first_pipe(t_token *token)
+char	*ft_first_pipe(t_token *token)
 {
 	if (token->next != NULL)
 	{
@@ -89,14 +89,14 @@ char 	*ft_first_pipe(t_token *token)
 	return ("|");
 }
 
-int ft_check_syntax(t_data_parsing *p)
+int	ft_check_syntax(t_data_parsing *p)
 {
-	t_token *token;
+	t_token	*token;
 	int		exit_code;
 
 	token = p->first_token;
 	if (token->type == PIPE)
-		return (ft_err_pars_new_line(p, ft_first_pipe(token), -2)); // A MODIFIER
+		return (ft_err_pars_new_line(p, ft_first_pipe(token), -2));
 	while (1)
 	{
 		if (ft_is_redirection(token) == 1)
@@ -108,7 +108,7 @@ int ft_check_syntax(t_data_parsing *p)
 		{
 			exit_code = ft_check_syntax_pipe(p, token);
 			if (exit_code < 0)
-				return(exit_code);
+				return (exit_code);
 		}
 		if (token->next == NULL)
 			break ;

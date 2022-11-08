@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 15:02:41 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/07 03:16:28 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/08 15:20:57 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@
 int	ft_check_env_ambiguous(t_data_parsing *p, t_token *token)
 {
 	char	*value;
-	int 	i;
+	int		i;
 	int		exit_code;
-	
+
 	i = 1;
 	while (token->value[i])
 	{
@@ -45,7 +45,14 @@ int	ft_check_env_ambiguous(t_data_parsing *p, t_token *token)
 	if (exit_code == 0)
 		return (-2);
 	return (0);
-	
+}
+
+int	ft_condition_ambigous(t_token *token)
+{
+	if (token->next->type == WORDS && token->next->value[0] == '$'
+		&& token->next->value[1])
+		return (1);
+	return (0);
 }
 
 int	ft_ambiguous_redirect(t_data_parsing *p)
@@ -56,11 +63,11 @@ int	ft_ambiguous_redirect(t_data_parsing *p)
 	token = p->first_token;
 	while (1)
 	{
-		if (token->type == INFILE || token->type == OUTFILE || token->type == OUTFILE_HAP)
+		if (ft_is_redirection(token) == 1 && token->type != HEREDOC)
 		{
 			if (token->next != NULL)
 			{
-				if (token->next->type == WORDS && token->next->value[0] == '$' && token->next->value[1])
+				if (ft_condition_ambigous(token) == 1)
 				{
 					exit_code = ft_check_env_ambiguous(p, token->next);
 					if (exit_code == -2)

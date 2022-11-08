@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 01:26:24 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/07 03:18:52 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/08 15:54:04 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,17 @@
 
 /*
 
-	La fonction ft_only_space regarde si la chaine de caracatere ne contient que des espaces ou des tabulations
+	La fonction ft_only_space regarde si la chaine de caracatere ne contient 
+	que des espaces ou des tabulations
 
-	Renvoie 1 si oui ou qu'elle n'existe pas et 0 si la chaine contient un autre caractere.
+	Renvoie 1 si oui ou qu'elle n'existe pas et 0 si la chaine contient 
+	un autre caractere.
 
 */
 
-int ft_only_space(char *str)
+int	ft_only_space(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!str)
@@ -33,5 +35,5 @@ int ft_only_space(char *str)
 			return (0);
 		i++;
 	}
-	return(1);
+	return (1);
 }

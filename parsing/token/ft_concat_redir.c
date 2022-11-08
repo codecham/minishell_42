@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:06:54 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/07 03:17:03 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/08 15:27:30 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 /*
 
-	La fonction ft_concat_redir va concatener les différentes redirections si besoin.
+	La fonction ft_concat_redir va concatener les différentes
+	redirections si besoin.
 	
-	Si deux redirections se suivent alors ils les concatene si ils font partie des cas suivant:
+	Si deux redirections se suivent alors ils les concatene
+	si ils font partie des cas suivant:
 		>>
 		<<
 		<>
@@ -31,7 +33,7 @@
 int	ft_concat_infile(t_data_parsing *p, t_token *token)
 {
 	t_token	*next;
-	
+
 	if (token->next != NULL)
 	{
 		next = token->next;
@@ -52,7 +54,7 @@ int	ft_concat_infile(t_data_parsing *p, t_token *token)
 
 int	ft_concat_outfile(t_data_parsing *p, t_token *token)
 {
-	t_token *next;
+	t_token	*next;
 
 	if (token->next != NULL)
 	{
@@ -71,7 +73,7 @@ int	ft_concat_outfile(t_data_parsing *p, t_token *token)
 
 void	ft_change_redir_type(t_data_parsing *p)
 {
-	t_token *token;
+	t_token	*token;
 
 	token = p->first_token;
 	while (1)
@@ -84,16 +86,16 @@ void	ft_change_redir_type(t_data_parsing *p)
 				token->type = INFILE;
 		}
 		if (token->next == NULL)
-			break;
+			break ;
 		else
 			token = token->next;
 	}
 }
 
-int ft_concat_redir(t_data_parsing *p)
+int	ft_concat_redir(t_data_parsing *p)
 {
 	t_token	*token;
-	
+
 	token = p->first_token;
 	ft_change_redir_type(p);
 	while (1)
@@ -112,5 +114,5 @@ int ft_concat_redir(t_data_parsing *p)
 			break ;
 		token = token->next;
 	}
-	return(0);
+	return (0);
 }

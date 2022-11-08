@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 22:07:17 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/07 03:17:15 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/08 15:29:30 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 /*
 
-	Cette fonction va creer et allouer dynamiquement un élément token et l'ajouter à la liste
+	Cette fonction va creer et allouer dynamiquement un élément token 
+	et l'ajouter à la liste
 
 	PARAMATRES: Le token précédent ou NULL si c'est le premier élément.
 
@@ -23,7 +24,7 @@
 
 t_token	*ft_create_token(t_token *previous, t_data_parsing *p)
 {
-	t_token *new;
+	t_token	*new;
 
 	new = (t_token *)malloc(sizeof(t_token));
 	if (!new)

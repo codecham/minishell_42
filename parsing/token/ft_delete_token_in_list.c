@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 17:31:05 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/07 03:17:21 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/08 15:33:12 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_clear_one_token(t_token *token)
 
 void	ft_delete_token_in_list(t_data_parsing *p, t_token *bad_token)
 {
-	t_token *token;
+	t_token	*token;
 
 	token = p->first_token;
 	if (p->list_token_size == 1)

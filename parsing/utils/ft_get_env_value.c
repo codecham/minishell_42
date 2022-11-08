@@ -6,14 +6,15 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:26:45 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/07 03:18:18 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/08 15:51:37 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
 /*
-	La fonction ft_get_env_value va rechercher la valeur associer à la variable *key dans **envp et la stocke dans **value.
+	La fonction ft_get_env_value va rechercher la valeur associer à la variable 
+	*key dans **envp et la stocke dans **value.
 
 	Renvoie 1 si réussis
 
@@ -24,10 +25,10 @@
 	ATTENTION A NE PAS OUBLIER DE FREE LA NOUVELLE STRING
 */
 
-char *ft_add_equal(char *key)
+char	*ft_add_equal(char *key)
 {
-	char *new;
-	int i;
+	char	*new;
+	int		i;
 
 	i = 0;
 	new = (char *)malloc(sizeof(char) * (ft_strlen(key) + 2));
@@ -45,7 +46,7 @@ char *ft_add_equal(char *key)
 
 int	ft_get_value(char *new, char *line, char **value)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (new[i])
@@ -60,8 +61,8 @@ int	ft_get_value(char *new, char *line, char **value)
 
 int	ft_get_env_value(char *key, char **value, char **envp)
 {
-	int i;
-	char *new;
+	int		i;
+	char	*new;
 
 	i = 0;
 	if (!key || !envp)

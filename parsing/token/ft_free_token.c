@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 23:44:25 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/07 05:13:08 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/08 15:37:30 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 void	ft_free_token(t_token *token)
 {
-	t_token *tmp;
+	t_token	*tmp;
 
 	if (token == NULL)
 		return ;

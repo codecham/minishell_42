@@ -6,14 +6,15 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 03:54:57 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/07 03:17:42 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/08 15:40:13 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
 /*
-	La fonction ft_set_word_token copie tout le mot ou la string jusqu'à rencontrer un séparateur
+	La fonction ft_set_word_token copie tout le mot ou la string jusqu'à
+	rencontrer un séparateur
 
 	PARAMETRE: 
 		- La structure t_data_parsing
@@ -28,7 +29,7 @@
 		- Renvoie -3 Si une quote est non fermée
 */
 
-int ft_set_word_token(t_data_parsing *d, t_token *token, char *input, int i)
+int	ft_set_word_token(t_data_parsing *d, t_token *token, char *input, int i)
 {
 	while (input[i] && ft_is_separator(input[i]) == 0)
 	{

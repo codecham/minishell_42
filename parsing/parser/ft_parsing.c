@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 20:44:33 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/07 18:36:45 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/08 15:56:59 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 		- Les variables d'environement.
 
 	Ensuite elle va envoyer l'input et la liste au différentes fonction qui va creer cette liste de tokens.
+
+	FONCTION DE DEBBUGAGE A DELETE ET A REMETTRE A LA NORME
 */
 
 
@@ -122,11 +124,11 @@ void	ft_print_token_list(t_data_parsing *p) // cette fonction affiche juste la l
 	printf("list_token_size = %d\n", p->list_token_size);
 }
 
-int ft_parsing(char *input, char **envp)
+int	ft_parsing(char *input, char **envp)
 {
 	t_data_parsing	*data_p;
 	t_data			*data;
-	
+
 	data_p = (t_data_parsing *)malloc(sizeof(t_data_parsing));
 	if (!data_p)
 		return (ft_err_pars_message(data_p, "malloc error\n", -1));

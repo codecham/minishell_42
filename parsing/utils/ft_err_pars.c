@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 23:41:24 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/07 03:18:12 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/08 15:50:00 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 /*
 
-	Les fonction d'erreur qui affiche un certain message et renvoie une valeur négative.
-
-	Ces fonctions seront surement à modifier.
+	Les fonction d'erreur qui affiche un certain message et renvoie 
+	une valeur négative.
 
 */
 
@@ -38,7 +37,7 @@ int	ft_err_pars_near(t_data_parsing *data_p, char *str, int err_code)
 	return (err_code);
 }
 
-int ft_err_pars_bad_char(t_data_parsing *data_p, char c, int err_code)
+int	ft_err_pars_bad_char(t_data_parsing *data_p, char c, int err_code)
 {
 	ft_putstr_fd("Minishell: Unautorized character: ", 2);
 	ft_putchar_fd(c, 2);
@@ -57,7 +56,8 @@ int	ft_err_pars_message(t_data_parsing *data_p, char *message, int err_code)
 int	ft_err_pars_new_line(t_data_parsing *data_p, char *str, int err_code)
 {
 	if (str == NULL)
-		ft_putstr_fd("Minishell: syntax error near unexpected token `newline\' ", 2);
+		ft_putstr_fd("Minishell: syntax error near unexpected token `newline\'",
+			2);
 	else
 	{
 		ft_putstr_fd("Minishell: syntax error near unexpected token `", 2);

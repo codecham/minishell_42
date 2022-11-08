@@ -6,15 +6,15 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 18:47:45 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/07 03:15:58 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/07 18:51:59 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
 /*
-	La fonction ft_random_name génere un nom pour le Heredoc en vérifiant que ce nom n'existe pas
-	dans le dossier courant.
+	La fonction ft_random_name génere un nom pour le Heredoc en vérifiant 
+	que ce nom n'existe pas dans le dossier courant.
 
 	VALEUR DE RETOUR:
 		- Renvoie 0 si tout se passe bien
@@ -52,7 +52,7 @@ int	ft_check_name_exist(char *name)
 
 char	*ft_increase_name(char *random_name)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	if (random_name[ft_strlen(random_name) - 1] < 'z')
@@ -73,7 +73,7 @@ char	*ft_random_name(void)
 	char	*random_name;
 	int		exit_code;
 	int		i;
-	
+
 	exit_code = 1;
 	i = 0;
 	random_name = (char *)malloc(sizeof(char) * 2);

@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:33:33 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/07 07:54:23 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/08 15:48:13 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,12 @@
 
 */
 
-int ft_autorized_char(char c)
+int	ft_autorized_char(char c)
 {
-	char	unautorized_c[8] = "!#*&();`";
-	int		i;
-
-	i = 0;
 	if (ft_isprint(c) == 0)
 		return (-1);
-	while (unautorized_c[i])
-	{
-		if (c == unautorized_c[i])
-			return (-1);
-		i++;
-	}
+	if (c == '!' || c == '#' || c == '*' || c == '&'
+		|| c == '(' || c == ')' || c == ';' || c == '`')
+		return (-1);
 	return (0);
 }

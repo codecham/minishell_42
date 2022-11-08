@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 02:44:14 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/07 18:34:34 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/07 18:52:54 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@ int	ft_free_data(t_data *data)
 		ft_free_nodes(data->first_node);
 	if (data)
 		free(data);
-	return (-1);	
+	return (-1);
 }

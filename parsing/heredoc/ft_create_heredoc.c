@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 18:33:08 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/07 03:15:54 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/07 18:47:40 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ int	ft_condition_loop_hd(char *s1, char *s2)
 	}
 	return (0);
 }
-int ft_heredoc_loop(t_data_parsing *p, t_token *token)
+
+int	ft_heredoc_loop(t_data_parsing *p, t_token *token, char *line)
 {
-	char	*line;
 	char	*line_w_env;
 
 	line = readline("heredoc> ");
@@ -57,7 +57,6 @@ int ft_heredoc_loop(t_data_parsing *p, t_token *token)
 	if (line)
 		free(line);
 	close(token->fd);
-	token->fd = -1;
 	return (0);
 }
 
@@ -74,8 +73,9 @@ int	ft_create_heredoc(t_data_parsing *p, t_token *token)
 
 int	ft_set_heredoc(t_data_parsing *p)
 {
-	t_token *token;
+	t_token	*token;
 	int		exit_code;
+	char	*line;
 
 	token = p->first_token;
 	while (1)
@@ -89,12 +89,13 @@ int	ft_set_heredoc(t_data_parsing *p)
 			exit_code = ft_create_heredoc(p, token);
 			if (exit_code < 0)
 				return (exit_code);
-			if (ft_heredoc_loop(p, token) == -1)
+			if (ft_heredoc_loop(p, token, line) == -1)
 				return (-1);
 		}
+		token->fd = -1;
 		if (token->next == NULL)
-			break;
+			break ;
 		token = token->next;
 	}
-	return(0);
+	return (0);
 }
