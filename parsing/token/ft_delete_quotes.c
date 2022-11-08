@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 09:54:40 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/08 15:32:08 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/08 16:19:47 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,13 @@
 
 */
 
-int	ft_remplace_quotes(t_token *token)
+int	ft_remplace_quotes(t_token *token, int i, char quote)
 {
 	char	*new;
-	int		i;
-	char	quote;
 
-	i = 0;
 	new = NULL;
-	while (token->value[i])
+	i = -1;
+	while (token->value[++i])
 	{
 		if (token->value[i] == '\'' || token->value[i] == '\"')
 		{
@@ -44,18 +42,13 @@ int	ft_remplace_quotes(t_token *token)
 			while (token->value[i] != quote)
 			{
 				new = ft_realloc_add(new, token->value[i]);
-				if (!new)
-					return (-1);
 				i++;
 			}
 		}
 		else
-		{
 			new = ft_realloc_add(new, token->value[i]);
-			if (!new)
-				return (-1);
-		}
-		i++;
+		if (!new)
+			return (-1);
 	}
 	if (token->value)
 		free(token->value);
@@ -97,6 +90,8 @@ int	ft_contain_quotes(char *str)
 int	ft_delete_quotes(t_data_parsing *p)
 {
 	t_token	*token;
+	int		i;
+	char	quote;
 
 	token = p->first_token;
 	while (1)
@@ -105,7 +100,7 @@ int	ft_delete_quotes(t_data_parsing *p)
 		{
 			if (ft_contain_quotes(token->value) == 1)
 			{
-				if (ft_remplace_quotes(token) == -1)
+				if (ft_remplace_quotes(token, i, quote) == -1)
 					return (-1);
 			}
 			else if (ft_contain_quotes(token->value) == 2)

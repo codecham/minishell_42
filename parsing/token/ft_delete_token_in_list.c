@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 17:31:05 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/08 15:33:12 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/08 16:13:59 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	ft_clear_one_token(t_token *token)
 		free(token->value);
 	if (token)
 		free (token);
+	token = NULL;
 }
 
 void	ft_delete_token_in_list(t_data_parsing *p, t_token *bad_token)
@@ -46,6 +47,5 @@ void	ft_delete_token_in_list(t_data_parsing *p, t_token *bad_token)
 			token->next->previous = token->previous;
 	}
 	ft_clear_one_token(token);
-	token = NULL;
 	p->list_token_size--;
 }
