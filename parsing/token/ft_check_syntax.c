@@ -6,13 +6,13 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 19:10:47 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/08 15:25:33 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/09 23:48:01 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int	ft_add_input(t_data_parsing *p, t_data_parsing *new)
+int	ft_add_input(t_data_parsing *new)
 {
 	char	*line;
 	int		exit_code;
@@ -43,7 +43,7 @@ int	ft_pipe_end(t_data_parsing *p, t_token *token)
 		new = (t_data_parsing *)malloc(sizeof(t_data_parsing));
 		if (!new)
 			return (-1);
-		exit_code = ft_add_input(p, new);
+		exit_code = ft_add_input(new);
 		if (exit_code < 0)
 		{
 			ft_free_dp(new);

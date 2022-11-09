@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 22:52:04 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/09 17:00:50 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/09 23:45:03 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int main(int argc, char **argv, char **envp)
 {
 	t_data *data;
 
+	(void)argc;
+	(void)argv;
 	data = malloc(sizeof(t_data));
 	if (!data)
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 02:06:40 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/07 18:34:28 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/09 21:01:26 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,6 @@ void	ft_free_one_node(t_node *node)
 		free(node->path_cmd);
 	if (node->arg)
 		ft_free_matrice(node->arg);
-	if (node->saved_fd)
-		free(node->saved_fd);
 	free(node);
 }
 

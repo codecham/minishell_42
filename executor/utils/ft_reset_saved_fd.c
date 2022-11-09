@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:35:30 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/09 16:21:13 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/09 21:59:15 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,17 @@
 	PARAMETRE: La structure contenant les fd à modifier
 */
 
-void 	ft_reset_saved_fd(t_node *node)
+int 	ft_reset_saved_fd(t_node *node)
 {
-	if (!node->saved_fd)
-		return ;
-	if (node->saved_fd->fd_infile > 0)
+	if (node->saved_stdin > -1)
 	{
-		if (dup2(node->saved_fd->fd_old_infile, 0) == -1)
-			perror("ft_reset_node->saved_fd_infile ");
+		if (dup2(node->saved_stdin, 0) == -1)
+			return (ft_err_dup());
 	}
-	if (node->saved_fd->fd_outfile > 0)
+	if (node->saved_stdout > -1)
 	{
-		if (dup2(node->saved_fd->fd_old_outfile, 1) == -1)
-			perror("ft_reset_node->saved_fd_out ");
+		if (dup2(node->saved_stdout, 1) == -1)
+			return (ft_err_dup());
 	}
+	return (0);
 }

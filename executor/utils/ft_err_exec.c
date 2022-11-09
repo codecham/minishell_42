@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_data.c                                     :+:      :+:    :+:   */
+/*   ft_err_exec.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 02:44:14 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/09 23:15:41 by dcorenti         ###   ########.fr       */
+/*   Created: 2022/11/09 21:28:32 by dcorenti          #+#    #+#             */
+/*   Updated: 2022/11/09 21:31:40 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int	ft_free_data(t_data *data)
+int	ft_err_dup(void)
 {
-	if (data->first_node)
-		ft_free_nodes(data->first_node);
-	ft_free_matrice(data->path_env);
-	if (data)
-		free(data);
+	ft_putstr_fd("Minishell: ", 2);
+	ft_putstr_fd("Duplicate fd error", 2);
 	return (-1);
 }

@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 09:15:56 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/08 15:43:58 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/09 23:50:32 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ char	*ft_copy_string_env(t_token *token, char *value, int begin, int end)
 char	*ft_swap_env_token(t_token *token, char *value, int begin, int end)
 {
 	char	*new;
-	int		size;
 
 	if (value == NULL)
 		new = ft_cpy_empty_env(token, begin, end);

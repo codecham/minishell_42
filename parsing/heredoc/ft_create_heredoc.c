@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 18:33:08 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/07 18:47:40 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/09 23:47:18 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int	ft_set_heredoc(t_data_parsing *p)
 	char	*line;
 
 	token = p->first_token;
+	line = NULL;
 	while (1)
 	{
 		if (token->type == HEREDOC)
@@ -92,7 +93,6 @@ int	ft_set_heredoc(t_data_parsing *p)
 			if (ft_heredoc_loop(p, token, line) == -1)
 				return (-1);
 		}
-		token->fd = -1;
 		if (token->next == NULL)
 			break ;
 		token = token->next;

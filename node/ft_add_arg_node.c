@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 21:15:28 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/09/13 18:40:48 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/09 23:52:27 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_free_new(char **new, int i)
 		free(new);
 }
 
-char	**ft_realloc_matrice(t_node *node, char **matrice)
+char	**ft_realloc_matrice(char **matrice)
 {
 	int		i;
 	char	**new;
@@ -85,7 +85,7 @@ int	ft_add_arg_node(t_node *node, char *arg)
 	{
 		while (node->arg[i])
 			i++;
-		node->arg = ft_realloc_matrice(node, node->arg);
+		node->arg = ft_realloc_matrice(node->arg);
 		if (!node->arg)
 			return (-1);
 		node->arg[i] = ft_strdup(arg);

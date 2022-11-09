@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 20:11:00 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/09 17:07:05 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/09 23:14:46 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void	ft_executor_redirection(t_data *data)
 {
 	if (ft_open_files(data->first_node) == 0)
 	{
-		if (ft_set_redirection_fd(data->first_node) == 0)
+		if (ft_save_in_out(data->first_node) == 0)
 		{
-			ft_exec_redirection(data, data->first_node);
-		}
-		else
+			if (ft_set_redirection_fd(data->first_node) == 0)
+				ft_exec_regular_cmd(data, data->first_node);
 			ft_reset_saved_fd(data->first_node);
+		}
 	}
 }
 
@@ -51,12 +51,11 @@ void	ft_executor(t_data *data)
 	}
 	else if (data->first_node->redirection != NULL && data->first_node->next == NULL)
 	{
-		ft_set_redirection_fd(data->first_node);
-		ft_exec_redirection(data, data->first_node);
+		ft_executor_redirection(data);
 	}
 	else
 	{
-		ft_exec_pipe(data);
+		printf("commande contient des pipes\n");
+		// ft_exec_pipe(data);
 	}
-	ft_free_matrice(data->path_env);
 }

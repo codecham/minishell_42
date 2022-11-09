@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 09:54:40 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/08 16:19:47 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/09 23:50:09 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ int	ft_delete_quotes(t_data_parsing *p)
 	char	quote;
 
 	token = p->first_token;
+	i = -1;
+	quote = '\0';
 	while (1)
 	{
 		if (token->type == WORDS)

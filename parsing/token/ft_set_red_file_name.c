@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 21:26:58 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/08 15:39:30 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/09 22:26:23 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int	ft_insert_red_file_name(t_data_parsing *p, t_token *token, t_token *f_n)
 {
 	if (token->type != HEREDOC && ft_is_empty_token(f_n) == 1)
 		return (ft_err_pars_message(p, ": No such files or drectory", -2));
-	token->red_file_name = ft_strdup(f_n->value);
+	if (token->type != HEREDOC)
+		token->red_file_name = ft_strdup(f_n->value);
 	if (!token->red_file_name)
 		return (-1);
 	ft_delete_token_in_list(p, f_n);

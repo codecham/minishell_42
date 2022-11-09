@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 18:47:45 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/07 18:51:59 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/09 23:00:00 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,12 @@ char	*ft_random_name(void)
 
 	exit_code = 1;
 	i = 0;
-	random_name = (char *)malloc(sizeof(char) * 2);
+	random_name = (char *)malloc(sizeof(char) * 3);
 	if (!random_name)
 		return (NULL);
-	random_name[0] = 'a';
-	random_name[1] = '\0';
+	random_name[0] = '.';
+	random_name[1] = 'a';
+	random_name[2] = '\0';
 	if (!random_name)
 		return (NULL);
 	while (ft_check_name_exist(random_name) != 0)

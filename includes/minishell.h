@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 20:10:46 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/09 16:39:16 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/09 21:57:33 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,6 @@ typedef struct s_redir_list
 	struct s_redir_list	*next;		// Redirection suivante
 }	t_redir_list;
 
-typedef struct s_saved_fd
-{
-	int	fd_infile;		//fd du fichier in
-	int	fd_outfile;		//fd du fichier out
-	int fd_old_infile;	//save fdin (0)
-	int	fd_old_outfile; //save fdout (1)
-}	t_saved_fd;
 
 typedef struct s_node
 {
@@ -104,11 +97,12 @@ typedef struct s_node
 	struct s_node		*next;			// Commande suivante aprés un pipe
 	struct s_node		*previous;		// Commande précédente avant un pipe
 	struct s_redir_list	*redirection;	// Liste de redirections
-	struct s_saved_fd	*saved_fd;		// Les saves des fd pour les redirections
-	int					pipe_in;		// fd du pipe in (init à 0)
-	int					pipe_out;		// fd du pipe out (init à 1)
+	int					saved_stdin;	// save de stdin
+	int					saved_stdout;	// save de stdout
 	int					fd_in;			// fd_in
 	int					fd_out;			// fd_out
+	int					pipe_in;		// fd du pipe in (init à 0)
+	int					pipe_out;		// fd du pipe out (init à 1)
 	pid_t				pid;
 }	t_node;
 
@@ -189,7 +183,7 @@ int				ft_has_redirection(t_node *node, int type);
 */
 
 void		ft_executor(t_data *data);
-void 		ft_reset_saved_fd(t_node *node);
+int 		ft_reset_saved_fd(t_node *node);
 void		ft_wait_children(void);
 char		**ft_get_path_env(char **envp);
 int			ft_find_path_cmd(t_node *node, char **path_env);
@@ -212,5 +206,7 @@ int			ft_exec_pipe(t_data *data);
 int			ft_run_pipe(t_data *data, t_node *node);
 int			ft_exec_pipe_red(t_data *data, t_node *node);
 int			ft_open_files(t_node *node);
+int			ft_err_dup(void);
+int			ft_save_in_out(t_node *node);
 
 #endif

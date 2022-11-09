@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:31:41 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/08 16:56:52 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/09 23:46:04 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 		- Renvoie -2 et imprime un message en cas d'autre erreur
 */
 
-int	ft_loop_node_data(t_node *node, t_data_parsing *p, t_token *token)
+int	ft_loop_node_data(t_node *node, t_token *token)
 {
 	int	exit_code;
 
@@ -63,7 +63,7 @@ int	ft_set_data(t_data *data, t_data_parsing *p)
 	if (!data->first_token)
 		return (ft_err_pars_message(p, "malloc error\n", -1));
 	node = data->first_node;
-	exit_code = ft_loop_node_data(node, p, token);
+	exit_code = ft_loop_node_data(node, token);
 	if (exit_code < 0)
 	{
 		if (exit_code == -1)

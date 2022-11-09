@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 20:44:33 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/09 16:59:45 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/09 22:52:41 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,7 @@ int	ft_parsing(char *input, char **envp)
 	}
 	if (ft_create_token_list(data_p, input) < 0)
 		return (-1);
+	// ft_print_token_list(data_p);
 	data = (t_data *)malloc(sizeof(t_data));
 	if (!data)
 		return (ft_err_pars_message(data_p, "malloc error\n", -1));
@@ -149,9 +150,9 @@ int	ft_parsing(char *input, char **envp)
 	data->first_node = NULL;
 	if (ft_set_data(data, data_p) < 0)
 		return (ft_free_data(data));
-	ft_free_dp(data_p);
 	// ft_print_node(data);
 	ft_executor(data);
+	ft_free_dp(data_p);
 	ft_free_data(data);
 	return (0);
 }

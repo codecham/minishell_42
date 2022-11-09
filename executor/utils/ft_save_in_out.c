@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_data.c                                     :+:      :+:    :+:   */
+/*   ft_save_in_out.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 02:44:14 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/09 23:15:41 by dcorenti         ###   ########.fr       */
+/*   Created: 2022/11/09 21:23:20 by dcorenti          #+#    #+#             */
+/*   Updated: 2022/11/09 22:00:31 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int	ft_free_data(t_data *data)
+int	ft_save_in_out(t_node *node)
 {
-	if (data->first_node)
-		ft_free_nodes(data->first_node);
-	ft_free_matrice(data->path_env);
-	if (data)
-		free(data);
-	return (-1);
+	if (ft_search_infile_redir(node->redirection) > -1 || node->pipe_in > -1)
+	{
+		node->fd_in = 0;
+		node->saved_stdin = dup(0);
+		if (node->saved_stdin == -1)
+			return (ft_err_dup());
+	}
+	if (ft_search_outfile_redir(node->redirection) > -1 || node->pipe_out > -1)
+	{
+		node->fd_out = 1;
+		node->saved_stdout = dup(1);
+		if (node->saved_stdout == -1)
+			return (ft_err_dup());
+	}
+	return (0);
 }
