@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 06:13:18 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/07 04:17:18 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/09 16:17:18 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 # include <stdio.h>
 # include "../includes/minishell.h"
 
-# define OUTFILE 10		// >
-# define OUTFILE_HAP 11	// >>
-# define INFILE 12		// <
-# define HEREDOC 13		// <<
+// # define OUTFILE 10		// >
+// # define OUTFILE_HAP 11	// >>
+// # define INFILE 12		// <
+// # define HEREDOC 13		// <<
 
 struct	s_node;
 struct	s_redir_list;

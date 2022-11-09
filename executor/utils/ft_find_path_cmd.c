@@ -6,11 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:16:12 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/06 12:27:05 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/09 16:20:55 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../executor.h"
+#include "../../includes/minishell.h"
 
 /*
 	La fonction ft_find_path_cmd va rechercher dans les dossiers contenu dans path_env si

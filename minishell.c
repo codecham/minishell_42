@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 22:52:04 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/07 05:31:02 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/09 17:00:50 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	routine(t_data *data)
 		add_history(line);
 		if (line)
 			free(line);
-		printf("\n");
 	}
 }
 

@@ -6,11 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 18:14:44 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/06 12:27:49 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/09 16:21:06 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../executor.h"
+#include "../../includes/minishell.h"
 
 /*
 

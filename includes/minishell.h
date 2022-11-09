@@ -6,26 +6,40 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 20:10:46 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/08 15:08:45 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/09 16:39:16 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include "../node/node.h"
-# include "../signals/signals.h" 
+
 # include "../ft_libft/libft.h"
-# include "../parsing/parsing.h"
 # include <stdio.h>
 # include <readline/readline.h>
 # include <readline/history.h>
- # include <dirent.h>
+# include <dirent.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <errno.h>
+
+# define ECHO 1
+# define CD 2
+# define PWD 3
+# define EXPORT 4
+# define UNSET 5
+# define ENV 6
+# define EXIT 7
 
 # define REDIRECTION 5
 # define PIPE 7
 # define WORDS 8
-# define BAD_CHAR -1
+
+# define OUTFILE 10		// >
+# define OUTFILE_HAP 11	// >>
+# define INFILE 12		// <
+# define HEREDOC 13		// <<
+
 # define ERR_MALLOC -1
 # define ERROR -2
 
@@ -169,5 +183,34 @@ void			ft_free_nodes(t_node *node);
 int				ft_has_redirection_type(t_node *node, int type);
 int				ft_set_fd_pipe(t_node *node);
 int				ft_has_redirection(t_node *node, int type);
+
+/*
+----------------------------------Executor-----------------------------------------
+*/
+
+void		ft_executor(t_data *data);
+void 		ft_reset_saved_fd(t_node *node);
+void		ft_wait_children(void);
+char		**ft_get_path_env(char **envp);
+int			ft_find_path_cmd(t_node *node, char **path_env);
+void		ft_is_builtin(t_node *node);
+int			ft_set_path_cmd(t_data *data);
+int			ft_exec_regular_cmd(t_data *data, t_node *this_node);
+int			ft_search_outfile_redir(t_redir_list *elem);
+int			ft_search_infile_redir(t_redir_list *elem);
+int			ft_exec_redirection(t_data *data, t_node *node);
+char		*ft_get_env_by_key(char *key, char **envp);
+int			ft_set_redirection_fd(t_node *node);
+int			ft_count_node(t_node *node);
+int			ft_create_pipe(t_data *data);
+int			ft_exec_pipe(t_data *data);
+void		ft_wait_one_children(pid_t pid);
+void		ft_exec_regular(t_data *data, t_node *node);
+void		ft_close_bad_pipe(t_node *first_node, t_node *current_node);
+int			ft_exec_simple_pipe(t_data *data, t_node *node);
+int			ft_exec_pipe(t_data *data);
+int			ft_run_pipe(t_data *data, t_node *node);
+int			ft_exec_pipe_red(t_data *data, t_node *node);
+int			ft_open_files(t_node *node);
 
 #endif

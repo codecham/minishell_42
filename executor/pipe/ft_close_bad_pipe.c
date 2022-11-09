@@ -6,11 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 12:38:24 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/06 12:42:11 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/09 16:19:50 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../executor.h"
+#include "../../includes/minishell.h"
 
 void	ft_close_bad_pipe(t_node *first_node, t_node *current_node)
 {

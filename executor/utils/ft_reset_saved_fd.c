@@ -6,11 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:35:30 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/06 12:28:05 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/09 16:21:13 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../executor.h"
+#include "../../includes/minishell.h"
 
 /*
 	La fonction ft_reset_saved_fd va restaurer les fd 0 et 1 sur

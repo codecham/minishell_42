@@ -6,11 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 21:32:09 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/11 13:25:11 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/09 16:20:58 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../executor.h"
+#include "../../includes/minishell.h"
 
 /*
 	La fonction get_env_by_key retourne la valeur associé à la variable

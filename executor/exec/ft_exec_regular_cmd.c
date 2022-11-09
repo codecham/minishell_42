@@ -6,11 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 17:23:18 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/06 12:26:46 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/09 16:19:37 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../executor.h"
+#include "../../includes/minishell.h"
 
 void	ft_exec_regular(t_data *data, t_node *node)
 {

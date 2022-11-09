@@ -6,11 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 18:45:02 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/06 12:27:34 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/09 16:21:02 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../executor.h"
+#include "../../includes/minishell.h"
 
 /*
 	Cette fonction crêer un double tableau contenant tout les PATH à partir des variables d'environements

@@ -6,11 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 12:34:07 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/06 12:59:13 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/09 16:20:05 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../executor.h"
+#include "../../includes/minishell.h"
 
 int	ft_exec_simple_pipe(t_data *data, t_node *node)
 {

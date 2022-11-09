@@ -6,11 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 06:08:47 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/06 12:28:14 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/09 16:40:21 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../executor.h"
+#include "../../includes/minishell.h"
 
 int	ft_search_infile_redir(t_redir_list *elem)
 {

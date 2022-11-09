@@ -6,11 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 15:27:21 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/06 15:50:50 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/09 16:20:08 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../executor.h"
+#include "../../includes/minishell.h"
 
 int	ft_has_redirection(t_node *node, int type)
 {

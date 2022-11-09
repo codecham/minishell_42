@@ -6,11 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 20:11:00 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/06 13:06:48 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/09 17:07:05 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../executor.h"
+#include "../../includes/minishell.h"
 
 /*
 
@@ -23,6 +23,19 @@
 	3) ft_set_path_cmd va set le path de l'executable
 
 */
+
+void	ft_executor_redirection(t_data *data)
+{
+	if (ft_open_files(data->first_node) == 0)
+	{
+		if (ft_set_redirection_fd(data->first_node) == 0)
+		{
+			ft_exec_redirection(data, data->first_node);
+		}
+		else
+			ft_reset_saved_fd(data->first_node);
+	}
+}
 
 void	ft_executor(t_data *data)
 {
@@ -45,4 +58,5 @@ void	ft_executor(t_data *data)
 	{
 		ft_exec_pipe(data);
 	}
+	ft_free_matrice(data->path_env);
 }
