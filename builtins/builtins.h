@@ -14,10 +14,19 @@
 # define BUILTINS_H
 
 # include <unistd.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <errno.h>
+# include <fcntl.h>
 # include "../includes/minishell.h"
-# include "../ft_libft/libft.h"
-# include "../node/node.h"
-# include "../parser/parser.h"
-# include "../executor/executor.h"
+
+# define MAX_PATH_LEN 1024
+
+int		call_builtin(t_node *node);
+int		builtin_echo(char **args, int fd_out);
+int		builtin_pwd(int fd_out);
+
+void	builtin_cd(char **args, int fd_out);
+void	builtin_exit(char **args);
 
 #endif
