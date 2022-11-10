@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 12:34:07 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/09 16:20:05 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/10 02:09:27 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,5 @@ int	ft_exec_simple_pipe(t_data *data, t_node *node)
 	ft_close_bad_pipe(data->first_node, node);
 	if (ft_set_fd_pipe(node) < 0)
 		return (-1);
-	exit(execve(node->path_cmd, node->arg, data->envp));
+	exit (execve(node->path_cmd, node->arg, data->envp));
 }

@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 12:38:24 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/09 16:19:50 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/10 02:06:11 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	ft_close_bad_pipe(t_node *first_node, t_node *current_node)
 	{
 		if (node != current_node)
 		{
-			if (node->pipe_in != 0)
+			if (node->pipe_in > 0)
 				close(node->pipe_in);
-			if (node->pipe_out != 0)
+			if (node->pipe_out > 0)
 				close(node->pipe_out);
 		}
 		if (node->next == NULL)

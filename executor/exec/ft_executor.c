@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 20:11:00 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/09 23:14:46 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/10 02:17:47 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ void	ft_executor_redirection(t_data *data)
 	}
 }
 
+void	ft_executor_pipe(t_data *data)
+{
+	ft_exec_pipe(data);
+}
+
 void	ft_executor(t_data *data)
 {
 	data->path_env = ft_get_path_env(data->envp);
@@ -55,7 +60,6 @@ void	ft_executor(t_data *data)
 	}
 	else
 	{
-		printf("commande contient des pipes\n");
-		// ft_exec_pipe(data);
+		ft_executor_pipe(data);
 	}
 }

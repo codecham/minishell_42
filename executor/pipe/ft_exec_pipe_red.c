@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 15:25:23 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/09 16:19:57 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/10 02:12:48 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,13 @@ int	ft_exec_pipe_red(t_data *data, t_node *node)
 	int file_in;
 	int	file_out;
 
+	if (ft_open_files(node) > 0)
+		exit (0);
 	file_in = ft_has_redirection(node, INFILE);
 	file_out = ft_has_redirection(node, OUTFILE);
 	if (file_in != -1)
 		ft_change_fd_in(node, file_in);
 	if (file_out != -1)
 		ft_change_fd_out(node, file_out);
-	exit(execve(node->path_cmd, node->arg, data->envp));
+	exit (execve(node->path_cmd, node->arg, data->envp));
 }

@@ -6,11 +6,28 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 13:00:14 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/09 16:20:02 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/10 03:09:35 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+void	ft_close_pipe_main(t_data *data)
+{
+	t_node *node;
+
+	node = data->first_node;
+	while (1)
+	{
+		if (node->pipe_in > 0)
+			close(node->pipe_in);
+		if (node->pipe_out > 0)
+			close(node->pipe_out);
+		if (node->next == NULL)
+			break ;
+		node = node->next;
+	}	
+}
 
 int	ft_exec_pipe(t_data *data)
 {
@@ -43,5 +60,7 @@ int	ft_exec_pipe(t_data *data)
 			node = node->next;
 		}
 	}
-	return(0);
+	ft_close_pipe_main(data);
+	ft_wait_children();
+	return (0);
 }

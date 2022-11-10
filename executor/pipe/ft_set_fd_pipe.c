@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 12:48:48 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/09 16:20:15 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/10 02:52:10 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,15 @@
 
 int	ft_set_fd_pipe(t_node *node)
 {
-	if (node->pipe_in != 0)
+	if (node->pipe_in > 0)
 	{
-		if ((node->saved_fd->fd_old_infile = dup(0)) < 0)
-			perror("1");
 		if (dup2(node->pipe_in, 0) < 0)
-			perror("2");
+			return (ft_err_dup());
 	}
-	if (node->pipe_out != 0)
+	if (node->pipe_out > 1 && node->next != NULL)
 	{
-		if ((node->saved_fd->fd_old_outfile = dup(1)) < 0)
-			perror("3");
 		if (dup2(node->pipe_out, 1) < 0)
-			perror("4");
+			return (ft_err_dup());
 	}
 	return (0); 
 }
