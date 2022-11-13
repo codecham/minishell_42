@@ -22,11 +22,37 @@
 
 # define MAX_PATH_LEN 1024
 
-int		call_builtin(t_node *node);
-int		builtin_echo(char **args, int fd_out);
-int		builtin_pwd(int fd_out);
+typedef struct s_env
+{
+	char			*value;
+	char			*key;
+	struct s_env	*next;
+}	t_env;
 
-void	builtin_cd(char **args, int fd_out);
-void	builtin_exit(char **args);
+/*
+-------------------------------BUILTINS-----------------------------------------
+*/
+
+int		ft_call_builtin(t_node *node, t_env *env);
+int		ft_builtin_echo(char **args, int fd_out);
+int		ft_builtin_pwd(int fd_out);
+int		ft_builtin_cd(char *dir);
+int		ft_builtin_env(int fd_out, t_env *env);
+int		ft_builtin_export(char **args, t_env *env);
+
+int		ft_builtin_unset(char **args, int fd_out, char **envp);
+void	ft_builtin_exit(char **args);
+
+/*
+----------------------------------ENV-----------------------------------------
+*/
+t_env	*ft_get_env_var_list(char **envp);
+t_env	*ft_add_env_var(t_env *first_env_var, t_env *env_var);
+t_env	*ft_new_env_var(char *str);
+char	*ft_cpy_env_key(char *str);
+char	*ft_cpy_env_val(char *str);
+void	ft_free_env_var_list(t_env *env_var);
+void	ft_free_env_var(t_env *env_var);
+
 
 #endif
