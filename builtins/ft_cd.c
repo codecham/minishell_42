@@ -12,40 +12,43 @@
 
 #include "builtins.h"
 
-int	cd_to_path(char *path, int fd_out)
+int	cd_to_path(char *path)
 {
 	if (chdir(path) == -1)
 	{
-		ft_putstr_fd("minishell: cd: ", fd_out);
-		ft_putstr_fd(path, fd_out);
-		ft_putstr_fd(": ", fd_out);
-		ft_putendl_fd(strerror(errno), fd_out);
+		ft_putstr_fd("minishell: cd: ", 2);
+		ft_putstr_fd(path, 2);
+		ft_putstr_fd(": ", 2);
+		ft_putendl_fd(strerror(errno), 2);
 		return (0);
 	}
 	return (1);
 }
 
-int	cd_to_home(int fd_out)
+int	cd_to_home(void)
 {
 	char	*home_dir;
 
 	home_dir = getenv("HOME");
 	if (!home_dir)
 		return (0);
-	return (cd_to_path(home_dir, fd_out));
+	return (cd_to_path(home_dir));
 }
 
-int	builtin_cd(char **args, int fd_out)
+/*
+Change the current directory to dir.
+If the param dir is NULL, change the current directory to $HOME.
+ */
+int	ft_builtin_cd(char *dir)
 {
-	(void)fd_out;
-	if (!*args)
+	if (dir == NULL)
 	{
-		if (!cd_to_home(fd_out))
+		if (!cd_to_home())
 			return (-1);
 	}
 	else
 	{
-		if (!cd_to_path(*args, fd_out))
+		if (!cd_to_path(dir))
 			return (-1);
 	}
 	return (0);
