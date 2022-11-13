@@ -13,7 +13,7 @@
 #include "builtins.h"
 
 /* Get the pathname that is the current working directory */
-int	builtin_pwd(int fd_out)
+int	ft_builtin_pwd(int fd_out)
 {
 	char	*buf;
 
