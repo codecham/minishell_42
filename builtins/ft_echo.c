@@ -12,6 +12,7 @@
 
 #include "builtins.h"
 
+/* check if -n is specified */
 int	arg_is_option_n(char *arg)
 {
 	if (!ft_strncmp(arg, "-n", ft_strlen(arg)))
@@ -19,7 +20,11 @@ int	arg_is_option_n(char *arg)
 	return (0);
 }
 
-int	builtin_echo(char **args, int fd_out)
+/*
+Output the arguments.
+If -n is specified, the trailing new line is suppressed.
+*/
+int	ft_builtin_echo(char **args, int fd_out)
 {
 	int	option_n;
 	int	i;
