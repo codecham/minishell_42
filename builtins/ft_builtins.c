@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtins.h"
+//#include "builtins.h"
+#include "../includes/minishell.h"
 
 int	ft_call_builtin(t_node *node, t_env *env)
 {
@@ -20,28 +21,25 @@ int	ft_call_builtin(t_node *node, t_env *env)
 	if (command == ECHO)
 		ft_builtin_echo(node->arg, node->fd_out);
 	else if (command == CD)
-		ft_builtin_cd(node->arg[0]);
+		ft_builtin_cd(node->arg[1]);
 	else if (command == PWD)
 		ft_builtin_pwd(node->fd_out);
 	else if (command == EXPORT)
 	{
-		printf("command is export\n");
-		ft_builtin_export(node->arg, env);
+		//ft_builtin_export(node->arg, env);
+		printf("command is export...wip\n");
 	}
 	else if (command == UNSET)
 	{
-		printf("command is unset\n");
 		//ft_builtin_unset(node->arg, node->fd_out, env);
+		printf("command is unset...wip\n");
 	}
 	else if (command == ENV)
-	{
-		printf("command is env\n");
 		ft_builtin_env(node->fd_out, env);
-	}
 	else if (command == EXIT)
 	{
-		printf("command is exit\n");
-		ft_builtin_exit(node->arg);
+		printf("command is exit...wip\n");
+		//ft_builtin_exit(node->arg);
 	}
 	return (0);
 }
