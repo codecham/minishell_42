@@ -86,6 +86,19 @@ SRC		= 	minishell.c \
 			executor/pipe/ft_has_redirection.c \
 			executor/pipe/ft_run_pipe.c \
 			executor/pipe/ft_set_fd_pipe.c \
+			builtins/ft_builtins.c \
+			builtins/ft_echo.c \
+			builtins/ft_cd.c \
+			builtins/ft_pwd.c \
+			builtins/ft_unset.c \
+			builtins/ft_env.c \
+			builtins/ft_export.c \
+			builtins/ft_exit.c \
+			builtins/env/ft_create_env_var_list.c \
+			builtins/env/ft_new_env_var.c \
+			builtins/env/ft_cpy_env_var.c \
+			builtins/env/ft_free_env_var.c \
+			builtins/env/ft_find_env_var.c
 
 
 OBJ = $(SRC:.c=.o)
