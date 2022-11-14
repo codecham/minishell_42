@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 22:52:04 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/10 02:25:38 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/14 22:13:57 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	routine(t_data *data)
 		line = readline("Minishell> ");
 		if (ft_only_space(line) == 0)
 			ft_parsing(line, data->envp);
+		else
+			g_exit_status = 0;
 		add_history(line);
 		if (line)
 			free(line);
@@ -37,6 +39,7 @@ int main(int argc, char **argv, char **envp)
 
 	(void)argc;
 	(void)argv;
+	g_exit_status = 0;
 	data = malloc(sizeof(t_data));
 	if (!data)
 		return (0);

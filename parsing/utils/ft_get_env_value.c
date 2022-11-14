@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:26:45 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/08 15:51:37 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/14 21:22:29 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,13 @@ int	ft_get_env_value(char *key, char **value, char **envp)
 	i = 0;
 	if (!key || !envp)
 		return (0);
+	if (key[i] == '?')
+	{
+		*value = ft_strdup(ft_itoa(g_exit_status));
+		if (!value)
+			return (-2);
+		return (1);
+	}
 	new = ft_add_equal(key);
 	if (!new)
 		return (-1);

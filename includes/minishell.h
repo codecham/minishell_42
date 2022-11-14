@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 20:10:46 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/14 17:19:26 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/14 21:43:34 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,7 +238,7 @@ int			ft_count_node(t_node *node);
 int			ft_create_pipe(t_data *data);
 int			ft_exec_pipe(t_data *data);
 void		ft_wait_one_children(pid_t pid);
-void		ft_exec_regular(t_data *data, t_node *node);
+int			ft_exec_regular(t_data *data, t_node *node);
 void		ft_close_bad_pipe(t_node *first_node, t_node *current_node);
 int			ft_exec_simple_pipe(t_data *data, t_node *node);
 int			ft_exec_pipe(t_data *data);

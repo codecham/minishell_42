@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 11:50:04 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/08 15:23:16 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/14 21:41:05 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,30 +42,48 @@ int	ft_change_env_ext(t_token *token, char *value, int saved_i, int i)
 	return (0);
 }
 
+char	*ft_set_key(t_token *token, int *i)
+{
+	char	*key;
+
+	key = NULL;
+	if (token->value[*i] == '?')
+	{
+		key = ft_realloc_add(key, token->value[*i]);
+		if (!key)
+			return (NULL);
+			*i = *i +1;
+	}
+	else
+	{
+		while (token->value[*i] && ft_good_c_for_env(token->value[*i]) == 1)
+		{
+			key = ft_realloc_add(key, token->value[*i]);
+			if (key == NULL)
+				return (NULL);
+			*i = *i + 1;
+		}
+	}
+	return (key);
+}
+
 int	ft_change_env_token(t_token *token, int i, char **envp)
 {
 	char	*key;
 	char	*value;
 	int		saved_i;
 
-	key = NULL;
 	saved_i = i;
 	i++;
-	if (token->value[i] == '\0' || ft_good_c_for_env(token->value[i]) == -1)
+	if (token->value[i] == '\0')
 		return (0);
-	else
-	{
-		while (token->value[i] && ft_good_c_for_env(token->value[i]) == 1)
-		{
-			key = ft_realloc_add(key, token->value[i]);
-			if (key == NULL)
-				return (-1);
-			i++;
-		}
-		if (ft_get_env_value(key, &value, envp) == -1)
-			return (-1);
-		free(key);
-		return (ft_change_env_ext(token, value, saved_i, i));
-	}
-	return (0);
+	if (ft_good_c_for_env(token->value[i]) == -1 && token->value[i] != '?')
+		return (0);
+	key = ft_set_key(token, &i);
+	if (key == NULL)
+		return (-1);
+	if (ft_get_env_value(key, &value, envp) == -1)
+		return (-1);
+	free(key);
+	return (ft_change_env_ext(token, value, saved_i, i));
 }

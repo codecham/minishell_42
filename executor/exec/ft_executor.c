@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 20:11:00 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/14 18:34:29 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/14 23:03:30 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,9 @@ void	ft_executor_redirection(t_data *data)
 	}
 }
 
-void	ft_executor_pipe(t_data *data)
-{
-	ft_exec_pipe(data);
-}
-
 void	ft_executor(t_data *data)
 {
+	g_exit_status = 0;
 	data->path_env = ft_get_path_env(data->envp);
 	if (!data->first_node || !data->path_env)
 		return ;
@@ -58,5 +54,5 @@ void	ft_executor(t_data *data)
 	else if (data->first_node->redirection != NULL && data->first_node->next == NULL)
 		ft_executor_redirection(data);
 	else
-		ft_executor_pipe(data);
+		ft_exec_pipe(data);
 }
