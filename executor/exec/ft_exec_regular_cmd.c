@@ -21,14 +21,17 @@ int	ft_exec_regular_cmd(t_data *data, t_node *this_node)
 {
 	pid_t	child_pid;
 	t_node	*node;
+	t_env	*env_var_list;
 
 	node = this_node;
+	env_var_list = ft_get_env_var_list(data->envp);
 	if (node->is_built_in != 0)
 	{
 		/*
 			code pour exec builtin
 		*/
-		printf("%s is a builtin...\n", node->command_name);
+		this_node->fd_out = 1;
+		ft_call_builtin(this_node, env_var_list);
 	}
 	else
 	{
