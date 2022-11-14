@@ -10,8 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../builtins.h"
+//#include "../builtins.h"
+#include "../../includes/minishell.h"
 
+/* Free an environment variable */
 void	ft_free_env_var(t_env *env_var)
 {
 	if (env_var->key != NULL)

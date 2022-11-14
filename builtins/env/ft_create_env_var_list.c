@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../builtins.h"
+//#include "../builtins.h"
+#include "../../includes/minishell.h"
 
 /* Add an environment variable to the linked list */
 t_env	*ft_add_env_var(t_env *first_env_var, t_env *env_var)

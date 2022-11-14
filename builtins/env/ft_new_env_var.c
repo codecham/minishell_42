@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../builtins.h"
+//#include "../builtins.h"
+#include "../../includes/minishell.h"
 
 /* Init all str pointer to NULL */
 void	ft_init_env_var(t_env *env_var)
@@ -22,7 +23,7 @@ void	ft_init_env_var(t_env *env_var)
 
 /*
 Create a new t_env structure, which will contain one environment variable.
-The str parameter is the string from char **envp.
+Parameter example: "NEW_VAR=Hello"
 */
 t_env	*ft_new_env_var(char *str)
 {

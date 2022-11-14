@@ -10,9 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../builtins.h"
+//#include "../builtins.h"
+#include "../../includes/minishell.h"
 
-/* Copy the key of the environment variable and return this pointer */
+/*
+Create a string array, malloc memory, and copy the content of *str,
+but copy only characters found before the first '=' sign.
+Paramater example: "NEW_VAR=Hello"
+Return value:	   "NEW_VAR"
+*/
 char	*ft_cpy_env_key(char *str)
 {
 	int		size;
@@ -37,7 +43,12 @@ char	*ft_cpy_env_key(char *str)
 	return (key);
 }
 
-/* Copy the value of the environment variable and return this pointer */
+/*
+Create a string array, malloc memory, and copy the content of *str,
+but copy only characters found after the first '=' sign.
+Paramater example: "NEW_VAR=Hello"
+Return value:	   "Hello"
+ */
 char	*ft_cpy_env_val(char *str)
 {
 	int		size;
