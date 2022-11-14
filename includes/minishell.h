@@ -13,12 +13,12 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-
 # include "../ft_libft/libft.h"
 # include <stdio.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <dirent.h>
+# include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
 # include <errno.h>
@@ -43,15 +43,18 @@
 # define ERR_MALLOC -1
 # define ERROR -2
 
+# define MAX_PATH_LEN 1024
+
 struct	s_node;
 struct	s_data;
 struct	s_redir_list;
 struct	s_token;
 struct	s_saved_fd;
+struct	s_env;
 
 int	g_exit_status;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	struct s_node	*first_node;
 	struct s_token	*first_token;
@@ -59,6 +62,12 @@ typedef struct	s_data
 	char			**path_env;
 }	t_data;
 
+typedef struct s_env
+{
+	char			*value;
+	char			*key;
+	struct s_env	*next;
+}	t_env;
 
 typedef struct s_token
 {
@@ -77,7 +86,6 @@ typedef struct s_data_parsing
 	int					list_token_size;
 	char				**envp;
 }	t_data_parsing;
-
 
 typedef struct s_redir_list
 {
@@ -160,7 +168,32 @@ int				ft_fill_redirection(t_node *node, t_token *token);
 
 int				ft_set_heredoc(t_data_parsing *p);
 char			*ft_random_name(void);
-char 			*ft_replace_env_hd(t_data_parsing *p, char *str);
+char			*ft_replace_env_hd(t_data_parsing *p, char *str);
+
+/*
+-------------------------------BUILTINS-----------------------------------------
+*/
+
+int				ft_call_builtin(t_node *node, t_env *env);
+int				ft_builtin_echo(char **args, int fd_out);
+int				ft_builtin_pwd(int fd_out);
+int				ft_builtin_cd(char *dir);
+int				ft_builtin_env(int fd_out, t_env *env);
+int				ft_builtin_export(char **args, t_env *env);
+int				ft_builtin_unset(char **args, int fd_out, char **envp);
+void			ft_builtin_exit(char **args);
+
+/*
+----------------------------------ENV-----------------------------------------
+*/
+t_env			*ft_get_env_var_list(char **envp);
+t_env			*ft_add_env_var(t_env *first_env_var, t_env *env_var);
+t_env			*ft_new_env_var(char *str);
+char			*ft_cpy_env_key(char *str);
+char			*ft_cpy_env_val(char *str);
+int				ft_env_var_exist(char *key, t_env *env);
+void			ft_free_env_var_list(t_env *env_var);
+void			ft_free_env_var(t_env *env_var);
 
 /*
 ----------------------------------NODE-----------------------------------------
@@ -169,7 +202,7 @@ char 			*ft_replace_env_hd(t_data_parsing *p, char *str);
 t_node			*ft_create_node(void);
 t_node			*ft_new_node(t_node *previous_node);
 t_redir_list	*ft_get_next_redirection(t_redir_list *li);
-t_redir_list 	*ft_get_last_redirection(t_redir_list *li);
+t_redir_list	*ft_get_last_redirection(t_redir_list *li);
 int				ft_set_redirection(t_node *node, int redirect_type, int fd, char *f_name);
 int				ft_add_arg_node(t_node *node, char *arg);
 int				ft_add_command_name(t_node *node, char *command);
