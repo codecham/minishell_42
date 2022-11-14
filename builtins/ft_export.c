@@ -24,90 +24,54 @@ int	ft_puterror(char *arg, char *str)
 	return (0);
 }
 
-int	ft_is_invalid_char(char c)
-{
-	(void)c;
-	// _ ok
-	// + ok but only before =
-	return (1);
-}
-/*
-Invalid Syntax:
-*/
-int	ft_is_valid_syntax(char *str, int *addition_flag)
-{
-	int	equal_sign;
-	int	i;
-
-	i = 0;
-	printf("string to check : [%s]\n", str);
-	if (!ft_isalpha(str[0]) || str[0] != '_')
-		return (ft_puterror(str, "not a valid identifier"));
-	equal_sign = 0;
-	while (str[i] != '\0')
-	{
-		if (ft_is_invalid_char(str[i]))
-			return (ft_puterror(str, "not a valid identifier"));
-		if (str[i] == '=')
-			equal_sign++;
-		if (str[i] == '+')
-			*addition_flag = 1;
-		i++;
-	}
-	// there is a non-valid char
-	//		print error
-	// there is np equal char
-	//		just dont create env_var (dont print error)
-
-	// if there is + before =, add the char to the var(create this if is not exist)
-	return (1);
-}
-
 int	ft_builtin_export(char **args, t_env *env)
 {
 	//t_env	*new_env_var;
-	int		addition_flag;
-	int		i;
+	int		add_flag;
+	int		equal_flag;
 	char	*key;
-	//char	*value;
+	char	*value;
 
-	(void)env;
-	i = 1;
-	addition_flag = 0;
-	if (args[i] == NULL)
+	args++;
+	add_flag = 0;
+	equal_flag = 0;
+	if (*args == NULL)
 	{
 		printf("need to print env variable in sort\n");
 		return (1);
 	}
-	while (args[i] != NULL)
+	while (*args != NULL)
 	{
-
-		if (ft_is_valid_syntax(args[i], &addition_flag))
+		if (!ft_is_valid_syntax(*args, &add_flag, &equal_flag))
+			return (ft_puterror(*args, "not a valid identifier"));
+		if (!equal_flag)
+			return (1);
+		key = ft_cpy_env_key(*args, add_flag);
+		if (!key)
+			return (0);
+		if (ft_env_var_exist(key, env))
 		{
-			key = ft_cpy_env_key(args[i]);
-			if (!key)
-				return (0);
-			if (ft_env_var_exist(key, env))
-			{
-				if (addition_flag)
-					printf("need to get value end join the str\n");
-				else
-					printf("need to assign new value\n");
-			}
-			else
-				printf("need to create new env_var struct\n");
+			printf("EXIST\n");
+			value = ft_getenv(key, env);
+			printf("%s\n", value);
+			// if addition mark is in str
+			// 		join 2 string
+			// else
+			// 		assign new value
+		}
+		else
+		{
+			printf("NOT EXIST\n");
+			// create new env_var
+		}
 			//{
 			//	new_env_var = ft_new_env_var(*args);
 			//	if (!new_env_var)
 			//		return (0);
 			//	env = ft_add_env_var(env, new_env_var);
 			//}
-		}
-		else
-		{
-			return (0);
-		}
-		i++;
+		free(key);
+		args++;
 	}
 	return (1);
 }
