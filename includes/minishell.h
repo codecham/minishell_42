@@ -58,7 +58,7 @@ typedef struct s_data
 {
 	struct s_node	*first_node;
 	struct s_token	*first_token;
-	struct s_env	*env_var_list;	
+	struct s_env	*env_var_list;
 	char			**envp;
 	char			**path_env;
 }	t_data;
@@ -185,14 +185,18 @@ int				ft_builtin_export(char **args, t_env *env);
 int				ft_builtin_unset(char **args, int fd_out, char **envp);
 void			ft_builtin_exit(char **args);
 
+/* utils */
+int				ft_is_valid_syntax(char *arg, int *add_flag, int *equal_flag);
+
 /*
 ----------------------------------ENV-----------------------------------------
 */
 t_env			*ft_get_env_var_list(char **envp);
 t_env			*ft_add_env_var(t_env *first_env_var, t_env *env_var);
 t_env			*ft_new_env_var(char *str);
-char			*ft_cpy_env_key(char *str);
+char			*ft_cpy_env_key(char *str, int add_flag);
 char			*ft_cpy_env_val(char *str);
+char			*ft_getenv(char *key, t_env *env);
 int				ft_env_var_exist(char *key, t_env *env);
 void			ft_free_env_var_list(t_env *env_var);
 void			ft_free_env_var(t_env *env_var);
