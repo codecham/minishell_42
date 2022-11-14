@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:28:32 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/14 16:58:13 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/14 17:19:17 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,10 @@ int	ft_err_cmd_exist(t_node *node)
 	ft_putstr_fd(node->command_name, 2);
 	ft_putstr_fd(": command not found\n", 2);
 	return (127);
+}
+
+void ft_err_malloc_exec(void)
+{
+	ft_putstr_fd("Minishell: ", 2);
+	ft_putstr_fd("malloc error\n", 2);
 }

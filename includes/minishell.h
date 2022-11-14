@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 20:10:46 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/14 16:58:48 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/14 17:19:26 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_data
 {
 	struct s_node	*first_node;
 	struct s_token	*first_token;
+	struct s_env	*env_var_list;	
 	char			**envp;
 	char			**path_env;
 }	t_data;
@@ -244,5 +245,6 @@ int			ft_err_dup(void);
 int			ft_save_in_out(t_node *node);
 int			ft_err_cmd_exist(t_node *node);
 int			ft_err_fork(void);
+void		ft_err_malloc_exec(void);
 
 #endif

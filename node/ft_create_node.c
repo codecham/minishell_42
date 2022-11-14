@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 19:55:43 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/14 16:51:38 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/14 18:29:09 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ t_node	*ft_create_node(void)
 	new_node->previous = NULL;
 	new_node->redirection = NULL;
 	new_node->is_built_in = 0;
-	new_node->fd_in = -1;
-	new_node->fd_out = -1;
+	new_node->fd_in = 0;
+	new_node->fd_out = 1;
 	new_node->pipe_in = -1;
 	new_node->pipe_out = -1;
 	new_node->pid = 0;

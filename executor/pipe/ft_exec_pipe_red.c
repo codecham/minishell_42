@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 15:25:23 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/10 02:12:48 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/14 17:57:20 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	ft_change_fd_out(t_node *node, int new_fd)
 
 int	ft_exec_pipe_red(t_data *data, t_node *node)
 {
-	int file_in;
+	int	file_in;
 	int	file_out;
 
 	if (ft_open_files(node) > 0)
@@ -57,5 +57,9 @@ int	ft_exec_pipe_red(t_data *data, t_node *node)
 		ft_change_fd_in(node, file_in);
 	if (file_out != -1)
 		ft_change_fd_out(node, file_out);
+	if (node->cmd_exist == -1)
+		exit(ft_err_cmd_exist(node));
+	if (node->is_built_in != 0)
+		exit(ft_call_builtin(node, data->env_var_list));
 	exit (execve(node->path_cmd, node->arg, data->envp));
 }

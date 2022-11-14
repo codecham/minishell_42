@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 17:23:18 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/14 16:59:11 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/14 18:34:05 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,15 @@ int	ft_exec_regular_cmd(t_data *data, t_node *this_node)
 {
 	pid_t	child_pid;
 	t_node	*node;
-	t_env	*env_var_list;
 
 	node = this_node;
-	env_var_list = ft_get_env_var_list(data->envp);
 	if (node->is_built_in != 0)
-	{
-		this_node->fd_out = 1;
-		ft_call_builtin(this_node, env_var_list);
-	}
-	else
-	{
-		child_pid = fork();
-		if (child_pid < 0)
-			return (ft_err_fork());
-		else if (child_pid == 0)
-			ft_exec_regular(data, node);
-		ft_wait_children();
-	}
+		return (ft_call_builtin(node, data->env_var_list));
+	child_pid = fork();
+	if (child_pid < 0)
+		return (ft_err_fork());
+	else if (child_pid == 0)
+		ft_exec_regular(data, node);
+	ft_wait_children();
 	return (0);
 }

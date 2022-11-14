@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 20:11:00 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/10 02:17:47 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/14 18:34:29 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,15 @@ void	ft_executor(t_data *data)
 	if (!data->first_node || !data->path_env)
 		return ;
 	ft_is_builtin(data->first_node);
+	data->env_var_list = ft_get_env_var_list(data->envp);
+	if (data->env_var_list == NULL)
+		return (ft_err_malloc_exec());
 	if (ft_set_path_cmd(data) == -1)
 		return ;
 	if (data->first_node->redirection == NULL && data->first_node->next == NULL)
-	{
 		ft_exec_regular_cmd(data, data->first_node);
-	}
 	else if (data->first_node->redirection != NULL && data->first_node->next == NULL)
-	{
 		ft_executor_redirection(data);
-	}
 	else
-	{
 		ft_executor_pipe(data);
-	}
 }

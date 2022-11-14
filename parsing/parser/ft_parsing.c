@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 20:44:33 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/09 22:52:41 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/14 17:16:36 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,7 @@ int	ft_parsing(char *input, char **envp)
 		return (ft_err_pars_message(data_p, "malloc error\n", -1));
 	data->first_token = data_p->first_token;
 	data->first_node = NULL;
+	data->env_var_list = NULL;
 	if (ft_set_data(data, data_p) < 0)
 		return (ft_free_data(data));
 	// ft_print_node(data);
