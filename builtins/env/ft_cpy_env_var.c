@@ -15,11 +15,12 @@
 
 /*
 Create a string array, malloc memory, and copy the content of *str,
-but copy only characters found before the first '=' sign.
-Paramater example: "NEW_VAR=Hello"
-Return value:	   "NEW_VAR"
+but copy only characters found before the first '=' sign, or
+before the '+' sign if the add_flag is 1.
+Paramater example: "NEW_VAR=Hello", "VAR+=3"
+Return value:	   "NEW_VAR", "VAR"
 */
-char	*ft_cpy_env_key(char *str)
+char	*ft_cpy_env_key(char *str, int add_flag)
 {
 	int		size;
 	int		i;
@@ -36,6 +37,8 @@ char	*ft_cpy_env_key(char *str)
 	}
 	if (size == 0)
 		return (NULL);
+	if (add_flag)
+		size--;
 	key = (char *)malloc((size + 1) * sizeof(char));
 	if (!key)
 		return (NULL);

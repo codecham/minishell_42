@@ -33,7 +33,7 @@ t_env	*ft_new_env_var(char *str)
 	if (!new_env_val)
 		return (NULL);
 	ft_init_env_var(new_env_val);
-	new_env_val->key = ft_cpy_env_key(str);
+	new_env_val->key = ft_cpy_env_key(str, 0);
 	if (!new_env_val->key)
 	{
 		ft_free_env_var(new_env_val);
