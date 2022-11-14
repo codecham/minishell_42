@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 20:10:46 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/09 21:57:33 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/14 16:58:48 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ typedef struct s_redir_list
 typedef struct s_node
 {
 	int					is_built_in;
+	int					cmd_exist;
 	char 				*command_name;	// Le nom de la commande
 	char				*path_cmd;		// Chemin de la commande
 	char				**arg;			// Double tableau contenant les arguments
@@ -241,5 +242,7 @@ int			ft_exec_pipe_red(t_data *data, t_node *node);
 int			ft_open_files(t_node *node);
 int			ft_err_dup(void);
 int			ft_save_in_out(t_node *node);
+int			ft_err_cmd_exist(t_node *node);
+int			ft_err_fork(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 19:55:43 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/09 21:25:58 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/14 16:51:38 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ t_node	*ft_create_node(void)
 	new_node->pid = 0;
 	new_node->saved_stdin = -1;
 	new_node->saved_stdout = -1;
+	new_node->cmd_exist = 0;
 	return (new_node);
 }

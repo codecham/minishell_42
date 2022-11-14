@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 19:09:51 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/09 16:19:46 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/14 16:51:13 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@
 	VALEUR DE RETOUR: renvoie 0 s'il réussis et -1 en cas de probleme.
 
 */
+
+int	ft_cmd_dont_exist(t_node *node)
+{
+	node->cmd_exist = -1;
+	return (0);
+}
 
 int	ft_is_relative_path(char *command)
 {
@@ -45,8 +51,6 @@ int	ft_set_path_cmd(t_data *data)
 {
 	t_node	*node;
 
-	if (!data->first_node)
-		return(-1);
 	node = data->first_node;
 	while (1)
 	{
@@ -55,7 +59,7 @@ int	ft_set_path_cmd(t_data *data)
 			if (ft_is_relative_path(node->command_name) == 0)
 			{
 				if (ft_find_path_cmd(node, data->path_env) == -1)
-					return (-1);
+					return (ft_cmd_dont_exist(node));
 			}
 			else
 			{
