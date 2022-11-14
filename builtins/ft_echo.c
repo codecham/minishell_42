@@ -10,12 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtins.h"
+//#include "builtins.h"
+#include "../includes/minishell.h"
 
 /* check if -n is specified */
 int	arg_is_option_n(char *arg)
 {
-	if (!ft_strncmp(arg, "-n", ft_strlen(arg)))
+	if (ft_strncmp(arg, "-n", ft_strlen(arg) + 1) == 0)
 		return (1);
 	return (0);
 }
@@ -30,7 +31,7 @@ int	ft_builtin_echo(char **args, int fd_out)
 	int	i;
 
 	option_n = 0;
-	i = 0;
+	i = 1;
 	if (!args[i])
 		ft_putstr_fd("\n", fd_out);
 	else

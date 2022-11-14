@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtins.h"
+//#include "builtins.h"
+#include "../includes/minishell.h"
 
 /* Ptint all environment variables */
 int	ft_builtin_env(int fd_out, t_env *env)

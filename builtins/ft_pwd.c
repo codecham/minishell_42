@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtins.h"
+//#include "builtins.h"
+#include "../includes/minishell.h"
 
 /* Get the pathname that is the current working directory */
 int	ft_builtin_pwd(int fd_out)
