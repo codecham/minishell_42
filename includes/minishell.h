@@ -187,6 +187,7 @@ void			ft_builtin_exit(char **args);
 
 /* utils */
 int				ft_is_valid_export(char *arg, int *add_flag, int *equal_flag);
+char			*ft_get_new_env_val(char *str, char *key, int *add, t_env *env);
 int				ft_is_valid_unset(char *arg);
 int				ft_is_valid_first_char(char c);
 int				ft_is_valid_char(char c);
