@@ -21,7 +21,7 @@ int	ft_puterror(char *arg, char *str)
 	ft_putstr_fd(arg, 2);
 	ft_putstr_fd("': ", 2);
 	ft_putendl_fd(str, 2);
-	return (0);
+	return (-1);
 }
 
 /* Update the value of the environment variable found with key. */
@@ -77,14 +77,14 @@ int	ft_builtin_export(char **args, t_env *env)
 	if (*args == NULL)
 	{
 		printf("need to print env variable in sort\n");
-		return (1);
+		return (0);
 	}
 	while (*args != NULL)
 	{
 		if (!ft_is_valid_syntax(*args, &add_flag, &equal_flag))
 			return (ft_puterror(*args, "not a valid identifier"));
 		if (!equal_flag)
-			return (1);
+			return (0);
 		key = ft_cpy_env_key(*args, add_flag);
 		if (!key)
 			return (0);
@@ -92,7 +92,7 @@ int	ft_builtin_export(char **args, t_env *env)
 		if (!value)
 		{
 			free(key);
-			return (0);
+			return (-1);
 		}
 		if (ft_env_var_exist(key, env))
 		{
@@ -105,5 +105,5 @@ int	ft_builtin_export(char **args, t_env *env)
 		free(key);
 		args++;
 	}
-	return (1);
+	return (0);
 }
