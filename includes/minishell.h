@@ -197,13 +197,14 @@ int				ft_puterror(char *arg, char *str);
 ----------------------------------ENV-----------------------------------------
 */
 t_env			*ft_get_env_var_list(char **envp);
-t_env			*ft_add_env_var(t_env *first_env_var, t_env *env_var);
-t_env			*ft_new_env_var(char *str);
+t_env			*ft_add_env_var(t_env *first_env_var, t_env *new_env_var);
+t_env			*ft_new_env_var(char *new_key, char *new_val);
 char			*ft_cpy_env_key(char *str, int add_flag);
 char			*ft_cpy_env_val(char *str);
-char			*ft_getenv(char *key, t_env *env);
-int				ft_env_var_exist(char *key, t_env *env);
-int				ft_update_env_value(char *key, char *new_value, t_env *env);
+char			*ft_get_env_var(char *key, t_env *env);
+int				ft_is_env_var_exist(char *key, t_env *env);
+int				ft_update_env_var(char *key, char *new_value, t_env *env);
+int				ft_delete_env_var(char *key, t_env *env);
 void			ft_free_env_var_list(t_env *env_var);
 void			ft_free_env_var(t_env *env_var);
 

@@ -101,7 +101,9 @@ SRC		= 	minishell.c \
 			builtins/env/ft_free_env_var.c \
 			builtins/env/ft_find_env_var.c \
 			builtins/env/ft_get_env.c \
-			builtins/env/ft_update_env_var.c
+			builtins/env/ft_update_env_var.c \
+			builtins/env/ft_delete_env_var.c \
+			builtins/env/ft_add_env_var.c
 
 
 OBJ = $(SRC:.c=.o)
