@@ -10,17 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "builtins.h"
 #include "../includes/minishell.h"
 
-/*
-int	val_exist_in_envp(char *val, char **envp)
-{
-
-	return (0)
-}
-*/
-
+/* Check if the argument(name) has valid syntax */
 int	ft_is_valid_unset(char *arg)
 {
 	int	i;
@@ -37,27 +29,21 @@ int	ft_is_valid_unset(char *arg)
 	return (1);
 }
 
+/* Unset the env variable specified by its name(key) */
 int	ft_builtin_unset(char **args, t_env *env)
 {
 	args++;
 	while (*args != NULL)
 	{
-		printf("arg to check: %s\n", *args);
-		if (!ft_is_valid_unset(*args))
-			return (ft_puterror(*args, "not a valid identifier"));
-		if (ft_env_var_exist(*args, env))
-			printf("have to delete this env_var\n");
-		/*
-		if (val_exist_in_envp(*args, envp))
-			printf("%s found in environment values\n");
+		if (ft_is_valid_unset(*args))
+		{
+			if (ft_is_env_var_exist(*args, env))
+				ft_delete_env_var(*args, env);
+		}
 		else
-			printf("%s not found\n");
-		*/
+			ft_puterror(*args, "not a valid identifier");
 		args++;
 	}
-	//while arg is noy NULL
-	// check if the variable exist,
-	// exist: delete it
-	// no exist pass to the next aegument
+	ft_builtin_env(1, env);
 	return (0);
 }
