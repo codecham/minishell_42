@@ -182,11 +182,15 @@ int				ft_builtin_pwd(int fd_out);
 int				ft_builtin_cd(char *dir);
 int				ft_builtin_env(int fd_out, t_env *env);
 int				ft_builtin_export(char **args, t_env *env);
-int				ft_builtin_unset(char **args, int fd_out, char **envp);
+int				ft_builtin_unset(char **args, t_env *env);
 void			ft_builtin_exit(char **args);
 
 /* utils */
-int				ft_is_valid_syntax(char *arg, int *add_flag, int *equal_flag);
+int				ft_is_valid_export(char *arg, int *add_flag, int *equal_flag);
+int				ft_is_valid_unset(char *arg);
+int				ft_is_valid_first_char(char c);
+int				ft_is_valid_char(char c);
+int				ft_puterror(char *arg, char *str);
 
 /*
 ----------------------------------ENV-----------------------------------------
@@ -198,6 +202,7 @@ char			*ft_cpy_env_key(char *str, int add_flag);
 char			*ft_cpy_env_val(char *str);
 char			*ft_getenv(char *key, t_env *env);
 int				ft_env_var_exist(char *key, t_env *env);
+int				ft_update_env_value(char *key, char *new_value, t_env *env);
 void			ft_free_env_var_list(t_env *env_var);
 void			ft_free_env_var(t_env *env_var);
 
