@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "../builtins.h"
 #include "../../includes/minishell.h"
 
 /* Init all str pointer to NULL */
@@ -22,10 +21,9 @@ void	ft_init_env_var(t_env *env_var)
 }
 
 /*
-Create a new t_env structure, which will contain one environment variable.
-Parameter example: "NEW_VAR=Hello"
+Create a new env variable, with new key and new value.
 */
-t_env	*ft_new_env_var(char *str)
+t_env	*ft_new_env_var(char *new_key, char *new_val)
 {
 	t_env	*new_env_val;
 
@@ -33,13 +31,13 @@ t_env	*ft_new_env_var(char *str)
 	if (!new_env_val)
 		return (NULL);
 	ft_init_env_var(new_env_val);
-	new_env_val->key = ft_cpy_env_key(str, 0);
+	new_env_val->key = new_key;
 	if (!new_env_val->key)
 	{
 		ft_free_env_var(new_env_val);
 		return (NULL);
 	}
-	new_env_val->value = ft_cpy_env_val(str);
+	new_env_val->value = new_val;
 	if (!new_env_val->value)
 	{
 		ft_free_env_var(new_env_val);

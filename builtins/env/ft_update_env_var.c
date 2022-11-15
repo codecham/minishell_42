@@ -10,11 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "../builtins.h"
 #include "../../includes/minishell.h"
 
 /* Update the value of the environment variable found with key. */
-int	ft_update_env_value(char *key, char *new_value, t_env *env)
+int	ft_update_env_var(char *key, char *new_value, t_env *env)
 {
 	t_env	*env_var;
 

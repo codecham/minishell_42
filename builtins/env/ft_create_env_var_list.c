@@ -10,47 +10,53 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "../builtins.h"
 #include "../../includes/minishell.h"
 
-/* Add an environment variable to the linked list */
-t_env	*ft_add_env_var(t_env *first_env_var, t_env *env_var)
+/* Get an env variable from the **envp */
+t_env	*ft_get_one_env_var(char *env)
 {
-	t_env	*tmp;
+	char	*key;
+	char	*value;
+	t_env	*env_var;
 
-	if (first_env_var == NULL)
-		first_env_var = env_var;
-	else
+	key = ft_cpy_env_key(env, 0);
+	if (!key)
+		return (NULL);
+	value = ft_cpy_env_val(env);
+	if (!value)
 	{
-		tmp = first_env_var;
-		while (tmp->next != NULL)
-			tmp = tmp->next;
-		tmp->next = env_var;
+		free(key);
+		return (NULL);
 	}
-	return (first_env_var);
+	env_var = ft_new_env_var(key, value);
+	if (!env_var)
+	{
+		free (key);
+		free (value);
+		return (NULL);
+	}
+	return (env_var);
 }
 
-/*
-Create a linked list, which will contain all environment variables.
-*/
+/* Create a linked list, which will contain all environment variables. */
 t_env	*ft_get_env_var_list(char **envp)
 {
-	t_env	*first_env_var;
-	t_env	*new_env_var;
+	t_env	*env_var_list;
+	t_env	*env_var;
 
 	if (!envp)
 		return (NULL);
-	first_env_var = NULL;
+	env_var_list = NULL;
 	while (*envp)
 	{
-		new_env_var = ft_new_env_var(*envp);
-		if (!new_env_var)
+		env_var = ft_get_one_env_var(*envp);
+		if (!env_var)
 		{
-			ft_free_env_var_list(first_env_var);
+			ft_free_env_var_list(env_var_list);
 			return (NULL);
 		}
-		first_env_var = ft_add_env_var(first_env_var, new_env_var);
+		env_var_list = ft_add_env_var(env_var_list, env_var);
 		envp++;
 	}
-	return (first_env_var);
+	return (env_var_list);
 }

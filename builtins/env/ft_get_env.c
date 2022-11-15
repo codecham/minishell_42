@@ -10,11 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "../builtins.h"
 #include "../../includes/minishell.h"
 
 /* Get with key, the value of the environment variable. */
-char	*ft_getenv(char *key, t_env *env)
+char	*ft_get_env_var(char *key, t_env *env)
 {
 	t_env	*env_var;
 
