@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 16:31:21 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/08 16:52:46 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/15 21:18:54 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_create_token_list(t_data_parsing *p, char *input)
 		return (ft_exit_code(p, exit_code));
 	if (ft_replace_env(p) == -1)
 		return (ft_err_pars_message(p, "malloc error\n", -1));
-	if (ft_delete_quotes(p) == -1)
+	if (ft_delete_quotes(p, -1) == -1)
 		return (ft_err_pars_message(p, "malloc error\n", -1));
 	exit_code = ft_set_red_file_name(p);
 	if (exit_code < 0)

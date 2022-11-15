@@ -6,13 +6,13 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 20:16:23 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/07 05:16:22 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/15 20:10:57 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "node.h"
+#include "../includes/minishell.h"
 
-int ft_split_path(t_node *node, char *command)
+int	ft_split_path(t_node *node, char *command)
 {
 	char	**split;
 	int		i;
@@ -41,7 +41,7 @@ int	ft_command_is_a_path(t_node *node, char *command)
 		if (command[i] == '/')
 		{
 			ft_split_path(node, command);
-			return (0);	
+			return (0);
 		}
 		i++;
 	}

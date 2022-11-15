@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 06:08:47 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/09 22:49:01 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/15 19:38:33 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_search_infile_redir(t_redir_list *elem)
 		if (tmp->type == INFILE || tmp->type == HEREDOC)
 			fd = tmp->fd;
 		if (tmp->next == NULL)
-			break;
+			break ;
 		tmp = elem->next;
 	}
 	return (fd);
@@ -54,7 +54,7 @@ int	ft_search_outfile_redir(t_redir_list *elem)
 		if (tmp->type == OUTFILE || tmp->type == OUTFILE_HAP)
 			fd = tmp->fd;
 		if (tmp->next == NULL)
-			break;
+			break ;
 		tmp = elem->next;
 	}
 	return (fd);

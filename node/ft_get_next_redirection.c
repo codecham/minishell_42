@@ -6,11 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 02:01:03 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/09/10 17:49:31 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/15 20:11:15 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "node.h"
+#include "../includes/minishell.h"
 
 /*
 	Cette fonction renvoie l'element suivant de la liste

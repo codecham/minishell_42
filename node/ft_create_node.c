@@ -6,11 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 19:55:43 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/14 18:29:09 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/15 20:11:07 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "node.h"
+#include "../includes/minishell.h"
 
 /*
 	Fonction créant un nouveau noeud et initialisant les données de ce dernier.
@@ -20,7 +20,7 @@
 
 t_node	*ft_create_node(void)
 {
-	t_node *new_node;
+	t_node	*new_node;
 
 	new_node = (t_node *)malloc(sizeof(t_node));
 	if (!new_node)

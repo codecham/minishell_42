@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 05:59:42 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/09 23:53:10 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/15 19:38:53 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 void	ft_close_other_fd(t_node *node, int last_in, int last_out)
 {
-	t_redir_list *elem;
+	t_redir_list	*elem;
 
 	elem = node->redirection;
 	while (1)
@@ -54,7 +54,7 @@ int	ft_set_outile_fd(int new_fd, int fd_out)
 
 int	ft_set_redirection_fd(t_node *node)
 {
-	int last_infile_fd;
+	int	last_infile_fd;
 	int	last_outfile_fd;
 
 	last_infile_fd = ft_search_infile_redir(node->redirection);

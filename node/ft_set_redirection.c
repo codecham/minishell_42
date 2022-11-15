@@ -6,18 +6,20 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 01:28:23 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/07 03:10:36 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/15 20:11:32 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "node.h"
+#include "../includes/minishell.h"
 
 /*
 	Cette fonction ajoute un element a la liste de redirection.
 
 	PARAMETRE:	- node: La node a laquelle ajouter la redirection
-				- redirect_type: La valeur entiere correspondant a la redirection
-				- fd: Le file descriptor correspondant au fichier de la redirection
+				- redirect_type: La valeur entiere correspondant a
+				la redirection
+				- fd: Le file descriptor correspondant au fichier 
+				de la redirection
 
 	VALEUR DE RETOUR: Renvoie 0 si elle reussis ou -1 si elle echoue
 */

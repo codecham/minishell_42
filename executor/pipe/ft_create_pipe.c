@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 21:29:52 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/10 02:00:44 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/15 19:34:18 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 /*
 
-	int pipe(int fd[2]) --> créé un pipe avec en renvoyant un tableau de fd contenant le fd de lecture et le fd d'écriture
+	int pipe(int fd[2]) --> créé un pipe avec en renvoyant un tableau de fd 
+	contenant le fd de lecture et le fd d'écriture
 
 */
 
-int		ft_create_pipe(t_data *data)
+int	ft_create_pipe(t_data *data)
 {
 	t_node	*node;
 	t_node	*next;
@@ -33,7 +34,7 @@ int		ft_create_pipe(t_data *data)
 		node->pipe_out = pipe_fd[1];
 		next->pipe_in = pipe_fd[0];
 		if (next->next == NULL)
-			break;
+			break ;
 		node = node->next;
 		next = next->next;
 	}

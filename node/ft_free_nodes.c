@@ -6,14 +6,15 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 02:06:40 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/09 21:01:26 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/15 20:11:07 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "node.h"
+#include "../includes/minishell.h"
 
 /*
-	La fonction ft_free_nodes va liberer tout l'espace memoire alloue dynamiquement de toute les nodes en les libereant dans l'ordre une par une.
+	La fonction ft_free_nodes va liberer tout l'espace memoire alloue 
+	dynamiquement de toute les nodes en les libereant dans l'ordre une par une.
 
 	PARAMETRES:	- node: la premiere node de la liste.
 */

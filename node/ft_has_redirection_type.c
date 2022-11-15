@@ -6,15 +6,15 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 18:56:28 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/10/01 19:02:23 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/15 20:11:19 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "node.h"
+#include "../includes/minishell.h"
 
 int	ft_has_redirection_type(t_node *node, int type)
 {
-	t_redir_list *elem;
+	t_redir_list	*elem;
 
 	elem = node->redirection;
 	if (elem == NULL)
@@ -32,7 +32,7 @@ int	ft_has_redirection_type(t_node *node, int type)
 				return (1);
 		}
 		if (elem->next == NULL)
-			break;
+			break ;
 	}
 	return (0);
 }

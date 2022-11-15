@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 13:00:14 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/14 17:56:09 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/15 19:35:21 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_close_pipe_main(t_data *data)
 {
-	t_node *node;
+	t_node	*node;
 
 	node = data->first_node;
 	while (1)
@@ -31,7 +31,7 @@ void	ft_close_pipe_main(t_data *data)
 
 int	ft_exec_pipe(t_data *data)
 {
-	t_node *node;
+	t_node	*node;
 
 	node = data->first_node;
 	ft_create_pipe(data);
@@ -43,7 +43,7 @@ int	ft_exec_pipe(t_data *data)
 		else if (node->pid == 0)
 			ft_run_pipe(data, node);
 		if (node->next == NULL)
-			break;
+			break ;
 		node = node->next;
 	}
 	ft_close_pipe_main(data);

@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:28:32 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/14 17:19:17 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/15 21:45:22 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,16 @@ int	ft_err_cmd_exist(t_node *node)
 	return (127);
 }
 
-void ft_err_malloc_exec(void)
+void	ft_err_malloc_exec(void)
 {
 	ft_putstr_fd("Minishell: ", 2);
 	ft_putstr_fd("malloc error\n", 2);
+}
+
+int	ft_err_access(char *command_name)
+{
+	ft_putstr_fd("Minishell: permission denied: ", 2);
+	ft_putstr_fd(command_name, 2);
+	ft_putchar_fd('\n', 2);
+	return (126);
 }

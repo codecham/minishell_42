@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 11:40:44 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/08 16:52:26 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/15 20:18:38 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,8 @@ int	ft_search_env(t_token *token, char **envp)
 int	ft_replace_env(t_data_parsing *p)
 {
 	t_token	*token;
-	int		i;
 
 	token = p->first_token;
-	i = 0;
 	while (1)
 	{
 		if (ft_search_env(token, p->envp) == -1)

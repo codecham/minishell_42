@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 18:14:44 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/09 16:21:06 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/15 20:29:30 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,25 +23,25 @@
 
 void	ft_set_builtin(t_node *node)
 {
-	if (strncmp(node->command_name, "echo",
+	if (ft_strncmp(node->command_name, "echo",
 			(ft_strlen(node->command_name) + 1)) == 0)
 		node->is_built_in = ECHO;
-	else if (strncmp(node->command_name, "cd",
+	else if (ft_strncmp(node->command_name, "cd",
 			(ft_strlen(node->command_name) + 1)) == 0)
 		node->is_built_in = CD;
-	else if (strncmp(node->command_name, "pwd",
+	else if (ft_strncmp(node->command_name, "pwd",
 			(ft_strlen(node->command_name) + 1)) == 0)
 		node->is_built_in = PWD;
-	else if (strncmp(node->command_name, "export",
+	else if (ft_strncmp(node->command_name, "export",
 			(ft_strlen(node->command_name) + 1)) == 0)
 		node->is_built_in = EXPORT;
-	else if (strncmp(node->command_name, "unset",
+	else if (ft_strncmp(node->command_name, "unset",
 			(ft_strlen(node->command_name) + 1)) == 0)
 		node->is_built_in = UNSET;
-	else if (strncmp(node->command_name, "env",
+	else if (ft_strncmp(node->command_name, "env",
 			(ft_strlen(node->command_name) + 1)) == 0)
 		node->is_built_in = ENV;
-	else if (strncmp(node->command_name, "exit",
+	else if (ft_strncmp(node->command_name, "exit",
 			(ft_strlen(node->command_name) + 1)) == 0)
 		node->is_built_in = EXIT;
 }

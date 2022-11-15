@@ -6,7 +6,7 @@
 #    By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/09 23:36:50 by dcorenti          #+#    #+#              #
-#    Updated: 2022/11/10 02:17:02 by dcorenti         ###   ########.fr        #
+#    Updated: 2022/11/15 21:05:43 by dcorenti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ NAME	= minishell
 CFLAGS	= -Wall -Wextra -Werror
 CC		= gcc
 
-LIBFT_D	= ft_libft
-LIBFT	= ft_libft/libft.a
+LIBFT_D	= libft
+LIBFT	= libft/libft.a
 
 SRC		= 	minishell.c \
 			parsing/ast/ft_set_data.c \
@@ -86,6 +86,7 @@ SRC		= 	minishell.c \
 			executor/pipe/ft_has_redirection.c \
 			executor/pipe/ft_run_pipe.c \
 			executor/pipe/ft_set_fd_pipe.c \
+			executor/pipe/ft_set_fd_pipe_red.c \
 			builtins/ft_builtins.c \
 			builtins/ft_echo.c \
 			builtins/ft_cd.c \
@@ -103,7 +104,8 @@ SRC		= 	minishell.c \
 			builtins/env/ft_get_env.c \
 			builtins/env/ft_update_env_var.c \
 			builtins/env/ft_delete_env_var.c \
-			builtins/env/ft_add_env_var.c
+			builtins/env/ft_add_env_var.c \
+			signals/signal_handler.c
 
 
 OBJ = $(SRC:.c=.o)
@@ -112,7 +114,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@ $(MAKE) -C $(LIBFT_D) all
-	@ $(CC) ${CFLAGS} -o $(NAME) $(OBJ) $(LIBFT) -lreadline
+	@ $(CC) ${CFLAGS}  -L /usr/local/opt/readline/lib -I /usr/local/opt/readline/include -o $(NAME) $(OBJ) $(LIBFT) -lreadline -ltermcap
 
 clean:
 	@ $(MAKE) -C $(LIBFT_D) clean

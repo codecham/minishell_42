@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 21:32:09 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/09 16:20:58 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/15 20:28:48 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*ft_get_env_by_key(char *key, char **envp)
 		return (NULL);
 	while (envp[i])
 	{
-		if (strncmp(key, envp[i], ft_strlen(key)) == 0)
+		if (ft_strncmp(key, envp[i], ft_strlen(key)) == 0)
 			return (ft_get_value_env(key, envp[i]));
 		i++;
 	}

@@ -6,14 +6,14 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 20:10:46 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/14 21:43:34 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/15 21:36:17 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include "../ft_libft/libft.h"
+# include "../libft/libft.h"
 # include <stdio.h>
 # include <readline/readline.h>
 # include <readline/history.h>
@@ -22,8 +22,13 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <errno.h>
+# include <termios.h>
+# include <curses.h>
+# include <term.h>
+# include <termcap.h>
+# include <string.h>
 
-# define ECHO 1
+# define ECHO_ 1
 # define CD 2
 # define PWD 3
 # define EXPORT 4
@@ -35,10 +40,10 @@
 # define PIPE 7
 # define WORDS 8
 
-# define OUTFILE 10		// >
-# define OUTFILE_HAP 11	// >>
-# define INFILE 12		// <
-# define HEREDOC 13		// <<
+# define OUTFILE 10
+# define OUTFILE_HAP 11
+# define INFILE 12
+# define HEREDOC 13
 
 # define ERR_MALLOC -1
 # define ERROR -2
@@ -52,7 +57,7 @@ struct	s_token;
 struct	s_saved_fd;
 struct	s_env;
 
-int	g_exit_status;
+int		g_exit_status;
 
 typedef struct s_data
 {
@@ -90,29 +95,28 @@ typedef struct s_data_parsing
 
 typedef struct s_redir_list
 {
-	int					type;		// INFILE (>) -- INFILE_HAP (>>) -- OUTFILE (<) -- HEREDOC (<<)
-	int					fd;			// fd du fichier correspondant
-	char				*file_name; //Nom du fichier
-	struct s_redir_list	*next;		// Redirection suivante
+	int					type;
+	int					fd;
+	char				*file_name;
+	struct s_redir_list	*next;
 }	t_redir_list;
-
 
 typedef struct s_node
 {
 	int					is_built_in;
 	int					cmd_exist;
-	char 				*command_name;	// Le nom de la commande
-	char				*path_cmd;		// Chemin de la commande
-	char				**arg;			// Double tableau contenant les arguments
-	struct s_node		*next;			// Commande suivante aprés un pipe
-	struct s_node		*previous;		// Commande précédente avant un pipe
-	struct s_redir_list	*redirection;	// Liste de redirections
-	int					saved_stdin;	// save de stdin
-	int					saved_stdout;	// save de stdout
-	int					fd_in;			// fd_in
-	int					fd_out;			// fd_out
-	int					pipe_in;		// fd du pipe in (init à 0)
-	int					pipe_out;		// fd du pipe out (init à 1)
+	char				*command_name;
+	char				*path_cmd;
+	char				**arg;
+	struct s_node		*next;
+	struct s_node		*previous;
+	struct s_redir_list	*redirection;
+	int					saved_stdin;
+	int					saved_stdout;
+	int					fd_in;
+	int					fd_out;
+	int					pipe_in;
+	int					pipe_out;
 	pid_t				pid;
 }	t_node;
 
@@ -120,46 +124,51 @@ typedef struct s_node
 int				ft_parsing(char *input, char **envp);
 int				ft_free_data(t_data *data);
 
-
-
 /* token */
 int				ft_create_token_list(t_data_parsing *data_p, char *input);
 int				ft_set_char_list(t_data_parsing *data_p, char *input);
 void			ft_free_token(t_token *token);
 t_token			*ft_create_token(t_token *previous, t_data_parsing *p);
 int				ft_cpy_in_quote(t_token *token, char *input, int i);
-int				ft_set_word_token(t_data_parsing *p, t_token *token, char *input, int i);
+int				ft_set_word_token(t_data_parsing *p, t_token *token,
+					char *input, int i);
 int				ft_set_token_list(t_data_parsing *d, char *input);
 int				ft_replace_env(t_data_parsing *p);
 int				ft_change_env_token(t_token *token, int i, char **envp);
-char			*ft_swap_env_token(t_token *token, char *value, int begin, int end);
-int				ft_delete_quotes(t_data_parsing *p);
+char			*ft_swap_env_token(t_token *token, char *value,
+					int begin, int end);
+int				ft_delete_quotes(t_data_parsing *p, int i);
 void			ft_clear_token_list(t_data_parsing *p);
 void			ft_delete_token_in_list(t_data_parsing *p, t_token *bad_token);
-int 			ft_check_redir_next(t_data_parsing *p, t_token *token);
+int				ft_check_redir_next(t_data_parsing *p, t_token *token);
 int				ft_concat_redir(t_data_parsing *p);
 int				ft_ambiguous_redirect(t_data_parsing *p);
 int				ft_check_syntax(t_data_parsing *p);
-int 			ft_set_red_file_name(t_data_parsing *p);
+int				ft_set_red_file_name(t_data_parsing *p);
 
 /* utils */
 int				ft_only_space(char *str);
 int				ft_skip_space(char *str, int i);
 int				ft_get_env_value(char *key, char **value, char **envp);
-char 			*ft_realloc_add(char *old, char c);
-int				ft_err_pars_message(t_data_parsing *data_p, char *message, int err_code);
-int 			ft_err_pars_bad_char(t_data_parsing *data_p, char c, int err_code);
-int				ft_err_pars_near(t_data_parsing *data_p, char *str, int err_code);
-int				ft_err_pars_ambiguous(t_data_parsing *data_p, t_token *token, int err_code);
-int				ft_err_pars_new_line(t_data_parsing *data_p, char *str, int err_code);
+char			*ft_realloc_add(char *old, char c);
+int				ft_err_pars_message(t_data_parsing *data_p,
+					char *message, int err_code);
+int				ft_err_pars_bad_char(t_data_parsing *data_p,
+					char c, int err_code);
+int				ft_err_pars_near(t_data_parsing *data_p,
+					char *str, int err_code);
+int				ft_err_pars_ambiguous(t_data_parsing *data_p, t_token *token,
+					int err_code);
+int				ft_err_pars_new_line(t_data_parsing *data_p,
+					char *str, int err_code);
 int				ft_is_separator(char c);
-int 			ft_is_autorized_char(t_data_parsing *p, char *input);
+int				ft_is_autorized_char(t_data_parsing *p, char *input);
 int				ft_autorized_char(char c);
 void			ft_free_dp(t_data_parsing *data_p);
 int				ft_good_c_for_env(char c);
 int				ft_is_empty_token(t_token *token);
 int				ft_is_redirection(t_token *token);
-int 			ft_is_directory(char *directory);
+int				ft_is_directory(char *directory);
 
 /* ast */
 
@@ -216,46 +225,53 @@ t_node			*ft_create_node(void);
 t_node			*ft_new_node(t_node *previous_node);
 t_redir_list	*ft_get_next_redirection(t_redir_list *li);
 t_redir_list	*ft_get_last_redirection(t_redir_list *li);
-int				ft_set_redirection(t_node *node, int redirect_type, int fd, char *f_name);
+int				ft_set_redirection(t_node *node, int redirect_type,
+					int fd, char *f_name);
 int				ft_add_arg_node(t_node *node, char *arg);
 int				ft_add_command_name(t_node *node, char *command);
 void			ft_free_nodes(t_node *node);
 int				ft_has_redirection_type(t_node *node, int type);
 int				ft_set_fd_pipe(t_node *node);
 int				ft_has_redirection(t_node *node, int type);
+void			ft_free_matrice(char **matrice);
 
 /*
-----------------------------------Executor-----------------------------------------
+----------------------------------Executor--------------------------------------
 */
 
-void		ft_executor(t_data *data);
-int 		ft_reset_saved_fd(t_node *node);
-void		ft_wait_children(void);
-char		**ft_get_path_env(char **envp);
-int			ft_find_path_cmd(t_node *node, char **path_env);
-void		ft_is_builtin(t_node *node);
-int			ft_set_path_cmd(t_data *data);
-int			ft_exec_regular_cmd(t_data *data, t_node *this_node);
-int			ft_search_outfile_redir(t_redir_list *elem);
-int			ft_search_infile_redir(t_redir_list *elem);
-int			ft_exec_redirection(t_data *data, t_node *node);
-char		*ft_get_env_by_key(char *key, char **envp);
-int			ft_set_redirection_fd(t_node *node);
-int			ft_count_node(t_node *node);
-int			ft_create_pipe(t_data *data);
-int			ft_exec_pipe(t_data *data);
-void		ft_wait_one_children(pid_t pid);
-int			ft_exec_regular(t_data *data, t_node *node);
-void		ft_close_bad_pipe(t_node *first_node, t_node *current_node);
-int			ft_exec_simple_pipe(t_data *data, t_node *node);
-int			ft_exec_pipe(t_data *data);
-int			ft_run_pipe(t_data *data, t_node *node);
-int			ft_exec_pipe_red(t_data *data, t_node *node);
-int			ft_open_files(t_node *node);
-int			ft_err_dup(void);
-int			ft_save_in_out(t_node *node);
-int			ft_err_cmd_exist(t_node *node);
-int			ft_err_fork(void);
-void		ft_err_malloc_exec(void);
-
+void			ft_executor(t_data *data);
+int				ft_reset_saved_fd(t_node *node);
+void			ft_wait_children(void);
+char			**ft_get_path_env(char **envp);
+int				ft_find_path_cmd(t_node *node, char **path_env);
+void			ft_is_builtin(t_node *node);
+int				ft_set_path_cmd(t_data *data);
+int				ft_exec_regular_cmd(t_data *data, t_node *this_node);
+int				ft_search_outfile_redir(t_redir_list *elem);
+int				ft_search_infile_redir(t_redir_list *elem);
+int				ft_exec_redirection(t_data *data, t_node *node);
+char			*ft_get_env_by_key(char *key, char **envp);
+int				ft_set_redirection_fd(t_node *node);
+int				ft_count_node(t_node *node);
+int				ft_create_pipe(t_data *data);
+int				ft_exec_pipe(t_data *data);
+void			ft_wait_one_children(pid_t pid);
+int				ft_exec_regular(t_data *data, t_node *node);
+void			ft_close_bad_pipe(t_node *first_node, t_node *current_node);
+int				ft_exec_simple_pipe(t_data *data, t_node *node);
+int				ft_exec_pipe(t_data *data);
+int				ft_run_pipe(t_data *data, t_node *node);
+int				ft_exec_pipe_red(t_data *data, t_node *node);
+int				ft_open_files(t_node *node);
+int				ft_err_dup(void);
+int				ft_save_in_out(t_node *node);
+int				ft_err_cmd_exist(t_node *node);
+int				ft_err_fork(void);
+void			ft_err_malloc_exec(void);
+int				ft_reset_fd_out(t_node *node);
+int				ft_reset_fd_in(t_node *node);
+int				ft_set_fd_pipe_red(t_node *node);
+int				ft_err_access(char *command_name);
+void			ft_signal_handler(void);
+void			rl_replace_line(const char *text, int clear_undo);
 #endif

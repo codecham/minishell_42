@@ -6,11 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 21:15:28 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/09 23:52:27 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/15 20:10:35 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "node.h"
+#include "../includes/minishell.h"
 
 void	ft_free_new(char **new, int i)
 {
@@ -90,7 +90,7 @@ int	ft_add_arg_node(t_node *node, char *arg)
 			return (-1);
 		node->arg[i] = ft_strdup(arg);
 		if (!node->arg[i])
-			return(-1);
+			return (-1);
 	}
 	return (0);
 }

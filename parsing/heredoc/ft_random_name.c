@@ -6,20 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 18:47:45 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/09 23:00:00 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/15 20:16:41 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-/*
-	La fonction ft_random_name génere un nom pour le Heredoc en vérifiant 
-	que ce nom n'existe pas dans le dossier courant.
-
-	VALEUR DE RETOUR:
-		- Renvoie 0 si tout se passe bien
-		- Renvoie -1 en cas d'échec de malloc
-*/
 
 int	ft_check_name_exist(char *name)
 {
@@ -72,10 +63,8 @@ char	*ft_random_name(void)
 {
 	char	*random_name;
 	int		exit_code;
-	int		i;
 
 	exit_code = 1;
-	i = 0;
 	random_name = (char *)malloc(sizeof(char) * 3);
 	if (!random_name)
 		return (NULL);

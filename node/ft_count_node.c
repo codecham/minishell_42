@@ -6,16 +6,16 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:22:47 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/09/29 18:27:27 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/15 20:10:58 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "node.h"
+#include "../includes/minishell.h"
 
 int	ft_count_node(t_node *node)
 {
-	t_node *tmp;
-	int i;
+	t_node	*tmp;
+	int		i;
 
 	i = 1;
 	if (!node)
