@@ -34,7 +34,7 @@ char	*ft_get_new_env_val(char *str, char *key, int *add, t_env *env)
 		return (NULL);
 	if (*add)
 	{
-		return_value = ft_strjoin(value, ft_getenv(key, env));
+		return_value = ft_strjoin(value, ft_get_env_var(key, env));
 		free(value);
 		value = NULL;
 	}

@@ -21,6 +21,8 @@ int	ft_call_builtin(t_node *node, t_env *env)
 {
 	int	command;
 
+	if (!env)
+		printf("ERROR\n");
 	command = node->is_built_in;
 	if (command == ECHO)
 		return (ft_builtin_echo(node->arg, node->fd_out));
@@ -31,10 +33,7 @@ int	ft_call_builtin(t_node *node, t_env *env)
 	else if (command == EXPORT)
 		return (ft_builtin_export(node->arg, env));
 	else if (command == UNSET)
-	{
-		//return (ft_builtin_unset(node->arg, node->fd_out, env));
-		printf("command is unset...wip\n");
-	}
+		return (ft_builtin_unset(node->arg, env));
 	else if (command == ENV)
 		return (ft_builtin_env(node->fd_out, env));
 	else if (command == EXIT)

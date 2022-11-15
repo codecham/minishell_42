@@ -22,8 +22,6 @@ int	ft_builtin_export(char **args, t_env *env)
 	char	*value;
 
 	args++;
-	add_flag = 0;
-	equal_flag = 0;
 	if (*args == NULL)
 	{
 		printf("need to print env variable in sort\n");
@@ -31,29 +29,32 @@ int	ft_builtin_export(char **args, t_env *env)
 	}
 	while (*args != NULL)
 	{
-		if (!ft_is_valid_export(*args, &add_flag, &equal_flag))
-			return (ft_puterror(*args, "not a valid identifier"));
-		if (!equal_flag)
-			return (0);
-		key = ft_cpy_env_key(*args, add_flag);
-		if (!key)
-			return (1);
-		value = ft_get_new_env_val(*args, key, &add_flag, env);
-		if (!value)
+		add_flag = 0;
+		equal_flag = 0;
+		if (ft_is_valid_export(*args, &add_flag, &equal_flag))
 		{
-			free(key);
-			return (1);
-		}
-		if (ft_env_var_exist(key, env))
-		{
-			ft_update_env_value(key, value, env);
+			if (equal_flag)
+			{
+				key = ft_cpy_env_key(*args, add_flag);
+				if (!key)
+					return (1);
+				value = ft_get_new_env_val(*args, key, &add_flag, env);
+				if (!value)
+				{
+					free(key);
+					return (1);
+				}
+				if (ft_is_env_var_exist(key, env))
+					ft_update_env_var(key, value, env);
+				else
+					printf("NOT EXIST need to create one.\n");
+				free(key);
+			}
 		}
 		else
-		{
-			printf("NOT EXIST need to create one.\n");
-		}
-		free(key);
+			ft_puterror(*args, "not a valid identifier");
 		args++;
 	}
+	ft_builtin_env(1, env);
 	return (0);
 }
