@@ -13,33 +13,34 @@
 //#include "builtins.h"
 #include "../includes/minishell.h"
 
+/*
+Call the corresponded builtin function.
+Return -1 if an error occured.
+*/
 int	ft_call_builtin(t_node *node, t_env *env)
 {
 	int	command;
 
 	command = node->is_built_in;
 	if (command == ECHO)
-		ft_builtin_echo(node->arg, node->fd_out);
+		return (ft_builtin_echo(node->arg, node->fd_out));
 	else if (command == CD)
-		ft_builtin_cd(node->arg[1]);
+		return (ft_builtin_cd(node->arg[1]));
 	else if (command == PWD)
-		ft_builtin_pwd(node->fd_out);
+		return (ft_builtin_pwd(node->fd_out));
 	else if (command == EXPORT)
-	{
-		//ft_builtin_export(node->arg, env);
-		printf("command is export...wip\n");
-	}
+		return (ft_builtin_export(node->arg, env));
 	else if (command == UNSET)
 	{
-		//ft_builtin_unset(node->arg, node->fd_out, env);
+		//return (ft_builtin_unset(node->arg, node->fd_out, env));
 		printf("command is unset...wip\n");
 	}
 	else if (command == ENV)
-		ft_builtin_env(node->fd_out, env);
+		return (ft_builtin_env(node->fd_out, env));
 	else if (command == EXIT)
 	{
 		printf("command is exit...wip\n");
-		//ft_builtin_exit(node->arg);
+		//return (ft_builtin_exit(node->arg));
 	}
 	return (0);
 }
