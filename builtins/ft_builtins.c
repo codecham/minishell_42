@@ -15,7 +15,7 @@
 
 /*
 Call the corresponded builtin function.
-Return -1 if an error occured.
+Return 1 if an error occured.
 */
 int	ft_call_builtin(t_node *node, t_env *env)
 {

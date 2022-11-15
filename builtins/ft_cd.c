@@ -45,12 +45,12 @@ int	ft_builtin_cd(char *dir)
 	if (dir == NULL)
 	{
 		if (!cd_to_home())
-			return (-1);
+			return (1);
 	}
 	else
 	{
 		if (!cd_to_path(dir))
-			return (-1);
+			return (1);
 	}
 	return (0);
 }
