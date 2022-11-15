@@ -37,12 +37,12 @@ int	ft_builtin_export(char **args, t_env *env)
 			return (0);
 		key = ft_cpy_env_key(*args, add_flag);
 		if (!key)
-			return (0);
+			return (1);
 		value = ft_get_new_env_val(*args, key, &add_flag, env);
 		if (!value)
 		{
 			free(key);
-			return (-1);
+			return (1);
 		}
 		if (ft_env_var_exist(key, env))
 		{

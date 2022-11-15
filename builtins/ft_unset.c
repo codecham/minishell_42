@@ -21,24 +21,40 @@ int	val_exist_in_envp(char *val, char **envp)
 }
 */
 
-int	ft_builtin_unset(char **args, int fd_out, char **envp)
+int	ft_is_valid_unset(char *arg)
 {
-	(void)fd_out;
-	//(void)envp;
-	(void)args;
-	while (*envp != NULL)
+	int	i;
+
+	i = 0;
+	if (!ft_is_valid_first_char(arg[i]))
+		return (0);
+	while (arg[i] != '\0')
 	{
-		//printf("%s\n", *args);
-		printf("%s\n", *envp);
+		if (!ft_is_valid_char(arg[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	ft_builtin_unset(char **args, t_env *env)
+{
+	args++;
+	while (*args != NULL)
+	{
+		printf("arg to check: %s\n", *args);
+		if (!ft_is_valid_unset(*args))
+			return (ft_puterror(*args, "not a valid identifier"));
+		if (ft_env_var_exist(*args, env))
+			printf("have to delete this env_var\n");
 		/*
 		if (val_exist_in_envp(*args, envp))
 			printf("%s found in environment values\n");
 		else
 			printf("%s not found\n");
 		*/
-		envp++;
+		args++;
 	}
-	printf("%s\n", getenv("bububu"));
 	//while arg is noy NULL
 	// check if the variable exist,
 	// exist: delete it
