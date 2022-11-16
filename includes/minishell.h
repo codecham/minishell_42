@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 20:10:46 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/15 21:36:17 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/16 06:55:00 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ int		g_exit_status;
 typedef struct s_data
 {
 	struct s_node	*first_node;
-	struct s_token	*first_token;
 	struct s_env	*env_var_list;
 	char			**envp;
 	char			**path_env;
@@ -121,8 +120,10 @@ typedef struct s_node
 }	t_node;
 
 /* parser */
-int				ft_parsing(char *input, char **envp);
+int				ft_parsing(char *input, t_data *data);
 int				ft_free_data(t_data *data);
+int				ft_reset_ast(t_data *data);
+void			ft_free_data_exit(t_data *data);
 
 /* token */
 int				ft_create_token_list(t_data_parsing *data_p, char *input);
@@ -169,6 +170,7 @@ int				ft_good_c_for_env(char c);
 int				ft_is_empty_token(t_token *token);
 int				ft_is_redirection(t_token *token);
 int				ft_is_directory(char *directory);
+char			**ft_env_list_to_char(t_env *env);
 
 /* ast */
 
@@ -185,14 +187,14 @@ char			*ft_replace_env_hd(t_data_parsing *p, char *str);
 -------------------------------BUILTINS-----------------------------------------
 */
 
-int				ft_call_builtin(t_node *node, t_env *env);
+int				ft_call_builtin(t_node *node, t_env *env, t_data *data);
 int				ft_builtin_echo(char **args, int fd_out);
 int				ft_builtin_pwd(int fd_out);
 int				ft_builtin_cd(char *dir);
 int				ft_builtin_env(int fd_out, t_env *env);
 int				ft_builtin_export(char **args, t_env *env);
 int				ft_builtin_unset(char **args, t_env *env);
-void			ft_builtin_exit(char **args);
+int				ft_builtin_exit(char **args, t_data *data);
 
 /* utils */
 int				ft_is_valid_export(char *arg, int *add_flag, int *equal_flag);

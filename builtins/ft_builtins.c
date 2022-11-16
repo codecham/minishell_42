@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:37:46 by dduvivie          #+#    #+#             */
-/*   Updated: 2022/11/14 18:06:14 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/16 06:56:00 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 Call the corresponded builtin function.
 Return 1 if an error occured.
 */
-int	ft_call_builtin(t_node *node, t_env *env)
+int	ft_call_builtin(t_node *node, t_env *env, t_data *data)
 {
 	int	command;
 
@@ -35,6 +35,6 @@ int	ft_call_builtin(t_node *node, t_env *env)
 	else if (command == ENV)
 		return (ft_builtin_env(node->fd_out, env));
 	else if (command == EXIT)
-		return (ft_builtin_exit(node->arg));
+		return (ft_builtin_exit(node->arg, data));
 	return (0);
 }
