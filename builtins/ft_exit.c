@@ -10,10 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "builtins.h"
 #include "../includes/minishell.h"
 
-/* Check if the argument is a number */
 int	arg_is_num(char *arg)
 {
 	int	i;
@@ -28,27 +26,54 @@ int	arg_is_num(char *arg)
 	return (0);
 }
 
-void	ft_builtin_exit(char **args)
+int	ft_count_args(char **args)
 {
-	if (!arg_is_num(*args))
+	int	counter;
+
+	counter = 0;
+	args++;
+	while (*args != NULL)
 	{
-		ft_putendl_fd("exit", 1);
-		ft_putstr_fd("minishell: exit: ", 2);
-		ft_putstr_fd(*args, 2);
-		ft_putendl_fd(": numeric argument required", 2);
-		exit (255);
+		counter++;
+		args++;
 	}
-	else
-		printf("ARG IS NUM\n");
+	return (counter);
 }
 
+int	ft_too_many_args(char **args)
+{
+	if (ft_count_args(args) > 1)
+	{
+		printf("minishel: exit: too many arguments\n");
+		return (1);
+	}
+	return (0);
+}
 
-/*
-exit ++++1 -> numeric argument required
-exit y y   -> numeric argument required
-exit +1    -> (terminated with exit code)
-exit ++1   -> numeric argument required
-exit +-1   -> numeric ...
-exit --1   -> numeric ...
-exit -1    -> (terminated with exit code 255)
-*/
+int	ft_builtin_exit(char **args)
+{
+	ft_putendl_fd("exit", 1);
+	if (ft_too_many_args(args))
+		return (EXIT_FAILURE);
+	else
+	{
+		if (args[1] == NULL)
+		{
+			//free all malloc
+			exit(EXIT_SUCCESS);
+		}
+		else
+		{
+			if (arg_is_num(args[1]))
+				g_exit_status = ft_atoi(args[1]);
+			else
+			{
+				printf("exit: %s: numeric argument required\n", args[1]);
+				g_exit_status = 255;
+			}
+			//free all malloc
+			exit(g_exit_status);
+		}
+	}
+	return (EXIT_SUCCESS);
+}
