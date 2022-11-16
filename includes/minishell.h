@@ -192,7 +192,7 @@ int				ft_builtin_cd(char *dir);
 int				ft_builtin_env(int fd_out, t_env *env);
 int				ft_builtin_export(char **args, t_env *env);
 int				ft_builtin_unset(char **args, t_env *env);
-void			ft_builtin_exit(char **args);
+int				ft_builtin_exit(char **args);
 
 /* utils */
 int				ft_is_valid_export(char *arg, int *add_flag, int *equal_flag);
