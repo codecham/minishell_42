@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dduvivie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:37:46 by dduvivie          #+#    #+#             */
-/*   Updated: 2022/11/09 13:22:37 by dduvivie         ###   ########.fr       */
+/*   Updated: 2022/11/16 06:59:23 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_too_many_args(char **args)
 	return (0);
 }
 
-int	ft_builtin_exit(char **args)
+int	ft_builtin_exit(char **args, t_data *data)
 {
 	ft_putendl_fd("exit", 1);
 	if (ft_too_many_args(args))
@@ -60,6 +60,7 @@ int	ft_builtin_exit(char **args)
 		if (args[1] == NULL)
 		{
 			//free all malloc
+			ft_free_data_exit(data);
 			exit(EXIT_SUCCESS);
 		}
 		else
@@ -72,6 +73,7 @@ int	ft_builtin_exit(char **args)
 				g_exit_status = 255;
 			}
 			//free all malloc
+			ft_free_data_exit(data);
 			exit(g_exit_status);
 		}
 	}

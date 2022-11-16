@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:31:41 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/09 23:46:04 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/16 05:57:58 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ int	ft_set_data(t_data *data, t_data_parsing *p)
 
 	data->envp = p->envp;
 	data->first_node = ft_new_node(NULL);
-	token = data->first_token;
-	if (!data->first_token)
+	token = p->first_token;
+	if (!p->first_token)
 		return (ft_err_pars_message(p, "malloc error\n", -1));
 	node = data->first_node;
 	exit_code = ft_loop_node_data(node, token);

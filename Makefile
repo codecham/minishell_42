@@ -6,7 +6,7 @@
 #    By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/09 23:36:50 by dcorenti          #+#    #+#              #
-#    Updated: 2022/11/15 21:05:43 by dcorenti         ###   ########.fr        #
+#    Updated: 2022/11/16 03:48:41 by dcorenti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,7 @@ SRC		= 	minishell.c \
 			parsing/utils/ft_only_space.c \
 			parsing/utils/ft_realloc_add.c \
 			parsing/utils/ft_skip_space.c \
+			parsing/utils/ft_env_list_to_char.c \
 			node/ft_add_arg_node.c \
 			node/ft_add_command_name.c \
 			node/ft_count_node.c \

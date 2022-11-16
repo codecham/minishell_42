@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 20:44:33 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/15 20:17:44 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/16 06:35:50 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,29 +27,28 @@
 	FONCTION DE DEBBUGAGE A DELETE ET A REMETTRE A LA NORME
 */
 
-int	ft_parsing(char *input, char **envp)
+int	ft_parsing(char *input, t_data *data)
 {
 	t_data_parsing	*data_p;
-	t_data			*data;
 
 	data_p = (t_data_parsing *)malloc(sizeof(t_data_parsing));
 	if (!data_p)
 		return (ft_err_pars_message(data_p, "malloc error\n", -1));
 	data_p->first_token = NULL;
 	data_p->list_token_size = 0;
-	data_p->envp = envp;
+	data_p->envp = data->envp;
 	if (ft_create_token_list(data_p, input) < 0)
 		return (-1);
-	data = (t_data *)malloc(sizeof(t_data));
-	if (!data)
-		return (ft_err_pars_message(data_p, "malloc error\n", -1));
-	data->first_token = data_p->first_token;
+	free(input);
 	data->first_node = NULL;
-	data->env_var_list = NULL;
 	if (ft_set_data(data, data_p) < 0)
 		return (ft_free_data(data));
-	ft_executor(data);
 	ft_free_dp(data_p);
-	ft_free_data(data);
+	ft_executor(data);
+	if (ft_reset_ast(data))
+	{
+		ft_putstr_fd("Minishell: malloc error\n", 2);
+		return (-1);
+	}
 	return (0);
 }

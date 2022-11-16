@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 12:34:07 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/15 21:45:10 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/16 06:51:56 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_exec_simple_pipe(t_data *data, t_node *node)
 	if (node->cmd_exist == -1)
 		exit(ft_err_cmd_exist(node));
 	if (node->is_built_in != 0)
-		exit(ft_call_builtin(node, data->env_var_list));
+		exit(ft_call_builtin(node, data->env_var_list, data));
 	if (access(node->path_cmd, X_OK) != 0
 		|| ft_strncmp(node->command_name, "./", 3) == 0)
 		exit(ft_err_access(node->command_name));

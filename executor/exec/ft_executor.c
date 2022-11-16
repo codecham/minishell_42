@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 20:11:00 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/15 21:29:20 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/16 07:00:21 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,11 @@ void	ft_executor(t_data *data)
 {	
 	g_exit_status = 0;
 	data->path_env = ft_get_path_env(data->envp);
-	if (!data->first_node || !data->path_env)
+	if (!data->first_node)
 		return ;
+	if (!data->path_env)
+		return (ft_err_malloc_exec());
 	ft_is_builtin(data->first_node);
-	data->env_var_list = ft_get_env_var_list(data->envp);
 	if (data->env_var_list == NULL)
 		return (ft_err_malloc_exec());
 	if (ft_set_path_cmd(data) == -1)
