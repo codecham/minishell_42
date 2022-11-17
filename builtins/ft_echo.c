@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "builtins.h"
 #include "../includes/minishell.h"
 
 /* check if -n is specified */
