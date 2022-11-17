@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:13:14 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/15 19:43:11 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/16 19:20:07 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,11 @@ int	ft_open_file_fd(t_redir_list *elem, char *file_name, int type)
 	{
 		elem->fd = open(file_name, O_RDONLY | O_TRUNC, S_IRWXU);
 		if (elem->fd == -1)
+		{
+			g_exit_status = 1;
 			return (ft_err_files_message(elem->file_name,
 					"No such file or directory"));
+		}
 	}
 	else if (type == HEREDOC)
 		elem->fd = open(file_name, O_RDONLY);

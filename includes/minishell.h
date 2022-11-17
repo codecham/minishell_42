@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 20:10:46 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/16 06:55:00 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/17 15:20:09 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include <term.h>
 # include <termcap.h>
 # include <string.h>
+# include <signal.h>
 
 # define ECHO_ 1
 # define CD 2
@@ -128,7 +129,7 @@ void			ft_free_data_exit(t_data *data);
 /* token */
 int				ft_create_token_list(t_data_parsing *data_p, char *input);
 int				ft_set_char_list(t_data_parsing *data_p, char *input);
-void			ft_free_token(t_token *token);
+void			ft_free_token(t_token *token, int heredoc_unlink);
 t_token			*ft_create_token(t_token *previous, t_data_parsing *p);
 int				ft_cpy_in_quote(t_token *token, char *input, int i);
 int				ft_set_word_token(t_data_parsing *p, t_token *token,
@@ -138,7 +139,7 @@ int				ft_replace_env(t_data_parsing *p);
 int				ft_change_env_token(t_token *token, int i, char **envp);
 char			*ft_swap_env_token(t_token *token, char *value,
 					int begin, int end);
-int				ft_delete_quotes(t_data_parsing *p, int i);
+int 			ft_delete_quotes(t_data_parsing *p);
 void			ft_clear_token_list(t_data_parsing *p);
 void			ft_delete_token_in_list(t_data_parsing *p, t_token *bad_token);
 int				ft_check_redir_next(t_data_parsing *p, t_token *token);
@@ -165,6 +166,7 @@ int				ft_err_pars_new_line(t_data_parsing *data_p,
 int				ft_is_separator(char c);
 int				ft_is_autorized_char(t_data_parsing *p, char *input);
 int				ft_autorized_char(char c);
+void			ft_free_dp_error(t_data_parsing *data_p);
 void			ft_free_dp(t_data_parsing *data_p);
 int				ft_good_c_for_env(char c);
 int				ft_is_empty_token(t_token *token);

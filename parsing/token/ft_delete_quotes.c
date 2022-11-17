@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/18 09:54:40 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/15 21:18:49 by dcorenti         ###   ########.fr       */
+/*   Created: 2022/11/16 22:25:48 by dcorenti          #+#    #+#             */
+/*   Updated: 2022/11/17 00:56:48 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,87 +27,72 @@
 
 */
 
-int	ft_remplace_quotes(t_token *token, int i, char quote)
+int ft_contain_quotes(char *str)
 {
-	char	*new;
-
-	new = NULL;
-	i = -1;
-	while (token->value[++i])
-	{
-		if (token->value[i] == '\'' || token->value[i] == '\"')
-		{
-			quote = token->value[i];
-			i++;
-			while (token->value[i] != quote)
-			{
-				new = ft_realloc_add(new, token->value[i]);
-				i++;
-			}
-		}
-		else
-			new = ft_realloc_add(new, token->value[i]);
-		if (!new)
-			return (-1);
-	}
-	if (token->value)
-		free(token->value);
-	token->value = new;
-	return (0);
-}
-
-int	ft_fill_null(t_token *token)
-{
-	if (token->value)
-		free (token->value);
-	token->value = (char *)malloc(sizeof(char) * 1);
-	if (!token->value)
-		return (-1);
-	token->value[0] = '\0';
-	return (0);
-}
-
-int	ft_contain_quotes(char *str)
-{
-	int	i;
+	int i;
 
 	i = 0;
-	if (!str)
-		return (-1);
+	// printf("0.6");
+	while (str[i])
+	{
+		// printf("0.7");
+		if (str[i] == '\'' || str[i] == '\"')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+char	*ft_cpy_in_quotes(char *str, char *new, int *i, char quote)
+{
+	*i = *i + 1;
+	while (str[*i] && str[*i] != quote)
+	{
+		new = ft_realloc_add(new, str[*i]);
+		if (!new)
+			return (NULL);
+		*i = *i + 1;
+	}
+	return (new);
+}
+
+char	*ft_replace_quotes(char *str)
+{
+	int		i;
+	char	*new;
+
+	i = 0;
+	new = (char *)malloc(sizeof(char));
+	if (!new)
+		return(NULL);
+	new[0] = '\0';
 	while (str[i])
 	{
 		if (str[i] == '\'' || str[i] == '\"')
 		{
-			if (ft_strlen(str) == 2)
-				return (2);
-			return (1);
+			new = ft_cpy_in_quotes(str, new, &i, str[i]);
+			if (!new)
+				return (NULL);
 		}
 		i++;
 	}
-	return (-1);
+	if (str)
+		free(str);
+	return (new);
 }
 
-int	ft_delete_quotes(t_data_parsing *p, int i)
+int ft_delete_quotes(t_data_parsing *p)
 {
-	t_token	*token;
-	char	quote;
+	t_token *token;
 
 	token = p->first_token;
-	quote = '\0';
 	while (1)
 	{
-		if (token->type == WORDS)
+		if (token->type == WORDS && ft_contain_quotes(token->value) == 1)
 		{
-			if (ft_contain_quotes(token->value) == 1)
-			{
-				if (ft_remplace_quotes(token, i, quote) == -1)
-					return (-1);
-			}
-			else if (ft_contain_quotes(token->value) == 2)
-			{
-				if (ft_fill_null(token) == -1)
-					return (-1);
-			}
+			token->value = ft_replace_quotes(token->value);
+			if (!token->value)
+				return (-1);
 		}
 		if (token->next == NULL)
 			break ;

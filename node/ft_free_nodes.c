@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 02:06:40 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/15 20:11:07 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/16 18:23:29 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void	ft_free_redirection(t_redir_list *element)
 	if (element == NULL)
 		return ;
 	tmp = element->next;
+	if (element->type == HEREDOC)
+		unlink(element->file_name);
 	if (element->fd > 0)
 	{
 		close(element->fd);

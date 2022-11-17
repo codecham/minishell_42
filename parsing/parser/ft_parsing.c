@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 20:44:33 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/16 06:35:50 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/17 02:02:21 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@
 	FONCTION DE DEBBUGAGE A DELETE ET A REMETTRE A LA NORME
 */
 
+int	ft_free_input(char *input)
+{
+	if (input)
+		free(input);
+	return (-1);
+}
+
 int	ft_parsing(char *input, t_data *data)
 {
 	t_data_parsing	*data_p;
@@ -38,7 +45,7 @@ int	ft_parsing(char *input, t_data *data)
 	data_p->list_token_size = 0;
 	data_p->envp = data->envp;
 	if (ft_create_token_list(data_p, input) < 0)
-		return (-1);
+		return (ft_free_input(input));
 	free(input);
 	data->first_node = NULL;
 	if (ft_set_data(data, data_p) < 0)

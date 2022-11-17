@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 21:13:23 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/07 03:16:03 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/16 18:36:07 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ char	*ft_get_key_hd(char *str)
 	int		i;
 
 	i = 0;
+	if (str[i] == '?')
+	{
+		key = ft_strdup("?");
+		return (key);
+	}
 	while (str[i] && ft_good_c_for_env(str[i]) == 1)
 		i++;
 	key = (char *)malloc(sizeof(char) * (i + 1));
@@ -103,9 +108,10 @@ char	*ft_replace_env_hd(t_data_parsing *p, char *str)
 	{
 		if (new[i + 1])
 		{
-			if (new[i] == '$' && ft_good_c_for_env(new[i + 1]) == 1)
+			if (new[i] == '$')
 			{
-				new = ft_get_env_hd(p, new, i);
+				if (ft_good_c_for_env(new[i + 1]) == 1 || new[i + 1] == '?')
+					new = ft_get_env_hd(p, new, i);
 				if (!new)
 					return (NULL);
 			}

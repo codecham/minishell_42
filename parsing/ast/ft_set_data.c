@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:31:41 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/16 05:57:58 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/17 01:57:33 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_loop_node_data(t_node *node, t_token *token)
 	{
 		if (ft_is_redirection(token) == 1)
 			exit_code = ft_fill_redirection(node, token);
-		else if (token->type == WORDS && node->command_name == NULL)
+		else if (token->type == WORDS && node->command_name == NULL && ft_is_empty_token(token) == 0)
 			exit_code = ft_add_command_name(node, token->value);
 		else if (token->type == WORDS)
 			exit_code = ft_add_arg_node(node, token->value);

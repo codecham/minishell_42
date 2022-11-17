@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 15:27:21 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/15 19:56:03 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/16 18:59:02 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,12 @@ int	ft_has_redirection(t_node *node, int type)
 		fd = ft_has_redir_in(elem);
 	else if (type == OUTFILE)
 		fd = ft_has_redir_out(elem);
+	else if (type == 0)
+	{
+		fd = ft_has_redir_in(elem);
+		if (fd != -1)
+			return (fd);
+		fd = ft_has_redir_out(elem);
+	}
 	return (fd);
 }

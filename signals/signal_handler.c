@@ -6,17 +6,15 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 19:41:08 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/15 21:09:17 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/17 04:31:01 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
 /* 
-
 Ce fichier contient les différente fonctions à completer pour les 
 différents signaux
-
 */
 
 void	ft_signal_int(int sig)
@@ -51,3 +49,4 @@ void	ft_signal_handler(void)
 	signal(SIGINT, ft_signal_int);
 	signal(SIGQUIT, ft_signal_quit);
 }
+

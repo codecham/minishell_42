@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 22:52:04 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/16 06:22:46 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/17 02:14:31 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ t_data	*ft_initialize_data(t_data *data, char **envp)
 
 void	ft_initialize_minishell(void)
 {
-	struct termios	tty_attr;
+	// struct termios	tty_attr;
 
-	ioctl(STDIN_FILENO, TIOCGETA, &tty_attr);
-	tty_attr.c_lflag &= ~ECHOCTL;
-	ioctl(STDIN_FILENO, TIOCSETA, &tty_attr);
+	// ioctl(STDIN_FILENO, TIOCGETA, &tty_attr);
+	// tty_attr.c_lflag &= ~ECHOCTL;
+	// ioctl(STDIN_FILENO, TIOCGETA, &tty_attr);
 	g_exit_status = 0;
 	ft_signal_handler();
 }
@@ -73,11 +73,7 @@ void	routine(t_data *data)
 		if (ft_only_space(line) == 0)
 		{
 			add_history(line);
-			if (ft_parsing(line, data) == -1)
-			{
-				ft_free_data(data);
-				exit (1);
-			}
+			ft_parsing(line, data);
 		}
 		else
 		{
