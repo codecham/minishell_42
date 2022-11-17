@@ -99,13 +99,15 @@ SRC		= 	minishell.c \
 			builtins/ft_exit.c \
 			builtins/env/ft_create_env_var_list.c \
 			builtins/env/ft_new_env_var.c \
-			builtins/env/ft_cpy_env_var.c \
+			builtins/env/ft_copy_env_var.c \
 			builtins/env/ft_free_env_var.c \
 			builtins/env/ft_find_env_var.c \
 			builtins/env/ft_get_env.c \
 			builtins/env/ft_update_env_var.c \
 			builtins/env/ft_delete_env_var.c \
 			builtins/env/ft_add_env_var.c \
+			builtins/env/ft_sort_env_var_list.c \
+			builtins/env/ft_copy_env_var_list.c \
 			signals/signal_handler.c
 
 

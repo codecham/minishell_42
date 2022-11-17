@@ -192,7 +192,7 @@ int				ft_builtin_echo(char **args, int fd_out);
 int				ft_builtin_pwd(int fd_out);
 int				ft_builtin_cd(char *dir);
 int				ft_builtin_env(int fd_out, t_env *env);
-int				ft_builtin_export(char **args, t_env *env);
+int				ft_builtin_export(int fd_out, char **args, t_env *env);
 int				ft_builtin_unset(char **args, t_env *env);
 int				ft_builtin_exit(char **args, t_data *data);
 
@@ -208,10 +208,12 @@ int				ft_puterror(char *arg, char *str);
 ----------------------------------ENV-----------------------------------------
 */
 t_env			*ft_get_env_var_list(char **envp);
+t_env			*ft_sort_env_var_list(t_env *head_env_var);
+t_env			*ft_copy_env_var_list(t_env *env);
 t_env			*ft_add_env_var(t_env *first_env_var, t_env *new_env_var);
 t_env			*ft_new_env_var(char *new_key, char *new_val);
-char			*ft_cpy_env_key(char *str, int add_flag);
-char			*ft_cpy_env_val(char *str);
+char			*ft_copy_env_key(char *str, int add_flag);
+char			*ft_copy_env_val(char *str);
 char			*ft_get_env_var(char *key, t_env *env);
 int				ft_is_env_var_exist(char *key, t_env *env);
 int				ft_update_env_var(char *key, char *new_value, t_env *env);
