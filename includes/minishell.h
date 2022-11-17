@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 20:10:46 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/17 15:20:09 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/17 16:31:14 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -279,5 +279,6 @@ int				ft_reset_fd_in(t_node *node);
 int				ft_set_fd_pipe_red(t_node *node);
 int				ft_err_access(char *command_name);
 void			ft_signal_handler(void);
+void			ft_signal_handler_child(void);
 void			rl_replace_line(const char *text, int clear_undo);
 #endif

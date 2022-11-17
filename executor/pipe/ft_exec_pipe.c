@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 13:00:14 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/17 02:33:37 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/17 17:05:58 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	ft_exec_pipe(t_data *data)
 
 	node = data->first_node;
 	ft_create_pipe(data);
+	ft_signal_handler_child();
 	while (1)
 	{
 		node->pid = fork();
@@ -48,7 +49,6 @@ int	ft_exec_pipe(t_data *data)
 	}
 	ft_close_pipe_main(data);
 	ft_wait_children();
-	g_exit_status += 256;
-	// ft_signal_handler();
+
 	return (0);
 }

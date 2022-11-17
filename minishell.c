@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 22:52:04 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/17 02:14:31 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/17 17:03:45 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_initialize_minishell(void)
 	// tty_attr.c_lflag &= ~ECHOCTL;
 	// ioctl(STDIN_FILENO, TIOCGETA, &tty_attr);
 	g_exit_status = 0;
-	ft_signal_handler();
+	// ft_signal_handler();
 }
 
 void	ft_quit_minishell(t_data *data)
@@ -67,6 +67,7 @@ void	routine(t_data *data)
 
 	while (1)
 	{
+		ft_signal_handler();
 		line = readline("Minishell> ");
 		if (line == NULL)
 			ft_quit_minishell(data);

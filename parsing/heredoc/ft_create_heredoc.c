@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 18:33:08 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/17 04:32:10 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/17 17:21:57 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int	ft_create_heredoc(t_data_parsing *p, t_token *token)
 	token->fd = open(token->red_file_name, O_RDWR | O_CREAT | O_TRUNC, 0644);
 	if (token->fd == -1)
 		return (ft_err_pars_message(p, "Can't open file for heredoc", -2));
+	ft_signal_handler_child();
 	return (0);
 }
 
