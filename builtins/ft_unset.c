@@ -44,6 +44,5 @@ int	ft_builtin_unset(char **args, t_env *env)
 			ft_puterror(*args, "not a valid identifier");
 		args++;
 	}
-	// ft_builtin_env(1, env);
 	return (0);
 }

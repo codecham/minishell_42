@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "builtins.h"
 #include "../includes/minishell.h"
 
 /* Ptint all environment variables */

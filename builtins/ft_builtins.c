@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "builtins.h"
 #include "../includes/minishell.h"
 
 /*
@@ -29,7 +28,7 @@ int	ft_call_builtin(t_node *node, t_env *env, t_data *data)
 	else if (command == PWD)
 		return (ft_builtin_pwd(node->fd_out));
 	else if (command == EXPORT)
-		return (ft_builtin_export(node->arg, env));
+		return (ft_builtin_export(node->fd_out, node->arg, env));
 	else if (command == UNSET)
 		return (ft_builtin_unset(node->arg, env));
 	else if (command == ENV)

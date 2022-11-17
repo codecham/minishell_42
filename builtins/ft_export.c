@@ -6,13 +6,16 @@
 /*   By: dduvivie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:37:46 by dduvivie          #+#    #+#             */
-/*   Updated: 2022/11/09 13:22:37 by dduvivie         ###   ########.fr       */
+/*   Updated: 2022/11/17 00:10:37 by dduvivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "builtins.h"
 #include "../includes/minishell.h"
 
+/*
+Update the env variables list with adding the new variable,
+or modifie the value of the specific variable.
+*/
 int	ft_update_env_var_list(char *key, char *value, t_env *env)
 {
 	t_env	*new_env_var;
@@ -36,12 +39,16 @@ int	ft_update_env_var_list(char *key, char *value, t_env *env)
 	return (1);
 }
 
+/*
+Get the string for key and value.
+If these two string are valids, update the env variables list.
+*/
 int	ft_export_env_var(char *str, int add_flag, t_env *env)
 {
 	char	*key;
 	char	*value;
 
-	key = ft_cpy_env_key(str, add_flag);
+	key = ft_copy_env_key(str, add_flag);
 	if (!key)
 		return (0);
 	value = ft_get_new_env_val(str, key, &add_flag, env);
@@ -55,17 +62,45 @@ int	ft_export_env_var(char *str, int add_flag, t_env *env)
 	return (1);
 }
 
-int	ft_builtin_export(char **args, t_env *env)
+/*
+Create temporary an env variables linked list,
+then sort this list for output the content in order.
+Once the content is printed, free the list.
+*/
+int	ft_put_env_var_sort_list(t_env *env, int fd_out)
+{
+	t_env	*temp_env_var_list;
+	t_env	*env_var;
+
+	temp_env_var_list = ft_copy_env_var_list(env);
+	if (!temp_env_var_list)
+		return (1);
+	temp_env_var_list = ft_sort_env_var_list(temp_env_var_list);
+	if (!temp_env_var_list)
+		return (1);
+	env_var = temp_env_var_list;
+	while (env_var != NULL)
+	{
+		ft_putstr_fd("declare -x ", fd_out);
+		ft_putstr_fd(env_var->key, fd_out);
+		ft_putstr_fd("=\"", fd_out);
+		ft_putstr_fd(env_var->value, fd_out);
+		ft_putendl_fd("\"", fd_out);
+		env_var = env_var->next;
+	}
+	ft_free_env_var_list(temp_env_var_list);
+	return (0);
+}
+
+/* Set the export attribute for variables */
+int	ft_builtin_export(int fd_out, char **args, t_env *env)
 {
 	int		add_flag;
 	int		equal_flag;
 
 	args++;
 	if (*args == NULL)
-	{
-		//ft_put_env_var_sort_list(env); //wip
-		return (0);
-	}
+		return (ft_put_env_var_sort_list(env, fd_out));
 	while (*args != NULL)
 	{
 		add_flag = 0;
@@ -82,6 +117,5 @@ int	ft_builtin_export(char **args, t_env *env)
 			ft_puterror(*args, "not a valid identifier");
 		args++;
 	}
-	ft_builtin_env(1, env);
 	return (0);
 }

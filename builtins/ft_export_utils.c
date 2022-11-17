@@ -6,11 +6,10 @@
 /*   By: dduvivie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:37:46 by dduvivie          #+#    #+#             */
-/*   Updated: 2022/11/09 13:22:37 by dduvivie         ###   ########.fr       */
+/*   Updated: 2022/11/17 00:28:37 by dduvivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "builtins.h"
 #include "../includes/minishell.h"
 
 int	ft_puterror(char *arg, char *str)
@@ -21,26 +20,35 @@ int	ft_puterror(char *arg, char *str)
 	ft_putstr_fd(arg, 2);
 	ft_putstr_fd("': ", 2);
 	ft_putendl_fd(str, 2);
-	return (-1);
+	return (0);
 }
 
+/*
+If the export argument is in form "key+=value",
+join the new value with the old value of the specific key.
+*/
 char	*ft_get_new_env_val(char *str, char *key, int *add, t_env *env)
 {
 	char	*value;
-	char	*return_value;
+	char	*new_env_val;
 
-	value = ft_cpy_env_val(str);
+	value = ft_copy_env_val(str);
 	if (!value)
 		return (NULL);
 	if (*add)
 	{
-		return_value = ft_strjoin(value, ft_get_env_var(key, env));
+		new_env_val = ft_strjoin(value, ft_get_env_var(key, env));
+		if (!new_env_val)
+		{
+			free(value);
+			return (NULL);
+		}
 		free(value);
 		value = NULL;
 	}
 	else
-		return_value = value;
-	return (return_value);
+		new_env_val = value;
+	return (new_env_val);
 }
 
 int	ft_is_valid_first_char(char c)
@@ -59,6 +67,7 @@ int	ft_is_valid_char(char c)
 	return (0);
 }
 
+/* Check if the argument for export command is valid or not. */
 int	ft_is_valid_export(char *arg, int *add_flag, int *equal_flag)
 {
 	int	i;
