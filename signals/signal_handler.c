@@ -12,8 +12,8 @@
 
 #include "../includes/minishell.h"
 
-/* 
-Ce fichier contient les différente fonctions à completer pour les 
+/*
+Ce fichier contient les différente fonctions à completer pour les
 différents signaux
 */
 
@@ -33,12 +33,11 @@ void	ft_signal_int(int sig)
 	rl_redisplay();
 }
 
+/* When user type CTRL + \, we do nothing and just ignore
 void	ft_signal_quit(int sig)
 {
-	char		*up;
-	char		*ri;
-
 	(void)sig;
+
 	up = tgetstr("up", NULL);
 	ri = tgetstr("RI", NULL);
 	tputs(ri, 1, putchar);
@@ -46,11 +45,12 @@ void	ft_signal_quit(int sig)
 	tputs(ri, 1, putchar);
 	tputs(up, 1, putchar);
 }
+*/
 
 void	ft_signal_handler(void)
 {
 	signal(SIGINT, ft_signal_int);
-	signal(SIGQUIT, ft_signal_quit);
+	signal(SIGQUIT, SIG_IGN);
 }
 
 void	ft_signal_handler_child(void)
