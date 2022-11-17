@@ -32,13 +32,8 @@ t_env	*ft_new_env_var(char *new_key, char *new_val)
 		return (NULL);
 	ft_init_env_var(new_env_val);
 	new_env_val->key = new_key;
-	if (!new_env_val->key)
-	{
-		ft_free_env_var(new_env_val);
-		return (NULL);
-	}
 	new_env_val->value = new_val;
-	if (!new_env_val->value)
+	if (!new_env_val->key || !new_env_val->value)
 	{
 		ft_free_env_var(new_env_val);
 		return (NULL);

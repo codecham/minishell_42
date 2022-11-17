@@ -19,10 +19,10 @@ t_env	*ft_get_one_env_var(char *env)
 	char	*value;
 	t_env	*env_var;
 
-	key = ft_cpy_env_key(env, 0);
+	key = ft_copy_env_key(env, 0);
 	if (!key)
 		return (NULL);
-	value = ft_cpy_env_val(env);
+	value = ft_copy_env_val(env);
 	if (!value)
 	{
 		free(key);
