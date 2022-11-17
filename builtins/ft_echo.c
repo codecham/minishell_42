@@ -15,9 +15,16 @@
 /* check if -n is specified */
 int	arg_is_option_n(char *arg)
 {
-	if (ft_strncmp(arg, "-n", ft_strlen(arg) + 1) == 0)
-		return (1);
-	return (0);
+	if (*arg != '-')
+		return (0);
+	arg++;
+	while (*arg != '\0')
+	{
+		if (*arg != 'n')
+			return (0);
+		arg++;
+	}
+	return (1);
 }
 
 /*
@@ -27,27 +34,26 @@ If -n is specified, the trailing new line is suppressed.
 int	ft_builtin_echo(char **args, int fd_out)
 {
 	int	option_n;
-	int	i;
 
+	args++;
 	option_n = 0;
-	i = 1;
-	if (!args[i])
+	if (!*args)
 		ft_putstr_fd("\n", fd_out);
 	else
 	{
-		if (arg_is_option_n(args[i]))
+		while (*args && arg_is_option_n(*args))
 		{
 			option_n = 1;
-			i++;
+			args++;
 		}
-		while (args[i])
+		while (*args)
 		{
-			ft_putstr_fd(args[i], fd_out);
-			if (args[i + 1])
+			ft_putstr_fd(*args, fd_out);
+			args++;
+			if (*args)
 				ft_putstr_fd(" ", fd_out);
 			else if (!option_n)
 				ft_putstr_fd("\n", fd_out);
-			i++;
 		}
 	}
 	return (0);
