@@ -55,7 +55,7 @@ int	cd_to_path(char *path, t_env *env)
 	}
 	if (chdir(path) == -1)
 	{
-		ft_putstr_fd("minishell: cd: ", 2);
+		ft_putstr_fd("Minishell: cd: ", 2);
 		ft_putstr_fd(path, 2);
 		ft_putstr_fd(": ", 2);
 		ft_putendl_fd(strerror(errno), 2);
@@ -70,7 +70,7 @@ int	cd_to_home(t_env *env)
 {
 	char	*home_dir;
 
-	home_dir = getenv("HOME");
+	home_dir = ft_get_env_var("HOME", env);
 	if (!home_dir)
 	{
 		ft_putstr_fd("HOME not set\n", 2);

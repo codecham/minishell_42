@@ -44,7 +44,7 @@ int	ft_too_many_args(char **args)
 {
 	if (ft_count_args(args) > 1)
 	{
-		printf("minishel: exit: too many arguments\n");
+		printf("Minishel: exit: too many arguments\n");
 		return (1);
 	}
 	return (0);
