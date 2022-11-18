@@ -30,14 +30,7 @@ int	ft_err_cmd_exist(t_node *node)
 {
 	ft_putstr_fd("Minishell: ", 2);
 	ft_putstr_fd(node->command_name, 2);
-	if (node->cmd_exist == -1)
-		ft_putstr_fd(": command not found\n", 2);
-	else if (node->cmd_exist == -2)
-		ft_putstr_fd(": Is a directory\n", 2);
-	else if (node->cmd_exist == -3)
-		ft_putstr_fd(": Not a directory\n", 2);
-	else if (node->cmd_exist == -4)
-		ft_putstr_fd(": No such file or directory\n", 2);
+	ft_putstr_fd(": command not found\n", 2);
 	return (127);
 }
 

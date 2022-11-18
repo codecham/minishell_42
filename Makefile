@@ -81,7 +81,6 @@ SRC		= 	minishell.c \
 			executor/utils/ft_reset_saved_fd.c \
 			executor/utils/ft_save_in_out.c \
 			executor/utils/ft_wait_children.c \
-			executor/utils/ft_cmd_is_directory.c \
 			executor/pipe/ft_close_bad_pipe.c \
 			executor/pipe/ft_create_pipe.c \
 			executor/pipe/ft_exec_pipe.c \
@@ -120,7 +119,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@ $(MAKE) -C $(LIBFT_D) all
-	@ $(CC) ${CFLAGS}  -L /usr/local/opt/readline/lib -I /usr/local/opt/readline/include -o $(NAME) $(OBJ) $(LIBFT) -lreadline -ltermcap
+	@ $(CC) ${CFLAGS}  -L /Users/$(USER)/.brew/opt/readline/lib -I -I/Users/$(USER)/.brew/opt/readline/include -o $(NAME) $(OBJ) $(LIBFT) -lreadline -ltermcap
 
 clean:
 	@ $(MAKE) -C $(LIBFT_D) clean

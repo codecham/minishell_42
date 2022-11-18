@@ -208,6 +208,7 @@ char			*ft_get_new_env_val(char *str, char *key, int *add, t_env *env);
 int				ft_is_valid_unset(char *arg);
 int				ft_is_valid_first_char(char c);
 int				ft_is_valid_char(char c);
+int				ft_is_special_param(char *arg);
 int				ft_puterror(char *arg, char *str);
 
 /*
@@ -250,7 +251,6 @@ void			ft_free_matrice(char **matrice);
 */
 
 void			ft_executor(t_data *data);
-int				ft_check_cmd_syntax(t_node	*node);
 int				ft_reset_saved_fd(t_node *node);
 void			ft_wait_children(void);
 char			**ft_get_path_env(char **envp);

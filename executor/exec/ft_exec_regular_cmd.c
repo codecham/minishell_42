@@ -19,7 +19,7 @@ int	ft_exec_regular(t_data *data, t_node *node)
 
 int	ft_good_command(t_node *node)
 {
-	if (node->cmd_exist < 0)
+	if (node->cmd_exist == -1)
 	{
 		if (node->command_name == NULL && ft_has_redirection(node, 0) > -1)
 			return (-1);

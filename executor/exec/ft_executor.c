@@ -50,8 +50,6 @@ void	ft_executor(t_data *data)
 		return (ft_err_malloc_exec());
 	if (ft_set_path_cmd(data) == -1)
 		return ;
-	if (ft_check_cmd_syntax(data->first_node) == 0)
-		return ;
 	if (data->first_node->redirection == NULL && data->first_node->next == NULL)
 		ft_exec_regular_cmd(data, data->first_node);
 	else if (data->first_node->redirection != NULL
