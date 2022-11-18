@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:26:45 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/15 20:28:07 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/18 16:54:30 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,21 @@
 	
 	ATTENTION A NE PAS OUBLIER DE FREE LA NOUVELLE STRING
 */
+
+int		ft_set_exit_value(char **value)
+{
+	char *tmp;
+
+	tmp = ft_itoa(g_exit_status);
+	if (!tmp)
+		return (-1);
+	*value = ft_strdup(tmp);
+	if (tmp)
+		free(tmp);
+	if (!value)
+		return (-1);
+	return (1);
+}
 
 char	*ft_add_equal(char *key)
 {
@@ -69,10 +84,7 @@ int	ft_get_env_value(char *key, char **value, char **envp)
 		return (0);
 	if (key[i] == '?')
 	{
-		*value = ft_strdup(ft_itoa(g_exit_status));
-		if (!value)
-			return (-2);
-		return (1);
+		return (ft_set_exit_value(value));
 	}
 	new = ft_add_equal(key);
 	if (!new)

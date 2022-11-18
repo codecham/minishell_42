@@ -6,7 +6,7 @@
 #    By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/09 23:36:50 by dcorenti          #+#    #+#              #
-#    Updated: 2022/11/18 05:00:20 by dcorenti         ###   ########.fr        #
+#    Updated: 2022/11/18 15:22:29 by dcorenti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -120,8 +120,8 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@ $(MAKE) -C $(LIBFT_D) all
-	@ $(CC) ${CFLAGS}  -L /usr/local/opt/readline/lib -I /usr/local/opt/readline/include -o $(NAME) $(OBJ) $(LIBFT) -lreadline -ltermcap
-
+# @ $(CC) ${CFLAGS}  -L /usr/local/opt/readline/lib -I /usr/local/opt/readline/include -o $(NAME) $(OBJ) $(LIBFT) -lreadline -ltermcap
+	@ $(CC) ${CFLAGS}  -L/Users/dcorenti/.brew/opt/readline/lib -o $(NAME) $(OBJ) $(LIBFT) -lreadline -ltermcap
 clean:
 	@ $(MAKE) -C $(LIBFT_D) clean
 	@ rm -f $(OBJ)
