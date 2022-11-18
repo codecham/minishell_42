@@ -19,7 +19,7 @@ int	ft_exec_regular(t_data *data, t_node *node)
 
 int	ft_good_command(t_node *node)
 {
-	if (node->cmd_exist == -1)
+	if (node->cmd_exist < 0)
 	{
 		if (node->command_name == NULL && ft_has_redirection(node, 0) > -1)
 			return (-1);
@@ -30,9 +30,9 @@ int	ft_good_command(t_node *node)
 		|| ft_strncmp(node->command_name, "./", 3) == 0)
 	{
 		g_exit_status = ft_err_access(node->command_name);
-		return(-1);
+		return (-1);
 	}
-	return(0);	
+	return (0);
 }
 
 int	ft_exec_regular_cmd(t_data *data, t_node *this_node)

@@ -28,6 +28,8 @@
 # include <termcap.h>
 # include <string.h>
 # include <signal.h>
+# include <sys/stat.h>
+# include <sys/types.h>
 
 # define ECHO_ 1
 # define CD 2
@@ -174,6 +176,7 @@ int				ft_is_redirection(t_token *token);
 int				ft_is_directory(char *directory);
 char			**ft_env_list_to_char(t_env *env);
 
+
 /* ast */
 
 int				ft_set_data(t_data *data, t_data_parsing *p);
@@ -246,6 +249,7 @@ void			ft_free_matrice(char **matrice);
 */
 
 void			ft_executor(t_data *data);
+int				ft_check_cmd_syntax(t_node	*node);
 int				ft_reset_saved_fd(t_node *node);
 void			ft_wait_children(void);
 char			**ft_get_path_env(char **envp);

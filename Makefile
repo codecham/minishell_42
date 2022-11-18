@@ -12,7 +12,7 @@
 
 NAME	= minishell
 
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -g
 CC		= gcc
 
 LIBFT_D	= libft
@@ -79,6 +79,7 @@ SRC		= 	minishell.c \
 			executor/utils/ft_reset_saved_fd.c \
 			executor/utils/ft_save_in_out.c \
 			executor/utils/ft_wait_children.c \
+			executor/utils/ft_cmd_is_directory.c \
 			executor/pipe/ft_close_bad_pipe.c \
 			executor/pipe/ft_create_pipe.c \
 			executor/pipe/ft_exec_pipe.c \
