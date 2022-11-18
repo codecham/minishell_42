@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 22:25:48 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/17 00:56:48 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/18 03:14:52 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,13 @@
 
 */
 
-int ft_contain_quotes(char *str)
+int	ft_contain_quotes(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	// printf("0.6");
 	while (str[i])
 	{
-		// printf("0.7");
 		if (str[i] == '\'' || str[i] == '\"')
 			return (1);
 		i++;
@@ -64,7 +62,7 @@ char	*ft_replace_quotes(char *str)
 	i = 0;
 	new = (char *)malloc(sizeof(char));
 	if (!new)
-		return(NULL);
+		return (NULL);
 	new[0] = '\0';
 	while (str[i])
 	{
@@ -81,9 +79,9 @@ char	*ft_replace_quotes(char *str)
 	return (new);
 }
 
-int ft_delete_quotes(t_data_parsing *p)
+int	ft_delete_quotes(t_data_parsing *p)
 {
-	t_token *token;
+	t_token	*token;
 
 	token = p->first_token;
 	while (1)

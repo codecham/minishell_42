@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 20:10:46 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/17 16:31:14 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/18 05:01:52 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ int				ft_replace_env(t_data_parsing *p);
 int				ft_change_env_token(t_token *token, int i, char **envp);
 char			*ft_swap_env_token(t_token *token, char *value,
 					int begin, int end);
-int 			ft_delete_quotes(t_data_parsing *p);
+int				ft_delete_quotes(t_data_parsing *p);
 void			ft_clear_token_list(t_data_parsing *p);
 void			ft_delete_token_in_list(t_data_parsing *p, t_token *bad_token);
 int				ft_check_redir_next(t_data_parsing *p, t_token *token);
@@ -176,7 +176,6 @@ int				ft_is_redirection(t_token *token);
 int				ft_is_directory(char *directory);
 char			**ft_env_list_to_char(t_env *env);
 
-
 /* ast */
 
 int				ft_set_data(t_data *data, t_data_parsing *p);
@@ -187,7 +186,9 @@ int				ft_fill_redirection(t_node *node, t_token *token);
 int				ft_set_heredoc(t_data_parsing *p);
 char			*ft_random_name(void);
 char			*ft_replace_env_hd(t_data_parsing *p, char *str);
-
+int				ft_loop_here_doc(t_data_parsing *p, t_token *token);
+void			ft_signal_heredoc(void);
+void			ft_signal_empty(void);
 /*
 -------------------------------BUILTINS-----------------------------------------
 */
@@ -195,7 +196,7 @@ char			*ft_replace_env_hd(t_data_parsing *p, char *str);
 int				ft_call_builtin(t_node *node, t_env *env, t_data *data);
 int				ft_builtin_echo(char **args, int fd_out);
 int				ft_builtin_pwd(int fd_out);
-int				ft_builtin_cd(char *dir);
+int				ft_builtin_cd(t_env *env, char *dir);
 int				ft_builtin_env(int fd_out, t_env *env);
 int				ft_builtin_export(int fd_out, char **args, t_env *env);
 int				ft_builtin_unset(char **args, t_env *env);
@@ -285,4 +286,5 @@ int				ft_err_access(char *command_name);
 void			ft_signal_handler(void);
 void			ft_signal_handler_child(void);
 void			rl_replace_line(const char *text, int clear_undo);
+
 #endif

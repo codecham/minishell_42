@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 18:47:45 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/15 20:16:41 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/18 00:18:48 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,9 @@ char	*ft_random_name(void)
 	int		exit_code;
 
 	exit_code = 1;
-	random_name = (char *)malloc(sizeof(char) * 3);
+	random_name = ft_strdup("/tmp/a");
 	if (!random_name)
 		return (NULL);
-	random_name[0] = '.';
-	random_name[1] = 'a';
-	random_name[2] = '\0';
 	if (!random_name)
 		return (NULL);
 	while (ft_check_name_exist(random_name) != 0)

@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 16:31:21 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/17 02:05:27 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/18 03:17:52 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,29 @@ int	ft_exit_code(t_data_parsing *p, int exit_code)
 		return (exit_code);
 }
 
-int ft_is_empty_list(t_data_parsing *p)
+int	ft_exit_code_hd(t_data_parsing *p, int exit_code)
 {
-	t_token *token;
+	if (g_exit_status >= 130)
+	{
+		if (g_exit_status == 131)
+			g_exit_status = 0;
+		return (-1);
+	}
+	if (exit_code == -1)
+		return (ft_err_pars_message(p, "malloc error\n", -1));
+	else
+		return (exit_code);
+}
+
+int	ft_is_empty_list(t_data_parsing *p)
+{
+	t_token	*token;
 
 	token = p->first_token;
 	while (1)
 	{
 		if (ft_is_empty_token(token) == 0)
-			return(0);
+			return (0);
 		if (token->next == NULL)
 			break ;
 		token = token->next;

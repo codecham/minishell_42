@@ -6,13 +6,13 @@
 #    By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/09 23:36:50 by dcorenti          #+#    #+#              #
-#    Updated: 2022/11/17 15:20:40 by dcorenti         ###   ########.fr        #
+#    Updated: 2022/11/18 05:00:20 by dcorenti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= minishell
 
-CFLAGS	= -Wall -Wextra -Werror -g
+CFLAGS	= -Wall -Wextra -Werror
 CC		= gcc
 
 LIBFT_D	= libft
@@ -24,6 +24,8 @@ SRC		= 	minishell.c \
 			parsing/heredoc/ft_create_heredoc.c \
 			parsing/heredoc/ft_random_name.c \
 			parsing/heredoc/ft_replace_env_hd.c \
+			parsing/heredoc/ft_loop_here_doc.c \
+			parsing/heredoc/ft_signal_heredoc.c \
 			parsing/parser/ft_free_data.c \
 			parsing/parser/ft_parsing.c \
 			parsing/token/ft_ambiguous_redirect.c \

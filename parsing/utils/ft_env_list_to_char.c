@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 22:12:59 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/16 05:00:54 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/18 03:17:29 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ void	ft_free_env_char(char **new, int i)
 	i--;
 	while (i >= 0)
 	{
-		if(new[i])
+		if (new[i])
 			free(new[i]);
 	}
 }
 
 int	ft_count_env(t_env *env)
 {
-	t_env *elem;
-	int i;
+	t_env	*elem;
+	int		i;
 
 	elem = env;
 	i = 0;
@@ -41,7 +41,7 @@ int	ft_count_env(t_env *env)
 	return (i);
 }
 
-char 	*ft_join_env(t_env *elem, char *new)
+char	*ft_join_env(t_env *elem, char *new)
 {
 	char	*tmp;
 
@@ -59,7 +59,7 @@ char	**ft_set_env_char(t_env *env, char **new)
 {
 	t_env	*elem;
 	int		i;
-	
+
 	i = 0;
 	elem = env;
 	while (1)

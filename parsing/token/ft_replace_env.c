@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 23:46:26 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/17 01:49:00 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/18 03:14:57 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,9 @@
 		- Renvoie -1 si il y a une erreur de malloc.
 */
 
-
-int ft_env_in_double_quote(t_token *token, int i, char **envp)
+int	ft_env_in_double_quote(t_token *token, int i, char **envp)
 {
-	int result;
+	int	result;
 
 	i++;
 	while (token->value[i] && token->value[i] != '\"')
@@ -49,18 +48,18 @@ int ft_env_in_double_quote(t_token *token, int i, char **envp)
 	return (i + 1);
 }
 
-int ft_env_in_quote(t_token *token, int i)
+int	ft_env_in_quote(t_token *token, int i)
 {
 	i++;
 	while (token->value[i] && token->value[i] != '\'')
 		i++;
-	return (i + 1);	
+	return (i + 1);
 }
 
-int ft_env_without_quote(t_token *token, int i, char **envp)
+int	ft_env_without_quote(t_token *token, int i, char **envp)
 {
-	int result;
-	
+	int	result;
+
 	while (token->value[i])
 	{
 		if (token->value[i] == '\"' && token->value[i] == '\'')
@@ -77,9 +76,10 @@ int ft_env_without_quote(t_token *token, int i, char **envp)
 	}
 	return (i);
 }
+
 int	ft_search_env(t_token *token, char **envp)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (token->value[i])
@@ -98,7 +98,7 @@ int	ft_search_env(t_token *token, char **envp)
 
 int	ft_replace_env(t_data_parsing *p)
 {
-	t_token *token;
+	t_token	*token;
 
 	token = p->first_token;
 	while (1)
@@ -112,5 +112,5 @@ int	ft_replace_env(t_data_parsing *p)
 			break ;
 		token = token->next;
 	}
-	return(0);
+	return (0);
 }
