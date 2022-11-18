@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_update_env_var.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dduvivie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 20:37:46 by dduvivie          #+#    #+#             */
-/*   Updated: 2022/11/13 01:30:37 by dduvivie         ###   ########.fr       */
+/*   Updated: 2022/11/18 15:52:52 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,15 @@ int	ft_update_env_var(char *key, char *new_value, t_env *env)
 	{
 		if (ft_strncmp(key, env_var->key, ft_strlen(key) + 1) == 0)
 		{
-			free(env_var->value);
+			if (env_var->value)
+				free(env_var->value);
 			env_var->value = NULL;
-			env_var->value = new_value;
+			env_var->value = ft_strdup(new_value);
+			if (!env_var->value)
+			{
+				ft_putstr_fd("Minishell: malloc error\n", 2);
+				return (0);
+			}
 			return (1);
 		}
 		env_var = env_var->next;

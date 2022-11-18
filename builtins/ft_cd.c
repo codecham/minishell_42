@@ -6,24 +6,41 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:37:46 by dduvivie          #+#    #+#             */
-/*   Updated: 2022/11/18 04:22:09 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/18 16:16:36 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
+int	cd_set_env_pwd(char *oldpwd, t_env *env)
+{
+	char	*pwd;
+
+	pwd = malloc(MAX_PATH_LEN * sizeof(char));
+	if (!pwd)
+	{
+		ft_putstr_fd("Minishell: cd: malloc error\n", 2);
+		return (0);
+	}
+	getcwd(pwd, MAX_PATH_LEN);
+	if (!pwd)
+	{
+		ft_putstr_fd("Minishell: cd: malloc error\n", 2);
+		return (0);
+	}
+	ft_update_env_var("OLDPWD", oldpwd, env);
+	ft_update_env_var("PWD", pwd, env);
+	if (pwd)
+		free(pwd);
+	if (oldpwd)
+		free(oldpwd);
+	return (1);
+}
+
 int	cd_to_path(char *path, t_env *env)
 {
 	char	*oldpwd;
 
-	if (chdir(path) == -1)
-	{
-		ft_putstr_fd("minishell: cd: ", 2);
-		ft_putstr_fd(path, 2);
-		ft_putstr_fd(": ", 2);
-		ft_putendl_fd(strerror(errno), 2);
-		return (0);
-	}
 	oldpwd = malloc(MAX_PATH_LEN * sizeof(char));
 	if (!oldpwd)
 	{
@@ -31,11 +48,22 @@ int	cd_to_path(char *path, t_env *env)
 		return (0);
 	}
 	getcwd(oldpwd, MAX_PATH_LEN);
-	ft_update_env_var("OLDPWD", oldpwd, env);
-	ft_update_env_var("PWD", ft_get_env_var("HOME", env), env);
-	if (oldpwd)
-		free(oldpwd);
-	return (1);
+	if (!oldpwd)
+	{
+		ft_putstr_fd("Minishell: cd: malloc error\n", 2);
+		return (0);
+	}
+	if (chdir(path) == -1)
+	{
+		ft_putstr_fd("minishell: cd: ", 2);
+		ft_putstr_fd(path, 2);
+		ft_putstr_fd(": ", 2);
+		ft_putendl_fd(strerror(errno), 2);
+		if (oldpwd)
+			free(oldpwd);
+		return (0);
+	}
+	return (cd_set_env_pwd(oldpwd, env));
 }
 
 int	cd_to_home(t_env *env)
