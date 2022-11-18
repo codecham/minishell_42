@@ -81,14 +81,36 @@ int	ft_put_env_var_sort_list(t_env *env, int fd_out)
 	env_var = temp_env_var_list;
 	while (env_var != NULL)
 	{
-		ft_putstr_fd("declare -x ", fd_out);
-		ft_putstr_fd(env_var->key, fd_out);
-		ft_putstr_fd("=\"", fd_out);
-		ft_putstr_fd(env_var->value, fd_out);
-		ft_putendl_fd("\"", fd_out);
+		if (ft_strncmp(env_var->key, "_", ft_strlen(env_var->key) + 1) != 0)
+		{
+			ft_putstr_fd(env_var->key, fd_out);
+			ft_putstr_fd("=\"", fd_out);
+			ft_putstr_fd(env_var->value, fd_out);
+			ft_putendl_fd("\"", fd_out);
+		}
 		env_var = env_var->next;
 	}
 	ft_free_env_var_list(temp_env_var_list);
+	return (0);
+}
+
+/*
+Check if the argument is a special shell paramater "_", 
+*/
+int	ft_is_special_param(char *arg)
+{
+	int	first_char;
+	int	second_char;
+
+	first_char = 0;
+	second_char = 1;
+	if (arg[first_char] == '_')
+	{
+		if (arg[second_char] == '=')
+			return (1);
+		else if (arg[second_char] == '\0')
+			return (1);
+	}
 	return (0);
 }
 
@@ -107,7 +129,7 @@ int	ft_builtin_export(int fd_out, char **args, t_env *env)
 		equal_flag = 0;
 		if (ft_is_valid_export(*args, &add_flag, &equal_flag))
 		{
-			if (equal_flag)
+			if (equal_flag && !ft_is_special_param(*args))
 			{
 				if (!ft_export_env_var(*args, add_flag, env))
 					return (1);

@@ -37,7 +37,7 @@ int	ft_builtin_unset(char **args, t_env *env)
 	{
 		if (ft_is_valid_unset(*args))
 		{
-			if (ft_is_env_var_exist(*args, env))
+			if (ft_is_env_var_exist(*args, env) && !ft_is_special_param(*args))
 				ft_delete_env_var(*args, env);
 		}
 		else
