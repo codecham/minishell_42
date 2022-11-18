@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 23:46:26 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/18 03:14:57 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/18 16:47:25 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_env_in_double_quote(t_token *token, int i, char **envp)
 	i++;
 	while (token->value[i] && token->value[i] != '\"')
 	{
-		if (token->value[i] == '$')
+		if (ft_good_c_for_env(token->value[i + 1]) == 1 || token->value[i + 1] == '?')
 		{
 			result = ft_change_env_token(token, i, envp);
 			if (result == -1)
@@ -64,13 +64,16 @@ int	ft_env_without_quote(t_token *token, int i, char **envp)
 	{
 		if (token->value[i] == '\"' && token->value[i] == '\'')
 			break ;
-		if (token->value[i] == '$')
+		if (token->value[i] == '$' && token->value[i + 1])
 		{
-			result = ft_change_env_token(token, i, envp);
-			if (result == -1)
-				return (-1);
-			i += result;
-			return (i);
+			if (ft_good_c_for_env(token->value[i + 1]) == 1 || token->value[i + 1] == '?')
+			{
+				result = ft_change_env_token(token, i, envp);
+				if (result == -1)
+					return (-1);
+				i += result;
+				return (i);
+			}
 		}
 		i++;
 	}
