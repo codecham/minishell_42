@@ -40,7 +40,10 @@ char	*ft_copy_env_key(char *str, int add_flag)
 		size--;
 	key = (char *)malloc((size + 1) * sizeof(char));
 	if (!key)
+	{
+		ft_putstr_fd("Minishell: cd: malloc error\n", 2);
 		return (NULL);
+	}
 	ft_strlcpy(key, str, size + 1);
 	return (key);
 }
@@ -72,7 +75,10 @@ char	*ft_copy_env_val(char *str)
 	}
 	value = (char *)malloc((size + 1) * sizeof(char));
 	if (!value)
+	{
+		ft_putstr_fd("Minishell: cd: malloc error\n", 2);
 		return (NULL);
+	}
 	ft_strlcpy(value, str, size + 1);
 	return (value);
 }

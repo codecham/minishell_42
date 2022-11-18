@@ -29,7 +29,10 @@ t_env	*ft_new_env_var(char *new_key, char *new_val)
 
 	new_env_val = (t_env *)malloc(sizeof(t_env));
 	if (!new_env_val)
+	{
+		ft_putstr_fd("Minishell: cd: malloc error\n", 2);
 		return (NULL);
+	}
 	ft_init_env_var(new_env_val);
 	new_env_val->key = new_key;
 	new_env_val->value = new_val;

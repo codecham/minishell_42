@@ -40,6 +40,7 @@ char	*ft_get_new_env_val(char *str, char *key, int *add, t_env *env)
 		new_env_val = ft_strjoin(value, ft_get_env_var(key, env));
 		if (!new_env_val)
 		{
+			ft_putstr_fd("Minishell: cd: malloc error\n", 2);
 			free(value);
 			return (NULL);
 		}

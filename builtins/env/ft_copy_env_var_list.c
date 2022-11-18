@@ -30,6 +30,7 @@ t_env	*ft_copy_env_var_list(t_env *env_var)
 									ft_strdup(env_var->value));
 		if (!env_var_copy)
 		{
+			ft_putstr_fd("Minishell: cd: malloc error\n", 2);
 			ft_free_env_var_list(env_var_list_copy);
 			return (NULL);
 		}

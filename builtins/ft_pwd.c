@@ -20,10 +20,16 @@ int	ft_builtin_pwd(int fd_out)
 
 	buf = malloc(MAX_PATH_LEN * sizeof(char));
 	if (!buf)
+	{
+		ft_putstr_fd("Minishell: cd: malloc error\n", 2);
 		return (1);
+	}
 	getcwd(buf, MAX_PATH_LEN);
 	if (!buf)
+	{
+		ft_putstr_fd("Minishell: cd: malloc error\n", 2);
 		return (1);
+	}
 	ft_putendl_fd(buf, fd_out);
 	free(buf);
 	return (0);

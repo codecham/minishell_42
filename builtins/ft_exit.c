@@ -64,7 +64,6 @@ int	ft_builtin_exit(char **args, t_data *data)
 		if (args[1] == NULL)
 		{
 			ft_free_data_exit(data);
-			system("leaks minishell");
 			exit(EXIT_SUCCESS);
 		}
 		else
