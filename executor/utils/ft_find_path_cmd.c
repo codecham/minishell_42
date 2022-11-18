@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:16:12 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/15 19:41:04 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/18 18:00:44 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,21 +80,27 @@ int	ft_check_in_path(char *command_name, char *directory)
 
 int	ft_find_path_cmd(t_node *node, char **path_env)
 {
-	int	i;
+	int		i;
+	char	*command_lower;
 
 	i = 0;
 	if (!node || !node->command_name || !path_env)
 		return (-1);
+	command_lower = ft_str_tolower(node->command_name);
+	if (!command_lower)
+		return (ft_err_malloc_exec_int());
 	while (path_env[i])
 	{
-		if (ft_check_in_path(node->command_name, path_env[i]) == 0)
+		if (ft_check_in_path(command_lower, path_env[i]) == 0)
 		{
-			node->path_cmd = ft_strncat_path(path_env[i], node->command_name);
+			node->path_cmd = ft_strncat_path(path_env[i], command_lower);
+			free (command_lower);
 			if (!node->path_cmd)
 				return (-1);
 			return (0);
 		}
 		i++;
 	}
+	free (command_lower);
 	return (-1);
 }

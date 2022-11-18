@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 18:14:44 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/15 20:29:30 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/18 18:04:10 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,44 +21,59 @@
 
 */
 
-void	ft_set_builtin(t_node *node)
+int	ft_err_malloc_exec_int(void)
 {
-	if (ft_strncmp(node->command_name, "echo",
-			(ft_strlen(node->command_name) + 1)) == 0)
+	ft_putstr_fd("Minishell: ", 2);
+	ft_putstr_fd("malloc error\n", 2);
+	return (-1);
+}
+
+void	ft_set_builtin(t_node *node, char *lower_cmd)
+{
+	if (ft_strncmp(lower_cmd, "echo",
+			(ft_strlen(lower_cmd) + 1)) == 0)
 		node->is_built_in = ECHO;
-	else if (ft_strncmp(node->command_name, "cd",
-			(ft_strlen(node->command_name) + 1)) == 0)
+	else if (ft_strncmp(lower_cmd, "cd",
+			(ft_strlen(lower_cmd) + 1)) == 0)
 		node->is_built_in = CD;
-	else if (ft_strncmp(node->command_name, "pwd",
-			(ft_strlen(node->command_name) + 1)) == 0)
+	else if (ft_strncmp(lower_cmd, "pwd",
+			(ft_strlen(lower_cmd) + 1)) == 0)
 		node->is_built_in = PWD;
-	else if (ft_strncmp(node->command_name, "export",
-			(ft_strlen(node->command_name) + 1)) == 0)
+	else if (ft_strncmp(lower_cmd, "export",
+			(ft_strlen(lower_cmd) + 1)) == 0)
 		node->is_built_in = EXPORT;
-	else if (ft_strncmp(node->command_name, "unset",
-			(ft_strlen(node->command_name) + 1)) == 0)
+	else if (ft_strncmp(lower_cmd, "unset",
+			(ft_strlen(lower_cmd) + 1)) == 0)
 		node->is_built_in = UNSET;
-	else if (ft_strncmp(node->command_name, "env",
-			(ft_strlen(node->command_name) + 1)) == 0)
+	else if (ft_strncmp(lower_cmd, "env",
+			(ft_strlen(lower_cmd) + 1)) == 0)
 		node->is_built_in = ENV;
-	else if (ft_strncmp(node->command_name, "exit",
-			(ft_strlen(node->command_name) + 1)) == 0)
+	else if (ft_strncmp(lower_cmd, "exit",
+			(ft_strlen(lower_cmd) + 1)) == 0)
 		node->is_built_in = EXIT;
 }
 
-void	ft_is_builtin(t_node *node)
+int	ft_is_builtin(t_node *node)
 {
 	t_node	*tmp;
+	char	*lower_cmd;
 
 	if (!node)
-		return ;
+		return (0);
 	tmp = node;
 	while (1)
 	{
 		if (tmp->command_name != NULL)
-			ft_set_builtin(tmp);
+		{
+			lower_cmd = ft_str_tolower(tmp->command_name);
+			if (!lower_cmd)
+				return (ft_err_malloc_exec_int());
+			ft_set_builtin(tmp, lower_cmd);
+			free (lower_cmd);
+		}
 		if (tmp->next == NULL)
 			break ;
 		tmp = tmp->next;
 	}
+	return (0);
 }

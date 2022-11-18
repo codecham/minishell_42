@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 20:10:46 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/18 05:01:52 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/18 18:01:44 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -255,8 +255,9 @@ int				ft_reset_saved_fd(t_node *node);
 void			ft_wait_children(void);
 char			**ft_get_path_env(char **envp);
 int				ft_find_path_cmd(t_node *node, char **path_env);
-void			ft_is_builtin(t_node *node);
+int				ft_is_builtin(t_node *node);
 int				ft_set_path_cmd(t_data *data);
+int				ft_is_relative_path(char *command);
 int				ft_exec_regular_cmd(t_data *data, t_node *this_node);
 int				ft_search_outfile_redir(t_redir_list *elem);
 int				ft_search_infile_redir(t_redir_list *elem);
@@ -286,5 +287,7 @@ int				ft_err_access(char *command_name);
 void			ft_signal_handler(void);
 void			ft_signal_handler_child(void);
 void			rl_replace_line(const char *text, int clear_undo);
+char			*ft_str_tolower(char *str);
+int				ft_err_malloc_exec_int(void);
 
 #endif

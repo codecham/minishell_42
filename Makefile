@@ -6,7 +6,7 @@
 #    By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/09 23:36:50 by dcorenti          #+#    #+#              #
-#    Updated: 2022/11/18 15:22:29 by dcorenti         ###   ########.fr        #
+#    Updated: 2022/11/18 17:41:06 by dcorenti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,6 +81,7 @@ SRC		= 	minishell.c \
 			executor/utils/ft_reset_saved_fd.c \
 			executor/utils/ft_save_in_out.c \
 			executor/utils/ft_wait_children.c \
+			executor/utils/ft_str_tolower.c \
 			executor/pipe/ft_close_bad_pipe.c \
 			executor/pipe/ft_create_pipe.c \
 			executor/pipe/ft_exec_pipe.c \

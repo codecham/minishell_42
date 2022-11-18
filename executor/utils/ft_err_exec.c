@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:28:32 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/15 21:45:22 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/18 18:01:49 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,15 @@ int	ft_err_fork(void)
 
 int	ft_err_cmd_exist(t_node *node)
 {
+	if (node->command_name[0] == '\0' &&
+		ft_has_redirection_type(node, INFILE) == 1)
+		return (0);
 	ft_putstr_fd("Minishell: ", 2);
 	ft_putstr_fd(node->command_name, 2);
-	ft_putstr_fd(": command not found\n", 2);
+	if (ft_is_relative_path(node->command_name) == 0)
+		ft_putstr_fd(": command not found\n", 2);
+	else
+		ft_putstr_fd(": No such file or directory\n", 2);
 	return (127);
 }
 
