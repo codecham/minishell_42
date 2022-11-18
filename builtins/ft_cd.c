@@ -45,7 +45,7 @@ int	cd_to_home(t_env *env)
 	home_dir = getenv("HOME");
 	if (!home_dir)
 	{
-		ft_putstr_fd("HOME is not set\n", 2);
+		ft_putstr_fd("HOME not set\n", 2);
 		return (0);
 	}
 	return (cd_to_path(home_dir, env));
