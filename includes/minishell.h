@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 20:10:46 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/18 18:01:44 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 04:01:06 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,7 +196,7 @@ void			ft_signal_empty(void);
 int				ft_call_builtin(t_node *node, t_env *env, t_data *data);
 int				ft_builtin_echo(char **args, int fd_out);
 int				ft_builtin_pwd(int fd_out);
-int				ft_builtin_cd(t_env *env, char *dir);
+int				ft_builtin_cd(t_env *env, char **argv, int fd_out);
 int				ft_builtin_env(int fd_out, t_env *env);
 int				ft_builtin_export(int fd_out, char **args, t_env *env);
 int				ft_builtin_unset(char **args, t_env *env);
@@ -210,6 +210,8 @@ int				ft_is_valid_first_char(char c);
 int				ft_is_valid_char(char c);
 int				ft_is_special_param(char *arg);
 int				ft_puterror(char *arg, char *str);
+int				ft_err_message_cd(char *str, int code);
+int				ft_execute_cd_minus(t_env *env, char **arg, int fd_out);
 
 /*
 ----------------------------------ENV-----------------------------------------

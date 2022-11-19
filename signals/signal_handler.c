@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 19:41:08 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/17 17:33:52 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/18 22:07:08 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,6 @@ void	ft_signal_int(int sig)
 	rl_redisplay();
 }
 
-/* When user type CTRL + \, we do nothing and just ignore
-void	ft_signal_quit(int sig)
-{
-	(void)sig;
-
-	up = tgetstr("up", NULL);
-	ri = tgetstr("RI", NULL);
-	tputs(ri, 1, putchar);
-	tputs(ri, 1, putchar);
-	tputs(ri, 1, putchar);
-	tputs(up, 1, putchar);
-}
-*/
-
 void	ft_signal_handler(void)
 {
 	signal(SIGINT, ft_signal_int);
@@ -56,4 +42,5 @@ void	ft_signal_handler(void)
 void	ft_signal_handler_child(void)
 {
 	signal(SIGINT, ft_signal_int_child);
+	signal(SIGQUIT, SIG_IGN);
 }

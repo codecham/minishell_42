@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 22:52:04 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/18 04:53:46 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 03:23:34 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,6 @@ t_data	*ft_initialize_data(t_data *data, char **envp)
 	data->first_node = NULL;
 	data->path_env = NULL;
 	return (data);
-}
-
-void	ft_initialize_minishell(void)
-{
-	// struct termios	tty_attr;
-
-	// ioctl(STDIN_FILENO, TIOCGETA, &tty_attr);
-	// tty_attr.c_lflag &= ~ECHOCTL;
-	// ioctl(STDIN_FILENO, TIOCGETA, &tty_attr);
-	g_exit_status = 0;
 }
 
 void	ft_quit_minishell(t_data *data)
@@ -91,7 +81,7 @@ int	main(int argc, char **argv, char **envp)
 	(void)argc;
 	(void)argv;
 	data = NULL;
-	ft_initialize_minishell();
+	g_exit_status = 0;
 	data = ft_initialize_data(data, envp);
 	if (!data)
 	{

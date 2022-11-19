@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 22:25:48 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/18 03:14:52 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 04:22:32 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,11 @@ char	*ft_replace_quotes(char *str)
 	while (str[i])
 	{
 		if (str[i] == '\'' || str[i] == '\"')
-		{
 			new = ft_cpy_in_quotes(str, new, &i, str[i]);
-			if (!new)
-				return (NULL);
-		}
+		else
+			new = ft_realloc_add(new, str[i]);
+		if (!new)
+			return (NULL);
 		i++;
 	}
 	if (str)

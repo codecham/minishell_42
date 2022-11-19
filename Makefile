@@ -6,7 +6,7 @@
 #    By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/09 23:36:50 by dcorenti          #+#    #+#              #
-#    Updated: 2022/11/18 17:41:06 by dcorenti         ###   ########.fr        #
+#    Updated: 2022/11/18 21:28:52 by dcorenti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,6 +100,7 @@ SRC		= 	minishell.c \
 			builtins/ft_export.c \
 			builtins/ft_export_utils.c \
 			builtins/ft_exit.c \
+			builtins/ft_cd_utils.c \
 			builtins/env/ft_create_env_var_list.c \
 			builtins/env/ft_new_env_var.c \
 			builtins/env/ft_copy_env_var.c \
@@ -120,8 +121,9 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@ $(MAKE) -C $(LIBFT_D) all
-	@ $(CC) ${CFLAGS}  -L /Users/$(USER)/.brew/opt/readline/lib -I -I/Users/$(USER)/.brew/opt/readline/include -o $(NAME) $(OBJ) $(LIBFT) -lreadline -ltermcap
-
+#@ $(CC) ${CFLAGS}  -L /Users/$(USER)/.brew/opt/readline/lib -I -I/Users/$(USER)/.brew/opt/readline/include -o $(NAME) $(OBJ) $(LIBFT) -lreadline -ltermcap
+	@ $(CC) ${CFLAGS}  -L /usr/local/opt/readline/lib -I /usr/local/opt/readline/include -o $(NAME) $(OBJ) $(LIBFT) -lreadline -ltermcap
+	
 clean:
 	@ $(MAKE) -C $(LIBFT_D) clean
 	@ rm -f $(OBJ)

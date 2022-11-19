@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:37:46 by dduvivie          #+#    #+#             */
-/*   Updated: 2022/11/18 16:16:36 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 04:00:57 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,10 @@ int	cd_set_env_pwd(char *oldpwd, t_env *env)
 
 	pwd = malloc(MAX_PATH_LEN * sizeof(char));
 	if (!pwd)
-	{
-		ft_putstr_fd("Minishell: cd: malloc error\n", 2);
-		return (0);
-	}
+		return (ft_err_message_cd("malloc error", 0));
 	getcwd(pwd, MAX_PATH_LEN);
 	if (!pwd)
-	{
-		ft_putstr_fd("Minishell: cd: malloc error\n", 2);
-		return (0);
-	}
+		return (ft_err_message_cd("malloc error", 0));
 	ft_update_env_var("OLDPWD", oldpwd, env);
 	ft_update_env_var("PWD", pwd, env);
 	if (pwd)
@@ -43,17 +37,11 @@ int	cd_to_path(char *path, t_env *env)
 
 	oldpwd = malloc(MAX_PATH_LEN * sizeof(char));
 	if (!oldpwd)
-	{
-		ft_putstr_fd("Minishell: cd: malloc error\n", 2);
-		return (0);
-	}
+		return (ft_err_message_cd("malloc error", 0));
 	getcwd(oldpwd, MAX_PATH_LEN);
 	if (!oldpwd)
-	{
-		ft_putstr_fd("Minishell: cd: malloc error\n", 2);
-		return (0);
-	}
-	if (chdir(path) == -1)
+		return (ft_err_message_cd("malloc error", 0));
+	if (chdir(path))
 	{
 		ft_putstr_fd("Minishell: cd: ", 2);
 		ft_putstr_fd(path, 2);
@@ -83,16 +71,23 @@ int	cd_to_home(t_env *env)
 Change the current directory to dir.
 If the param dir is NULL, change the current directory to $HOME.
  */
-int	ft_builtin_cd(t_env *env, char *dir)
-{
-	if (dir == NULL)
+int	ft_builtin_cd(t_env *env, char **arg, int fd_out)
+{	
+	if (arg[1] == NULL)
 	{
 		if (!cd_to_home(env))
 			return (1);
 	}
+	else if (arg[2] != NULL)
+	{
+		ft_putstr_fd("Minishell: cd: too few arguments\n", 2);
+		return (1);
+	}
+	else if (arg[1][0] == '-')
+		return (ft_execute_cd_minus(env, arg, fd_out));
 	else
 	{
-		if (!cd_to_path(dir, env))
+		if (!cd_to_path(arg[1], env))
 			return (1);
 	}
 	return (0);

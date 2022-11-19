@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:37:46 by dduvivie          #+#    #+#             */
-/*   Updated: 2022/11/18 03:59:30 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/18 21:25:08 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_call_builtin(t_node *node, t_env *env, t_data *data)
 	if (command == ECHO)
 		return (ft_builtin_echo(node->arg, node->fd_out));
 	else if (command == CD)
-		return (ft_builtin_cd(env, node->arg[1]));
+		return (ft_builtin_cd(env, node->arg, node->fd_out));
 	else if (command == PWD)
 		return (ft_builtin_pwd(node->fd_out));
 	else if (command == EXPORT)

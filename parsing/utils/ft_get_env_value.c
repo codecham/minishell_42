@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:26:45 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/18 16:54:30 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 04:14:18 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@
 	ATTENTION A NE PAS OUBLIER DE FREE LA NOUVELLE STRING
 */
 
-int		ft_set_exit_value(char **value)
+int	ft_set_exit_value(char **value)
 {
-	char *tmp;
+	char	*tmp;
 
 	tmp = ft_itoa(g_exit_status);
 	if (!tmp)
