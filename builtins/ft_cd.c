@@ -18,10 +18,10 @@ int	cd_set_env_pwd(char *oldpwd, t_env *env)
 
 	pwd = malloc(MAX_PATH_LEN * sizeof(char));
 	if (!pwd)
-		return (ft_err_message_cd("malloc error", 0));
+		return (ft_err_message_cd("malloc error", 1));
 	getcwd(pwd, MAX_PATH_LEN);
 	if (!pwd)
-		return (ft_err_message_cd("malloc error", 0));
+		return (ft_err_message_cd("malloc error", 1));
 	if (!ft_update_env_var("OLDPWD", oldpwd, env))
 	{
 		if (oldpwd)
@@ -32,7 +32,7 @@ int	cd_set_env_pwd(char *oldpwd, t_env *env)
 		if (pwd)
 			free(pwd);
 	}
-	return (1);
+	return (0);
 }
 
 int	cd_to_path(char *path, t_env *env)
@@ -53,7 +53,7 @@ int	cd_to_path(char *path, t_env *env)
 		ft_putendl_fd(strerror(errno), 2);
 		if (oldpwd)
 			free(oldpwd);
-		return (0);
+		return (1);
 	}
 	return (cd_set_env_pwd(oldpwd, env));
 }
@@ -79,19 +79,19 @@ int	ft_builtin_cd(t_env *env, char **arg, int fd_out)
 {
 	if (arg[1] == NULL)
 	{
-		if (!cd_to_home(env))
+		if (cd_to_home(env) == 1)
 			return (1);
 	}
 	else if (arg[2] != NULL)
 	{
-		ft_putstr_fd("Minishell: cd: too few arguments\n", 2);
+		ft_putstr_fd("Minishell: cd: too many arguments\n", 2);
 		return (1);
 	}
 	else if (arg[1][0] == '-')
 		return (ft_execute_cd_minus(env, arg, fd_out));
 	else
 	{
-		if (!cd_to_path(arg[1], env))
+		if (cd_to_path(arg[1], env) == 1)
 			return (1);
 	}
 	return (0);
