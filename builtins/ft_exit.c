@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:37:46 by dduvivie          #+#    #+#             */
-/*   Updated: 2022/11/19 15:28:40 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:47:50 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ int	ft_builtin_exit(char **args, t_data *data)
 		if (args[1] == NULL)
 		{
 			ft_free_data_exit(data);
-			system("leaks minishell");
 			exit(EXIT_SUCCESS);
 		}
 		else
