@@ -22,12 +22,16 @@ int	cd_set_env_pwd(char *oldpwd, t_env *env)
 	getcwd(pwd, MAX_PATH_LEN);
 	if (!pwd)
 		return (ft_err_message_cd("malloc error", 0));
-	ft_update_env_var("OLDPWD", oldpwd, env);
-	ft_update_env_var("PWD", pwd, env);
-	if (pwd)
-		free(pwd);
-	if (oldpwd)
-		free(oldpwd);
+	if (!ft_update_env_var("OLDPWD", oldpwd, env))
+	{
+		if (oldpwd)
+			free(oldpwd);
+	}
+	if (!ft_update_env_var("PWD", pwd, env))
+	{
+		if (pwd)
+			free(pwd);
+	}
 	return (1);
 }
 
@@ -37,10 +41,10 @@ int	cd_to_path(char *path, t_env *env)
 
 	oldpwd = malloc(MAX_PATH_LEN * sizeof(char));
 	if (!oldpwd)
-		return (ft_err_message_cd("malloc error", 0));
+		return (ft_err_message_cd("malloc error", 1));
 	getcwd(oldpwd, MAX_PATH_LEN);
 	if (!oldpwd)
-		return (ft_err_message_cd("malloc error", 0));
+		return (ft_err_message_cd("malloc error", 1));
 	if (chdir(path))
 	{
 		ft_putstr_fd("Minishell: cd: ", 2);
@@ -72,7 +76,7 @@ Change the current directory to dir.
 If the param dir is NULL, change the current directory to $HOME.
  */
 int	ft_builtin_cd(t_env *env, char **arg, int fd_out)
-{	
+{
 	if (arg[1] == NULL)
 	{
 		if (!cd_to_home(env))

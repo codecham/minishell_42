@@ -226,6 +226,7 @@ char			*ft_copy_env_val(char *str);
 char			*ft_get_env_var(char *key, t_env *env);
 int				ft_is_env_var_exist(char *key, t_env *env);
 int				ft_update_env_var(char *key, char *new_value, t_env *env);
+int				ft_update_shlv(t_env *env);
 int				ft_delete_env_var(char *key, t_env *env);
 void			ft_free_env_var_list(t_env *env_var);
 void			ft_free_env_var(t_env *env_var);

@@ -108,6 +108,7 @@ SRC		= 	minishell.c \
 			builtins/env/ft_find_env_var.c \
 			builtins/env/ft_get_env.c \
 			builtins/env/ft_update_env_var.c \
+			builtins/env/ft_update_shlvl.c \
 			builtins/env/ft_delete_env_var.c \
 			builtins/env/ft_add_env_var.c \
 			builtins/env/ft_sort_env_var_list.c \
@@ -123,7 +124,7 @@ $(NAME): $(OBJ)
 	@ $(MAKE) -C $(LIBFT_D) all
 #@ $(CC) ${CFLAGS}  -L /Users/$(USER)/.brew/opt/readline/lib -I -I/Users/$(USER)/.brew/opt/readline/include -o $(NAME) $(OBJ) $(LIBFT) -lreadline -ltermcap
 	@ $(CC) ${CFLAGS}  -L /usr/local/opt/readline/lib -I /usr/local/opt/readline/include -o $(NAME) $(OBJ) $(LIBFT) -lreadline -ltermcap
-	
+
 clean:
 	@ $(MAKE) -C $(LIBFT_D) clean
 	@ rm -f $(OBJ)

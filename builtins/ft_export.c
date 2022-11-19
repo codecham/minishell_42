@@ -22,8 +22,13 @@ int	ft_update_env_var_list(char *key, char *value, t_env *env)
 
 	if (ft_is_env_var_exist(key, env))
 	{
-		ft_update_env_var(key, value, env);
-		free(key);
+		if (!ft_update_env_var(key, value, env))
+		{
+			free(key);
+			free(value);
+		}
+		else
+			free(key);
 	}
 	else
 	{
@@ -95,7 +100,7 @@ int	ft_put_env_var_sort_list(t_env *env, int fd_out)
 }
 
 /*
-Check if the argument is a special shell paramater "_", 
+Check if the argument is a special shell paramater "_",
 */
 int	ft_is_special_param(char *arg)
 {

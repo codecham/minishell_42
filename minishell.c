@@ -23,10 +23,15 @@ t_data	*ft_initialize_data(t_data *data, char **envp)
 		free(data);
 		return (NULL);
 	}
+	if (ft_update_shlv(data->env_var_list) == -1)
+	{
+		ft_free_env_var_list(data->env_var_list);
+		free(data);
+	}
 	data->envp = ft_env_list_to_char(data->env_var_list);
 	if (!data->envp)
 	{
-		ft_free_env_var(data->env_var_list);
+		ft_free_env_var_list(data->env_var_list);
 		free(data);
 	}
 	data->first_node = NULL;
