@@ -6,25 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 19:09:51 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/15 21:46:03 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:01:03 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-/*
-
-	La fonction ft_set_path_cmd va analyser si la commande est un 
-	chemin relatif ou absolu.
-	En fonction il copiera le chemin de l'executable dans la variable 
-	node->path_command.
-
-	Si la command est un builtin il ne copiera rien.
-
-	PARAMETRES: La structure t_data.
-
-	VALEUR DE RETOUR: renvoie 0 s'il réussis et -1 en cas de probleme.
-*/
 
 int	ft_is_relative_path(char *command)
 {

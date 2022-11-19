@@ -6,18 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:35:30 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/15 19:44:32 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:02:46 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-/*
-	La fonction ft_reset_saved_fd va restaurer les fd 0 et 1 sur
-	STDIN ET STDOUT
-
-	PARAMETRE: La structure contenant les fd à modifier
-*/
 
 int	ft_resest_fd_in(t_node *node)
 {

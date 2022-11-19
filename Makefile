@@ -6,7 +6,7 @@
 #    By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/09 23:36:50 by dcorenti          #+#    #+#              #
-#    Updated: 2022/11/18 21:28:52 by dcorenti         ###   ########.fr        #
+#    Updated: 2022/11/19 15:04:21 by dcorenti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,6 @@ SRC		= 	minishell.c \
 			parsing/utils/ft_env_list_to_char.c \
 			node/ft_add_arg_node.c \
 			node/ft_add_command_name.c \
-			node/ft_count_node.c \
 			node/ft_create_node.c \
 			node/ft_free_nodes.c \
 			node/ft_get_last_redirection.c \

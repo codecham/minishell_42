@@ -6,26 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:13:14 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/16 19:20:07 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:02:41 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-/*
-	La fonction ft_open_files va ouvrir les fichier correspondant et regarder:
-
-	- Si c'est bien un fichier
-	- Si le fichier possede les droits qu'il faut
-	- Ouvre le fichier correspondant avec les flags adèquats
-
-	PARMATERE:
-	- La node qui contient les redirections
-	
-	VALEUR DE RETOUR:
-	- Renvoie 0 si tout se passe bien
-	- Renvoie 1 si cela échoue
-*/
 
 int	ft_err_files_message(char *name, char *message)
 {

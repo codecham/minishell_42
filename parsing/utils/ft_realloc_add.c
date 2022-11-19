@@ -6,27 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 06:10:06 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/08 15:54:29 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:09:46 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-/*
-	La fonction realloc_add réallouer une string en ajoutant 1 char pour 
-	ajouter 'c' a old.
-
-	Simplement cette fonction sert a ajouter un caractere à une string 
-	alloué dynamiquement.
-
-	PARAMETRE:
-		- La string à realloc.
-		- Le caractere à ajouter.
-
-	VALEUR DE RETOUR: 
-		- Renvoie la nouvelle string
-		- Renvoie NULL si malloc échoue.
-*/
 
 char	*ft_realloc_add(char *old, char c)
 {

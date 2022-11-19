@@ -6,23 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 22:05:18 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/08 15:14:05 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:08:32 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-/*
-    La fonction ft_set_token_list va créer la liste brut des différent token.
-
-    PARAMERTES: La structure t_data_parsing et l'input de l'utilisateur.
-
-    VALEUR DE RETOUR: 
-    - Renvoie 0 si tout se passe bien
-    - Renvoie -1 en cas d'erreur de malloc.
-    - Renvoie -2 si un mauvais caractere est trouvé
-    - Renvoie -3 si une quote n'est as fermée
-*/
 
 int	ft_set_separator(t_token *token, char sep)
 {

@@ -6,29 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:06:54 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/17 21:10:34 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:07:51 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-/*
-
-	La fonction ft_concat_redir va concatener les différentes
-	redirections si besoin.
-	
-	Si deux redirections se suivent alors ils les concatene
-	si ils font partie des cas suivant:
-		>>
-		<<
-		<>
-
-	PARAMETRE: La structure data_parsing;
-
-	VALEUR DE RETOUR:
-		- Renvoie 0 si tout se passe bien
-		- Renvoie -1 en cas d'erreur de malloc	
-*/
 
 int	ft_concat_infile(t_data_parsing *p, t_token *token)
 {

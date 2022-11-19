@@ -6,17 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:33:33 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/08 15:48:13 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:08:52 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-/*
-
-	Cette fonction renvoie 0 si le c est un caractere autorisé et -1 si non.
-
-*/
 
 int	ft_autorized_char(char c)
 {

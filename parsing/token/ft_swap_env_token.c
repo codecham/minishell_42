@@ -6,29 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 09:15:56 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/09 23:50:32 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:08:46 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-/*
-
-	La fonction ft_swap_env va remplacer dans la string la variable 
-	d'environement par sa valeur.
-	
-	Il créé une nouvelle string et free l'autre. 
-
-	PARAMETERES:
-		- La string dans laquelle remplacer
-		- La valeur de la variable
-		- L'indice du début de la variable
-		- L'indice de fin de la variable
-
-	VALEUR DE RETOUR:
-		- Renvoie la nouvelle string avec la variable remplacé par sa valeur
-		- Renvoie NULL si malloc échoue
-*/
 
 char	*ft_cpy_empty_env(t_token *token, int begin, int end)
 {

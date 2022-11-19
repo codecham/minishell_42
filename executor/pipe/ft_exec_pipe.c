@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 13:00:14 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/17 17:05:58 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 14:58:39 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,5 @@ int	ft_exec_pipe(t_data *data)
 	}
 	ft_close_pipe_main(data);
 	ft_wait_children();
-
 	return (0);
 }

@@ -6,30 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 19:55:40 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/17 02:51:03 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:02:59 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-/*
-
-	La fonction ft_wait children va attendre que le processus enfant se
-	termine
-
-		-1 dans la fonction waitpid definit que le processus attend la fin 
-		de n'importe lequel de ses fils
-
-		WIFEXITED(status) renvoie vrai si le fils s'est terminer normalement
-
-		WEXITSTATUS(status) renvoie le code de sortie du fils
-
-		WIFSIGNALED(satus) renvoie vrai si le processus s'est terminé à cause
-		d'un signal
-
-		WTERMSIG renvoie le numéro de signal qui a causé la fin du fil 
-		(seulement si WIFSIGNALED est vrai)
-*/
 
 void	ft_wait_children(void)
 {

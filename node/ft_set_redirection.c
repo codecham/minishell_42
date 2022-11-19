@@ -6,23 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 01:28:23 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/15 20:11:32 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:06:34 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-
-/*
-	Cette fonction ajoute un element a la liste de redirection.
-
-	PARAMETRE:	- node: La node a laquelle ajouter la redirection
-				- redirect_type: La valeur entiere correspondant a
-				la redirection
-				- fd: Le file descriptor correspondant au fichier 
-				de la redirection
-
-	VALEUR DE RETOUR: Renvoie 0 si elle reussis ou -1 si elle echoue
-*/
 
 int	ft_set_redirection(t_node *node, int redirect_type, int fd, char *f_name)
 {

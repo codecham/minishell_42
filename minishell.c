@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 22:52:04 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/19 03:23:34 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:27:55 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ft_quit_minishell(t_data *data)
 	tputs(ri, 1, putchar);
 	tputs(ri, 1, putchar);
 	tputs(up, 1, putchar);
-	printf("\bexit\n");
+	ft_putstr_fd("exit\n", 2);
 	exit(0);
 }
 

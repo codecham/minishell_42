@@ -6,11 +6,18 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:37:46 by dduvivie          #+#    #+#             */
-/*   Updated: 2022/11/18 15:54:01 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:28:40 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+void	ft_exit_print_error(char *str)
+{
+	ft_putstr_fd("Minishell: exit: ", 2);
+	ft_putstr_fd(str, 2);
+	ft_putstr_fd(": numeric argument required\n", 2);
+}
 
 int	ft_arg_is_num(char *arg)
 {
@@ -44,7 +51,7 @@ int	ft_too_many_args(char **args)
 {
 	if (ft_count_args(args) > 1)
 	{
-		printf("Minishel: exit: too many arguments\n");
+		ft_putstr_fd("Minishel: exit: too many arguments\n", 2);
 		return (1);
 	}
 	return (0);
@@ -56,7 +63,7 @@ Exit the shell with a status of N.
 */
 int	ft_builtin_exit(char **args, t_data *data)
 {
-	ft_putendl_fd("exit", 1);
+	ft_putendl_fd("exit", 2);
 	if (ft_too_many_args(args))
 		return (EXIT_FAILURE);
 	else
@@ -64,6 +71,7 @@ int	ft_builtin_exit(char **args, t_data *data)
 		if (args[1] == NULL)
 		{
 			ft_free_data_exit(data);
+			system("leaks minishell");
 			exit(EXIT_SUCCESS);
 		}
 		else
@@ -72,7 +80,7 @@ int	ft_builtin_exit(char **args, t_data *data)
 				g_exit_status = ft_atoi(args[1]);
 			else
 			{
-				printf("exit: %s: numeric argument required\n", args[1]);
+				ft_exit_print_error(args[1]);
 				g_exit_status = 255;
 			}
 			ft_free_data_exit(data);

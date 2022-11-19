@@ -6,17 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 14:39:01 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/17 22:17:30 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:07:43 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-/*
-	La fonction ft_check_redir_next va regarder si apres la redirection 
-	c'est bien un mot sinon la fonction renvoie -2 et imprimme un message  
-
-*/
 
 char	*ft_two_pipe(t_token *token)
 {

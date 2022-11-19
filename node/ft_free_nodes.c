@@ -6,18 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 02:06:40 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/16 18:23:29 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:06:01 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-
-/*
-	La fonction ft_free_nodes va liberer tout l'espace memoire alloue 
-	dynamiquement de toute les nodes en les libereant dans l'ordre une par une.
-
-	PARAMETRES:	- node: la premiere node de la liste.
-*/
 
 void	ft_free_matrice(char **matrice)
 {

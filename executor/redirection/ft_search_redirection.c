@@ -6,19 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 06:08:47 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/15 19:38:33 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:01:42 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-/*
-	Les fonctions ft_search_redir vont chercher la dernière redirection de
-	chaque type.
-	
-	Si il y a des redirection renvoie le fd et si non renvoie -1
-
-*/
 
 int	ft_search_infile_redir(t_redir_list *elem)
 {

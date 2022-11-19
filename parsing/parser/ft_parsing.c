@@ -6,26 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 20:44:33 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/19 03:23:48 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:07:21 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-/*
-
-	La foncion ft_parsing est l'entrée de notre parsing.
-
-	On commence par créer une structure t_data_parsing qui contiendra:
-
-		- Le premier element de la liste des token.
-		- Les variables d'environement.
-
-	Ensuite elle va envoyer l'input et la liste au différentes fonction 
-	qui va creer cette liste de tokens.
-
-	FONCTION DE DEBBUGAGE A DELETE ET A REMETTRE A LA NORME
-*/
 
 int	ft_free_input(char *input)
 {

@@ -6,24 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 15:02:41 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/08 15:20:57 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:07:30 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-/*
-
-	La fonction ft_ambigous redirect va verfier si une redirection ne pointe pas
-	vers une variable d'environement vide.
-
-	PARAMETRES: La structure data_parsing
-
-	VALEUR DE RETOUR:
-		- Renvoie 0 si tout va bien.
-		- Renvoie -1 en cas d'erreur de malloc
-		- Renvoie -2 si une variable vide est trouvée
-*/
 
 int	ft_check_env_ambiguous(t_data_parsing *p, t_token *token)
 {

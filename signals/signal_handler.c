@@ -6,16 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 19:41:08 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/18 22:07:08 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:09:59 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-
-/*
-Ce fichier contient les différente fonctions à completer pour les
-différents signaux
-*/
 
 void	ft_signal_int_child(int sig)
 {

@@ -6,28 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 23:46:26 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/19 04:13:43 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:08:25 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-/*
-
-	La fonction ft_replace_env va chercher si il y a des variables
-	d'environement à remplacer par leur valeur et l'envoie à
-	ft_change_env_token.
-
-	Ne le fait pas si la variable est entre simple quote (')
-
-	PARAMETRES:
-		- La structure t_data_parsing contenant le pointeur du 
-		premier element token.
-
-	VALEUR DE RETOUR:
-		- Renvoie 0 si tout se passe bien
-		- Renvoie -1 si il y a une erreur de malloc.
-*/
 
 int	ft_env_in_double_quote(t_token *token, int i, char **envp)
 {

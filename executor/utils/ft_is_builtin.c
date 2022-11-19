@@ -6,20 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 18:14:44 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/18 18:04:10 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:02:33 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-/*
-
-	La fonction ft_is_builtin regarde si la commande envoyé est un builtin ou pas
-	et modifie la valeur dans la node en fonction des macro
-
-	PARAMETRE : La premiere node.
-
-*/
 
 int	ft_err_malloc_exec_int(void)
 {

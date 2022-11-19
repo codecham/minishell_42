@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dduvivie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:37:46 by dduvivie          #+#    #+#             */
-/*   Updated: 2022/11/09 13:22:37 by dduvivie         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:00:15 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "builtins.h"
 #include "../includes/minishell.h"
 
 /* Get the pathname that is the current working directory */

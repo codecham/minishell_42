@@ -6,26 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 04:03:16 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/08 15:28:06 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:07:57 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-/*
-	La fonction ft_cpy_in_quote copie les caracteres 
-	jusqu'à rencontrer la quote fermante.
-
-	PARAMETRE:
-		- Le token dans lequel copier l'input
-		- L'input
-		- l'indice de la premiere quote
-		
-	VALEUR DE RETOUR:
-		- Renvoie l'index aprés la quote fermante.
-		- Renvoie -1 si la quote fermante n'est pas trouvée
-		- Renvoie -2 en cas d'erreur de malloc
-*/
 
 int	ft_cpy_in_quote(t_token *token, char *input, int i)
 {

@@ -6,26 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 22:25:48 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/19 04:22:32 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:08:11 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-/*
-
-	Cette fonction va simplement supprimer les quotes contenue 
-	dans les tokens
-
-	PARAMETRE D'ENTREE:
-		- La structure t_data_parsing qui contient le pointeur 
-		du premier element token
-	
-	VALEUR DE RETOUR:
-		- Renvoie 0 si tout se passe bien.
-		- Renvoie -1 en cas d'erreur de malloc
-
-*/
 
 int	ft_contain_quotes(char *str)
 {

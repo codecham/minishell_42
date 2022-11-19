@@ -6,27 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:16:12 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/18 18:00:44 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:02:08 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-/*
-	La fonction ft_find_path_cmd va rechercher dans les dossiers 
-	contenu dans path_env si la programme contenut dans node->command_name 
-	existe.
-	Si il existe, cela va copier le chemin entier de la commande dans la 
-	variable path_cmd de la node.
-
-
-	PARAMETRES: La fonction prend la node en premier parametre et le 
-	double tableau contenant les path.
-
-	VALEUR DE REOUR: Renvoie 0 si un chemin est trouvé et renvoie -1 
-	si le chemin n'est pas trouvé ou si il y a eu une erreur d'allocation.
-
-*/
 
 char	*ft_strncat_path(char *s1, char *s2)
 {

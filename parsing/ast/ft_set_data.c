@@ -6,25 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:31:41 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/18 03:17:13 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:06:49 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-/*
-
-	La fonction ft_set_data remplis nos nodes pour l'envoyer à l'éxécution.
-
-	PARAMETRES:
-		- La structure t_data
-		- La structure t_data_parsing_p
-
-	VALEUR DE RETOUR
-		- Renvoie 0 si tout se passe bien
-		- Renvoie -1 si erreur de malloc
-		- Renvoie -2 et imprime un message en cas d'autre erreur
-*/
 
 int	ft_loop_node_data(t_node *node, t_token *token)
 {

@@ -6,18 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 23:41:24 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/17 22:16:20 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:09:09 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-/*
-
-	Les fonction d'erreur qui affiche un certain message et renvoie
-	une valeur négative.
-
-*/
 
 int	ft_err_pars_ambiguous(t_data_parsing *data_p, t_token *token, int err_code)
 {

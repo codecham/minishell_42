@@ -6,17 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 12:48:48 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/15 19:37:32 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:01:28 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-/*
-
-	ft_set_pipe va set les fd sur le d'entrêe et/ou de sortie
-
-*/
 
 int	ft_set_fd_in(t_node *node)
 {

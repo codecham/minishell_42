@@ -6,22 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 05:59:42 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/15 19:38:53 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:01:50 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-/*
-	Fonction qui va set les fd des redirection.
-	Elle va changer le fd de STDIN et/ou STDOUT
-
-	PARAMETRE: La node de la commande à modifier les redirection.
-
-	RETURN: 
-	- Renvoie 0 si tout se passe bien
-	- Renvoie -1 si une erreur de dup est trouvée
-*/
 
 void	ft_close_other_fd(t_node *node, int last_in, int last_out)
 {

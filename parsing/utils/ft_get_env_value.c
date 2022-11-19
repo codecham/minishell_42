@@ -6,24 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:26:45 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/19 04:14:18 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:09:23 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-/*
-	La fonction ft_get_env_value va rechercher la valeur associer à la variable 
-	*key dans **envp et la stocke dans **value.
-
-	Renvoie 1 si réussis
-
-	Renvoie 0 si la variable n'existe pas
-
-	Renvoie -1 en cas d'échec de malloc.
-	
-	ATTENTION A NE PAS OUBLIER DE FREE LA NOUVELLE STRING
-*/
 
 int	ft_set_exit_value(char **value)
 {

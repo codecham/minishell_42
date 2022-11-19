@@ -6,7 +6,7 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 20:10:46 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/19 04:01:06 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:05:24 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <errno.h>
-# include <termios.h>
 # include <curses.h>
 # include <term.h>
 # include <termcap.h>
@@ -267,7 +266,6 @@ int				ft_search_infile_redir(t_redir_list *elem);
 int				ft_exec_redirection(t_data *data, t_node *node);
 char			*ft_get_env_by_key(char *key, char **envp);
 int				ft_set_redirection_fd(t_node *node);
-int				ft_count_node(t_node *node);
 int				ft_create_pipe(t_data *data);
 int				ft_exec_pipe(t_data *data);
 void			ft_wait_one_children(pid_t pid);

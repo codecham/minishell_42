@@ -6,23 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 20:11:00 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/18 18:03:20 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 14:58:19 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-/*
-
-	Fonction principale de l'execution.
-
-	1) ft_get_path_env va copier les différents path dans la strcuture
-
-	2) ft_is_builtin va checker si la commande est un builtin
-
-	3) ft_set_path_cmd va set le path de l'executable
-
-*/
 
 void	ft_executor_redirection(t_data *data)
 {
@@ -46,7 +34,7 @@ void	ft_executor(t_data *data)
 	if (!data->path_env)
 		return (ft_err_malloc_exec());
 	if (ft_is_builtin(data->first_node) == -1)
-		return;
+		return ;
 	if (data->env_var_list == NULL)
 		return (ft_err_malloc_exec());
 	if (ft_set_path_cmd(data) == -1)

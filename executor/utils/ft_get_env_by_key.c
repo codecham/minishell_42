@@ -6,21 +6,11 @@
 /*   By: dcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 21:32:09 by dcorenti          #+#    #+#             */
-/*   Updated: 2022/11/15 20:28:48 by dcorenti         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:02:20 by dcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-/*
-	La fonction get_env_by_key retourne la valeur associé à la variable
-	d'environement spécifié par key.
-
-	ATTENTION: Key doit termnier par un '=' (exemple: "HOME=")
-
-	Valeur de retour: Renvoie la valeur ou NULL si elle ne trouve
-	pas ou qu'il y a un probleme d'allocation
-*/
 
 char	*ft_get_value_env(char *key, char *line)
 {
