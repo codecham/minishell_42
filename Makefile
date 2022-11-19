@@ -122,8 +122,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@ $(MAKE) -C $(LIBFT_D) all
-#@ $(CC) ${CFLAGS}  -L /Users/$(USER)/.brew/opt/readline/lib -I -I/Users/$(USER)/.brew/opt/readline/include -o $(NAME) $(OBJ) $(LIBFT) -lreadline -ltermcap
-	@ $(CC) ${CFLAGS}  -L /usr/local/opt/readline/lib -I /usr/local/opt/readline/include -o $(NAME) $(OBJ) $(LIBFT) -lreadline -ltermcap
+	@ $(CC) ${CFLAGS}  -L /Users/$(USER)/.brew/opt/readline/lib -I -I/Users/$(USER)/.brew/opt/readline/include -o $(NAME) $(OBJ) $(LIBFT) -lreadline -ltermcap
 
 clean:
 	@ $(MAKE) -C $(LIBFT_D) clean
